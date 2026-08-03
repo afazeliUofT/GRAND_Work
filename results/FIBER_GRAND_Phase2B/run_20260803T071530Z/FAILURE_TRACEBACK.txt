@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/home/afazeli2006/GRAND_Work/experiments/FIBER_GRAND_PHASE2B_PROOF_FAST_CERTIFICATE_GATE_v1_0/run_phase2b.py", line 48, in main
+    if repair["status"]!="PASS":raise RuntimeError("Phase 2A artifact repair found unexplained mismatches")
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Phase 2A artifact repair found unexplained mismatches

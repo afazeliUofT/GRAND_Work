@@ -1,0 +1,7 @@
+{
+  "created_utc": "2026-08-03T07:15:35+00:00",
+  "package_returncode": 1,
+  "package_run_status": "FAIL",
+  "status": "FAIL_PACKAGE_RUN",
+  "unit_test_returncode": 0
+}

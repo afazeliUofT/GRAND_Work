@@ -1,0 +1,56 @@
+{
+  "base_commit": "c4073f84a2e8c7f6d19281db64e862347602fa02",
+  "created_utc": "2026-08-03T07:15:35+00:00",
+  "crlf_normalization_count": 5,
+  "mismatch_count": 6,
+  "mismatches": [
+    {
+      "committed_sha256": "ce71ba9e29357213e5f3569362eb90d67358741b17ec6791b822b0b49d476680",
+      "diagnosis": "UNEXPLAINED_MISMATCH",
+      "original_manifest_sha256": "17c91daf36217424174cb8e991e8922f2d01329eae9208dcd61b640102d1e6df",
+      "path": "PACKAGE_CONSOLE.log",
+      "reconstructed_crlf_sha256": "f38347f4f4d38066f742af604c7accb1a8fcde9750827351bfbe39ad2f9284af"
+    },
+    {
+      "committed_sha256": "25010c4280eadad583b35adbaf80fb60d79e0886f5166c5c95eb1bc54a293291",
+      "diagnosis": "CRLF_TO_LF_NORMALIZATION",
+      "original_manifest_sha256": "ba5c06f3f893150f36ce851759045cef509a20d4cb8fc567d8bd338f09f0a06c",
+      "path": "pilot/bound_scan.csv",
+      "reconstructed_crlf_sha256": "ba5c06f3f893150f36ce851759045cef509a20d4cb8fc567d8bd338f09f0a06c"
+    },
+    {
+      "committed_sha256": "f88fcb1aa76469a7b3ffe80fbe1fae9315d3c00ed9070999d2f95a7a5c0b5575",
+      "diagnosis": "CRLF_TO_LF_NORMALIZATION",
+      "original_manifest_sha256": "f2d833a6a6506992e8d1f10dbb0735bd43a351a16da02cf2bae13db1067ae980",
+      "path": "pilot/cell_summary.csv",
+      "reconstructed_crlf_sha256": "f2d833a6a6506992e8d1f10dbb0735bd43a351a16da02cf2bae13db1067ae980"
+    },
+    {
+      "committed_sha256": "a6f193e6472aaf6848a3607ce8cdbf16bc5592ba744c67533ba8e2bac0f94ac0",
+      "diagnosis": "CRLF_TO_LF_NORMALIZATION",
+      "original_manifest_sha256": "0916c5a7353726e470dea186b0b053f848cc71df1d8c5928d8776052df5c4e54",
+      "path": "pilot/paired_trials.csv",
+      "reconstructed_crlf_sha256": "0916c5a7353726e470dea186b0b053f848cc71df1d8c5928d8776052df5c4e54"
+    },
+    {
+      "committed_sha256": "a09647f7195c10e3ca635d0918367b3b5c39a3d679d3e9fee382c163f1eb7c19",
+      "diagnosis": "CRLF_TO_LF_NORMALIZATION",
+      "original_manifest_sha256": "300b95cfb064de6cef2d5c6c0203e1a11d253602b5386a08785ebf67cc6f34eb",
+      "path": "pilot/schedule_summary.csv",
+      "reconstructed_crlf_sha256": "300b95cfb064de6cef2d5c6c0203e1a11d253602b5386a08785ebf67cc6f34eb"
+    },
+    {
+      "committed_sha256": "674092ecf05e771406c615b71383c50d8e4f5df01c5e14710887aba622cce989",
+      "diagnosis": "CRLF_TO_LF_NORMALIZATION",
+      "original_manifest_sha256": "3acdd68538d6c14a6fab1ce2cb6fce7023eec516be5974f470406c4529107a09",
+      "path": "pilot/stress_summary.csv",
+      "reconstructed_crlf_sha256": "3acdd68538d6c14a6fab1ce2cb6fce7023eec516be5974f470406c4529107a09"
+    }
+  ],
+  "missing_committed_files": [],
+  "original_entries": 26,
+  "phase2a_run": "results/FIBER_GRAND_Phase2A/run_20260803T021923Z",
+  "scientific_interpretation": "Line-ending normalization changes artifact hashes but not parsed numerical values; no Phase-2A computation is rerun.",
+  "status": "FAIL",
+  "unexplained_mismatch_count": 1
+}

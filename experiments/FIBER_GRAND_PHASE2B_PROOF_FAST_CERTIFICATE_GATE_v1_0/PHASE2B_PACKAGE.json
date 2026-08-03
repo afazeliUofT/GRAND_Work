@@ -1,0 +1,8 @@
+{
+  "name": "FIBER-GRAND Paper I Phase 2B Proof/Fast-Certificate Gate",
+  "version": "1.0.0",
+  "base_phase2a_commit": "c4073f84a2e8c7f6d19281db64e862347602fa02",
+  "scope": "artifact repair, proof closure candidate, exact C++17 kernel, frozen replay, and auto-gated targeted n=32 pilot",
+  "large_campaign_authorized": false,
+  "external_review_required": true
+}

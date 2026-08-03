@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "master_seed": 20260803,
+  "base_commit": "c4073f84a2e8c7f6d19281db64e862347602fa02",
+  "phase2a_run_relative": "results/FIBER_GRAND_Phase2A/run_20260803T021923Z",
+  "phase2a_package_relative": "experiments/FIBER_GRAND_PHASE2A_BOUNDED_GATE_v1_0",
+  "replay": {
+    "bound_limit": 0,
+    "trial_limit": 0,
+    "kernel_speedup_min": 50.0,
+    "hard_work_ratio": 10.0,
+    "hard_min_cases": 3,
+    "hard_median_fast_over_ind_max": 2.0
+  },
+  "targeted_pilot": {
+    "enabled": true,
+    "n": 32,
+    "p_num": 1,
+    "p_den": 20,
+    "alignment_schedule": "even_odd",
+    "rates": [
+      {
+        "label": "R2_3",
+        "target": 0.6666666666666666
+      },
+      {
+        "label": "R3_4",
+        "target": 0.75
+      }
+    ],
+    "families": [
+      "random_systematic_linear",
+      "crc_defined_linear"
+    ],
+    "trials_per_cell": 256,
+    "random_code_instances": 4,
+    "max_histories": 1500000,
+    "gate": {
+      "median_work_ratio_min": 2.0,
+      "median_wall_ratio_min": 1.2,
+      "median_overhead_max": 1.1,
+      "p95_latency_ratio_min": 2.0,
+      "cells_required": 3
+    }
+  }
+}

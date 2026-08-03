@@ -1,0 +1,5 @@
+[phase2b] ERROR: RuntimeError('Phase 2A artifact repair found unexplained mismatches')
+[phase2b] status=FAIL
+[phase2b] output=/home/afazeli2006/GRAND_Work/results/FIBER_GRAND_Phase2B/run_20260803T071530Z
+[phase2b] return_zip=/home/afazeli2006/GRAND_Work/results/FIBER_GRAND_Phase2B/run_20260803T071530Z/FIBER_GRAND_PHASE2B_RETURN_run_20260803T071530Z.zip
+[phase2b] return_zip_sha256=a21f4b8d3d51a6a1672db15041ec3672802a8f1c6c7344feeee170821367bf69

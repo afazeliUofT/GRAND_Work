@@ -1,0 +1,14 @@
+{
+  "auto_push_requested": true,
+  "branch": "main",
+  "created_utc": "2026-08-03T07:15:35+00:00",
+  "origin": "git@github.com:afazeliUofT/Grand_Work.git",
+  "package_installation": "/home/afazeli2006/GRAND_Work/experiments/FIBER_GRAND_PHASE2B_PROOF_FAST_CERTIFICATE_GATE_v1_0",
+  "package_zip": "/mnt/c/Users/alifa/Downloads/FIBER_GRAND_PHASE2B_PROOF_FAST_CERTIFICATE_GATE_v1_0_2026-08-03.zip",
+  "package_zip_sha256": "3c680ecc6490c93ac095ec05da7592051c5ef89e98fdf4f1e6889b6c6e06880d",
+  "profile": "proof_fast_default",
+  "repository_root": "/home/afazeli2006/GRAND_Work",
+  "venv_python": "/home/afazeli2006/.venvs/fiber_grand_phase2b_v1_0/bin/python",
+  "wrapper": "/home/afazeli2006/GRAND_Work/RUN_FIBER_GRAND_PHASE2B.py",
+  "wrapper_sha256": "545427758dc03f09d5188506529b4cc90b1dc4cf000c671791a4993909026302"
+}

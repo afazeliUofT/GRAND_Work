@@ -1,0 +1,36 @@
+FIBER-GRAND Paper I — Phase 2B proof/fast-certificate gate wrapper
+WRAPPER_LOG=/tmp/FIBER_GRAND_PHASE2B_WRAPPER_20260803T071530Z_2327059.log
+[repo] root=/home/afazeli2006/GRAND_Work
+[repo] origin=git@github.com:afazeliUofT/Grand_Work.git
+[repo] branch=main
+[repo] frozen Phase 2A base commit verified as ancestor: c4073f84a2e8c7f6d19281db64e862347602fa02
+[git] local excludes verified at /home/afazeli2006/GRAND_Work/.git/info/exclude
+[git] repository line-ending policy verified at /home/afazeli2006/GRAND_Work/.gitattributes
+[package] located=/mnt/c/Users/alifa/Downloads/FIBER_GRAND_PHASE2B_PROOF_FAST_CERTIFICATE_GATE_v1_0_2026-08-03.zip
+[package] sha256=3c680ecc6490c93ac095ec05da7592051c5ef89e98fdf4f1e6889b6c6e06880d (verified)
+[package] installed=/home/afazeli2006/GRAND_Work/experiments/FIBER_GRAND_PHASE2B_PROOF_FAST_CERTIFICATE_GATE_v1_0
+$ /usr/bin/python3 -m venv /home/afazeli2006/.venvs/fiber_grand_phase2b_v1_0
+[command return code] 0
+[venv] interpreter=/home/afazeli2006/.venvs/fiber_grand_phase2b_v1_0/bin/python
+[venv] version=(3, 12, 3); no third-party dependencies are required
+[venv] the wrapper executes the package with this interpreter; parent-shell activation is unnecessary
+[run] output=/home/afazeli2006/GRAND_Work/results/FIBER_GRAND_Phase2B/run_20260803T071530Z
+$ /home/afazeli2006/.venvs/fiber_grand_phase2b_v1_0/bin/python -m unittest discover -s tests -v
+test_bound_hierarchy (test_phase2b.Phase2BTests.test_bound_hierarchy) ... ok
+test_boundaries_and_zero_weights (test_phase2b.Phase2BTests.test_boundaries_and_zero_weights) ... ok
+test_code_reproducibility (test_phase2b.Phase2BTests.test_code_reproducibility) ... ok
+test_stable_seed (test_phase2b.Phase2BTests.test_stable_seed) ... ok
+test_strict_reversal (test_phase2b.Phase2BTests.test_strict_reversal) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.015s
+
+OK
+[command return code] 0
+$ /home/afazeli2006/.venvs/fiber_grand_phase2b_v1_0/bin/python /home/afazeli2006/GRAND_Work/experiments/FIBER_GRAND_PHASE2B_PROOF_FAST_CERTIFICATE_GATE_v1_0/run_phase2b.py --repo-root /home/afazeli2006/GRAND_Work --config /home/afazeli2006/GRAND_Work/experiments/FIBER_GRAND_PHASE2B_PROOF_FAST_CERTIFICATE_GATE_v1_0/config/phase2b_default.json --output /home/afazeli2006/GRAND_Work/results/FIBER_GRAND_Phase2B/run_20260803T071530Z --cache-root /home/afazeli2006/.cache/fiber_grand_phase2b_v1_0
+[phase2b] ERROR: RuntimeError('Phase 2A artifact repair found unexplained mismatches')
+[phase2b] status=FAIL
+[phase2b] output=/home/afazeli2006/GRAND_Work/results/FIBER_GRAND_Phase2B/run_20260803T071530Z
+[phase2b] return_zip=/home/afazeli2006/GRAND_Work/results/FIBER_GRAND_Phase2B/run_20260803T071530Z/FIBER_GRAND_PHASE2B_RETURN_run_20260803T071530Z.zip
+[phase2b] return_zip_sha256=a21f4b8d3d51a6a1672db15041ec3672802a8f1c6c7344feeee170821367bf69
+[command return code] 1

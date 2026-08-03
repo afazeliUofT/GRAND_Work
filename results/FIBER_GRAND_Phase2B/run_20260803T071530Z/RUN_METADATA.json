@@ -1,0 +1,24 @@
+{
+  "argv": [
+    "/home/afazeli2006/GRAND_Work/experiments/FIBER_GRAND_PHASE2B_PROOF_FAST_CERTIFICATE_GATE_v1_0/run_phase2b.py",
+    "--repo-root",
+    "/home/afazeli2006/GRAND_Work",
+    "--config",
+    "/home/afazeli2006/GRAND_Work/experiments/FIBER_GRAND_PHASE2B_PROOF_FAST_CERTIFICATE_GATE_v1_0/config/phase2b_default.json",
+    "--output",
+    "/home/afazeli2006/GRAND_Work/results/FIBER_GRAND_Phase2B/run_20260803T071530Z",
+    "--cache-root",
+    "/home/afazeli2006/.cache/fiber_grand_phase2b_v1_0"
+  ],
+  "created_utc": "2026-08-03T07:15:35+00:00",
+  "environment": {
+    "cpu_count": 16,
+    "created_utc": "2026-08-03T07:15:35+00:00",
+    "executable": "/home/afazeli2006/.venvs/fiber_grand_phase2b_v1_0/bin/python",
+    "machine": "x86_64",
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "python": "3.12.3 (main, Jun 19 2026, 12:46:00) [GCC 13.3.0]"
+  },
+  "repo": "/home/afazeli2006/GRAND_Work",
+  "version": "1.0.0"
+}

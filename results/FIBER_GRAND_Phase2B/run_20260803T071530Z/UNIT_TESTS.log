@@ -1,0 +1,10 @@
+test_bound_hierarchy (test_phase2b.Phase2BTests.test_bound_hierarchy) ... ok
+test_boundaries_and_zero_weights (test_phase2b.Phase2BTests.test_boundaries_and_zero_weights) ... ok
+test_code_reproducibility (test_phase2b.Phase2BTests.test_code_reproducibility) ... ok
+test_stable_seed (test_phase2b.Phase2BTests.test_stable_seed) ... ok
+test_strict_reversal (test_phase2b.Phase2BTests.test_strict_reversal) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.015s
+
+OK
