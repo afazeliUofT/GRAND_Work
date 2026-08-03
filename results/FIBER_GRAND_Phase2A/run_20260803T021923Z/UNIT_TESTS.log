@@ -1,0 +1,11 @@
+test_chain_schedule_geometry (test_core.CoreTests.test_chain_schedule_geometry) ... ok
+test_code_interfaces (test_core.CoreTests.test_code_interfaces) ... ok
+test_decoder_modes_agree_small (test_core.CoreTests.test_decoder_modes_agree_small) ... ok
+test_insert_delete_inverse (test_core.CoreTests.test_insert_delete_inverse) ... ok
+test_recurrence (test_core.CoreTests.test_recurrence) ... ok
+test_uac_three_ways (test_core.CoreTests.test_uac_three_ways) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.339s
+
+OK

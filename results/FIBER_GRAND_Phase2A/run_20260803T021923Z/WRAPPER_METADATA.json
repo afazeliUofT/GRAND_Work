@@ -1,0 +1,13 @@
+{
+  "auto_push_requested": true,
+  "branch": "main",
+  "created_utc": "2026-08-03T02:19:27+00:00",
+  "origin": "git@github.com:afazeliUofT/Grand_Work.git",
+  "package_installation": "/home/afazeli2006/GRAND_Work/experiments/FIBER_GRAND_PHASE2A_BOUNDED_GATE_v1_0",
+  "package_zip": "/mnt/c/Users/alifa/Downloads/FIBER_GRAND_PHASE2A_BOUNDED_GATE_v1_0_2026-08-02.zip",
+  "package_zip_sha256": "59fda59ce3d78f3608bbefef67a55de7eeec44f40d56b5c886d10e640b63efa0",
+  "profile": "bounded_default",
+  "repository_root": "/home/afazeli2006/GRAND_Work",
+  "venv_python": "/home/afazeli2006/.venvs/fiber_grand_phase2a_v1_0/bin/python",
+  "wrapper": "/home/afazeli2006/GRAND_Work/RUN_FIBER_GRAND_PHASE2A.py"
+}

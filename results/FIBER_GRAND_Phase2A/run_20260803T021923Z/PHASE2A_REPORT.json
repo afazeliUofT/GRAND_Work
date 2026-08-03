@@ -1,0 +1,65 @@
+{
+  "bound_summary": {
+    "by_schedule": {
+      "even_odd": {
+        "cases": 1680,
+        "hierarchy_failures": 0,
+        "max_finite_bound_ratio_ind_over_ac": 18.338461538461537,
+        "max_finite_bound_ratio_ind_over_chain": 7.017543859649122,
+        "median_bound_ratio_ind_over_ac": 2.998488074004676,
+        "median_bound_ratio_ind_over_chain": 1.123545966228893,
+        "p90_bound_ratio_ind_over_ac": 7.6175596424433865,
+        "p90_bound_ratio_ind_over_chain": 2.7818181818181817,
+        "strict_chain_cases": 864,
+        "strict_chain_fraction": 0.5142857142857142,
+        "strict_uac_cases": 1661,
+        "strict_uac_fraction": 0.9886904761904762,
+        "zero_chain_positive_ind_cases": 0,
+        "zero_uac_positive_ind_cases": 0
+      },
+      "forward": {
+        "cases": 1680,
+        "hierarchy_failures": 0,
+        "max_finite_bound_ratio_ind_over_ac": 18.338461538461537,
+        "max_finite_bound_ratio_ind_over_chain": 1.0,
+        "median_bound_ratio_ind_over_ac": 1.9276383037397447,
+        "median_bound_ratio_ind_over_chain": 1.0,
+        "p90_bound_ratio_ind_over_ac": 4.545061279865114,
+        "p90_bound_ratio_ind_over_chain": 1.0,
+        "strict_chain_cases": 0,
+        "strict_chain_fraction": 0.0,
+        "strict_uac_cases": 1658,
+        "strict_uac_fraction": 0.986904761904762,
+        "zero_chain_positive_ind_cases": 0,
+        "zero_uac_positive_ind_cases": 0
+      }
+    },
+    "cases": 3360,
+    "hierarchy_failures": 0,
+    "max_finite_bound_ratio_ind_over_ac": 18.338461538461537,
+    "max_finite_bound_ratio_ind_over_chain": 7.017543859649122,
+    "median_bound_ratio_ind_over_ac": 2.279069436284195,
+    "median_bound_ratio_ind_over_chain": 1.0,
+    "p90_bound_ratio_ind_over_ac": 6.276923076923077,
+    "p90_bound_ratio_ind_over_chain": 2.2,
+    "strict_chain_cases": 864,
+    "strict_chain_fraction": 0.2571428571428571,
+    "strict_uac_cases": 3319,
+    "strict_uac_fraction": 0.9877976190476191,
+    "zero_chain_positive_ind_cases": 0,
+    "zero_uac_positive_ind_cases": 0
+  },
+  "cell_count": 48,
+  "created_utc": "2026-08-03T02:20:04+00:00",
+  "pilot_status": "PASS",
+  "schedule_summary_rows": 12,
+  "screening_decision": {
+    "automated_label": "NARROW_OR_OPTIMIZE_CANDIDATE_REQUIRES_SCIENTIFIC_REVIEW",
+    "conference_gate_passed": false,
+    "human_scientific_verdict_required": true,
+    "note": "This label is a screening diagnostic, not a publication claim or final novelty verdict.",
+    "reason": "The specialized bounds are materially tighter somewhere, but the conference-level net-complexity gate is not yet established.",
+    "tail_gate_status": "NOT_TESTED_TO_FINAL_PRECISION"
+  },
+  "validation_status": "PASS"
+}

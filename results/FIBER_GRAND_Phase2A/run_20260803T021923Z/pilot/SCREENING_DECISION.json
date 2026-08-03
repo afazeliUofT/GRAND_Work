@@ -1,0 +1,8 @@
+{
+  "automated_label": "NARROW_OR_OPTIMIZE_CANDIDATE_REQUIRES_SCIENTIFIC_REVIEW",
+  "conference_gate_passed": false,
+  "human_scientific_verdict_required": true,
+  "note": "This label is a screening diagnostic, not a publication claim or final novelty verdict.",
+  "reason": "The specialized bounds are materially tighter somewhere, but the conference-level net-complexity gate is not yet established.",
+  "tail_gate_status": "NOT_TESTED_TO_FINAL_PRECISION"
+}

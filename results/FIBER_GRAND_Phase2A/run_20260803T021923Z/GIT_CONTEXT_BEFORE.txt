@@ -1,0 +1,7 @@
+ORIGIN=git@github.com:afazeliUofT/Grand_Work.git
+BRANCH=main
+
+## main...origin/main
+?? RUN_FIBER_GRAND_PHASE2A.py
+?? RUN_FIBER_GRAND_PHASE2A.py:Zone.Identifier
+?? experiments/

@@ -1,0 +1,26 @@
+{
+  "argv": [
+    "/home/afazeli2006/GRAND_Work/experiments/FIBER_GRAND_PHASE2A_BOUNDED_GATE_v1_0/run_phase2a.py",
+    "--config",
+    "/home/afazeli2006/GRAND_Work/experiments/FIBER_GRAND_PHASE2A_BOUNDED_GATE_v1_0/config/phase2a_default.json",
+    "--output",
+    "/home/afazeli2006/GRAND_Work/results/FIBER_GRAND_Phase2A/run_20260803T021923Z"
+  ],
+  "config_path": "/home/afazeli2006/GRAND_Work/experiments/FIBER_GRAND_PHASE2A_BOUNDED_GATE_v1_0/config/phase2a_default.json",
+  "created_utc": "2026-08-03T02:19:27+00:00",
+  "environment": {
+    "cpu_count": 16,
+    "created_utc": "2026-08-03T02:19:27+00:00",
+    "cwd": "/home/afazeli2006/GRAND_Work/experiments/FIBER_GRAND_PHASE2A_BOUNDED_GATE_v1_0",
+    "dont_write_bytecode": "1",
+    "machine": "x86_64",
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "processor": "x86_64",
+    "python": "3.12.3 (main, Jun 19 2026, 12:46:00) [GCC 13.3.0]",
+    "python_executable": "/home/afazeli2006/.venvs/fiber_grand_phase2a_v1_0/bin/python",
+    "pythonhashseed": "0"
+  },
+  "output": "/home/afazeli2006/GRAND_Work/results/FIBER_GRAND_Phase2A/run_20260803T021923Z",
+  "package_root": "/home/afazeli2006/GRAND_Work/experiments/FIBER_GRAND_PHASE2A_BOUNDED_GATE_v1_0",
+  "package_version": "1.0.0"
+}

@@ -1,0 +1,8 @@
+{
+  "branch": "main",
+  "note": "Commit hash is printed by the wrapper after this file is committed.",
+  "origin_repository": "afazeliuoft/grand_work",
+  "package_directory": "experiments/FIBER_GRAND_PHASE2A_BOUNDED_GATE_v1_0",
+  "result_directory": "results/FIBER_GRAND_Phase2A/run_20260803T021923Z",
+  "scientific_run_status": "PASS"
+}

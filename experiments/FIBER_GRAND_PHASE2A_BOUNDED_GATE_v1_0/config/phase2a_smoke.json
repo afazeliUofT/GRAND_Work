@@ -1,0 +1,83 @@
+{
+  "schema_version": 2,
+  "package_version": "1.0.0",
+  "master_seed": 20260802,
+  "pilot": {
+    "blocklengths": [
+      8
+    ],
+    "rates": [
+      {
+        "label": "R2_3",
+        "target": 0.625
+      }
+    ],
+    "p_points": [
+      {
+        "num": 1,
+        "den": 20
+      }
+    ],
+    "code_families": [
+      "random_systematic_linear"
+    ],
+    "natural_trials_per_cell": 2,
+    "natural_max_histories": 100000,
+    "stress_max_histories": 100000,
+    "exhaustive_ml_max_n": 8,
+    "workers": 1,
+    "stress": {
+      "enabled": true,
+      "repetitions_per_weight": 1,
+      "weights_by_n_and_p": {
+        "8": {
+          "1/20": [
+            0,
+            1,
+            2
+          ]
+        }
+      },
+      "alignment_schedules": [
+        "forward",
+        "even_odd"
+      ],
+      "rate_labels": [
+        "R2_3"
+      ],
+      "code_families": [
+        "random_systematic_linear"
+      ]
+    },
+    "alignment_schedules": [
+      "forward",
+      "even_odd"
+    ]
+  },
+  "bound_scan": {
+    "blocklengths": [
+      8
+    ],
+    "p_points": [
+      {
+        "num": 1,
+        "den": 20
+      }
+    ],
+    "random_observations": 2,
+    "shells": [
+      0,
+      1,
+      2
+    ],
+    "advanced_fractions": [
+      0.0,
+      0.5,
+      1.0
+    ],
+    "alignment_schedules": [
+      "forward",
+      "even_odd"
+    ]
+  }
+}

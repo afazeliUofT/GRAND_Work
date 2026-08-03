@@ -1,0 +1,534 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage[letterpaper,margin=0.83in,headheight=15pt]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,bm}
+\usepackage{booktabs,tabularx,longtable,array}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage[nameinlink,noabbrev]{cleveref}
+
+\definecolor{navy}{HTML}{17365D}
+\definecolor{blue}{HTML}{2E75B6}
+\definecolor{lightblue}{HTML}{EAF3F8}
+\definecolor{green}{HTML}{477A4A}
+\definecolor{lightgreen}{HTML}{EDF6ED}
+\definecolor{amber}{HTML}{A46700}
+\definecolor{lightamber}{HTML}{FFF5DF}
+\definecolor{red}{HTML}{9C2F2F}
+\definecolor{lightred}{HTML}{FBECEC}
+\definecolor{graytext}{HTML}{444444}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=navy,
+  citecolor=navy,
+  urlcolor=blue,
+  pdftitle={FIBER-GRAND Paper I: Phase-0 Frozen Scientific Scope},
+  pdfauthor={Ali Fazeli},
+  pdfsubject={Exact code-agnostic decoding for one deletion and substitutions},
+  pdfkeywords={GRAND, deletion channel, maximum-likelihood decoding, synchronization errors, aggregate likelihood}
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\color{graytext}FIBER-GRAND Paper I --- Phase-0 Freeze}
+\fancyhead[R]{\small\color{graytext}2 August 2026}
+\fancyfoot[C]{\small\color{graytext}\thepage\ of \pageref*{LastPage}}
+\renewcommand{\headrulewidth}{0.3pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt plus 1pt}
+\setlist[itemize]{leftmargin=1.55em,itemsep=2pt,topsep=3pt}
+\setlist[enumerate]{leftmargin=1.75em,itemsep=2pt,topsep=3pt}
+\renewcommand{\arraystretch}{1.15}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newtcolorbox{freezebox}[1][]{enhanced,breakable,colback=lightblue,colframe=blue,
+  boxrule=0.7pt,arc=1.2mm,left=2.5mm,right=2.5mm,top=2mm,bottom=2mm,
+  title=#1,fonttitle=\bfseries,coltitle=navy}
+\newtcolorbox{gatebox}[1][]{enhanced,breakable,colback=lightgreen,colframe=green,
+  boxrule=0.7pt,arc=1.2mm,left=2.5mm,right=2.5mm,top=2mm,bottom=2mm,
+  title=#1,fonttitle=\bfseries,coltitle=green}
+\newtcolorbox{riskbox}[1][]{enhanced,breakable,colback=lightamber,colframe=amber,
+  boxrule=0.7pt,arc=1.2mm,left=2.5mm,right=2.5mm,top=2mm,bottom=2mm,
+  title=#1,fonttitle=\bfseries,coltitle=amber}
+\newtcolorbox{stopbox}[1][]{enhanced,breakable,colback=lightred,colframe=red,
+  boxrule=0.7pt,arc=1.2mm,left=2.5mm,right=2.5mm,top=2mm,bottom=2mm,
+  title=#1,fonttitle=\bfseries,coltitle=red}
+
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\D}{\mathcal{D}}
+\newcommand{\Prb}{\mathbb{P}}
+\newcommand{\ind}{\mathbf{1}}
+\newcommand{\Del}{\operatorname{Del}}
+\newcommand{\Ins}{\operatorname{Ins}}
+\newcommand{\argmax}{\operatorname*{arg\,max}}
+
+\begin{document}
+
+\begin{center}
+{\sffamily\bfseries\color{navy}\fontsize{25}{29}\selectfont FIBER-GRAND Paper I}\par
+\vspace{0.12in}
+{\sffamily\bfseries\color{blue}\fontsize{17}{21}\selectfont Phase-0 Frozen Scientific Scope and Claim Contract}\par
+\vspace{0.18in}
+{\large Foundations and exact one-deletion decoder}\par
+\vspace{0.15in}
+{\small Conference target: IEEE ISIT or IEEE ITW, followed by a Transactions on Information Theory extension}\par
+\end{center}
+
+\begin{freezebox}[Document status]
+This document freezes the scientific scope of the conference version of Paper~I. It is derived from
+\emph{FIBER\_GRAND\_Research\_Proposal\_rev4\_scientific\_audit.tex}. It is a scope-and-claim contract, not a claim that every listed theorem, novelty statement, or performance target has already been independently certified. No additional channel model, theoretical program, code design, or telecommunications use case is to be added to the conference paper unless it directly replaces a weaker item and is recorded through explicit scope change control.
+\end{freezebox}
+
+\tableofcontents
+\clearpage
+
+\section{Frozen purpose}
+
+\subsection{Single research question}
+
+Paper~I will answer one narrow question:
+
+\begin{quote}
+\emph{Can an exact, code-agnostic GRAND-style decoder perform maximum-likelihood decoding of arbitrary short binary block codes on a channel with exactly one deletion and independent substitutions by aggregating all deletion alignments supporting each candidate and stopping with a rigorous unseen-candidate certificate?}
+\end{quote}
+
+The paper must establish both correctness and computational relevance. Exact ML agreement alone is insufficient because exhaustive codeword-wise ML is already exact. Computational speed alone is insufficient unless every reported exact decision is accompanied by a valid mathematical stopping argument.
+
+\subsection{Frozen one-sentence contribution}
+
+\begin{freezebox}[Provisional conference claim]
+On a binary channel with exactly one deletion and independent substitutions, individual-history first-hit guessing can strictly disagree with aggregate maximum likelihood; FIBER-GRAND instead performs duplicate-aware inverse-alignment search, exactly scores discovered codewords, and terminates only when an unseen-candidate upper bound certifies the global ML decision.
+\end{freezebox}
+
+The final abstract may add a computational-advantage statement only after the quantitative gate in \cref{sec:gates} has passed. Until then, words such as ``efficient,'' ``substantially faster,'' or ``low-complexity'' are hypotheses rather than results.
+
+\section{Frozen channel, code, and decision model}
+
+\subsection{Channel law}
+
+The transmitted word is
+\[
+X=(X_1,\ldots,X_n)\in\{0,1\}^n.
+\]
+Independent substitutions act as
+\[
+\widetilde X_i=X_i\oplus N_i,
+\qquad
+N_i\stackrel{\mathrm{iid}}{\sim}\operatorname{Bernoulli}(p_s),
+\qquad 0\le p_s<\tfrac12.
+\]
+Exactly one position
+\[
+J\in\{1,\ldots,n\},
+\qquad
+\Prb[J=j]=q_j,
+\qquad
+q_j\ge0,
+\qquad
+\sum_{j=1}^n q_j=1,
+\]
+is deleted, giving
+\[
+Y=\Del_J(\widetilde X)\in\{0,1\}^{n-1}.
+\]
+The decoder knows $n$, $p_s$, and $\{q_j\}_{j=1}^n$. Uniform deletion, $q_j=1/n$, is the primary theorem and experiment setting. A known nonuniform deletion law may appear only as a compact robustness check and must not expand the main story.
+
+The equivalent interpretation ``delete first and substitute only surviving coordinates'' is permitted because the substitution on the deleted coordinate marginalizes to one.
+
+\subsection{Code model}
+
+The code is an arbitrary, unmodified binary block code
+\[
+\C\subseteq\{0,1\}^n
+\]
+with a uniform prior over codewords. Correctness uses only the interface
+\[
+\texttt{IsCodeword}(x)\in\{\texttt{true},\texttt{false}\}.
+\]
+Parity checks, syndromes, prefix tests, or other code-specific structures may be used only as optional implementation accelerators. No theorem of exactness may depend on redesigning the code for deletion correction.
+
+The scalar decoder output is the lexicographically smallest member of the global ML tie set. Certification tests must additionally retain the complete ML tie set.
+
+\subsection{Exact decision objective}
+
+For a candidate $x$ and observation $y$, the transformation fiber is the collection of deletion/substitution histories that map $x$ to $y$. Its aggregate likelihood is
+\[
+\Lambda_y(x)=W(y\mid x).
+\]
+The exact decision is
+\[
+\widehat c_{\mathrm{ML}}(y)
+\in
+\argmax_{c\in\C}\Lambda_y(c).
+\]
+Paper~I concerns exact hard-decision ML only. Approximate decoding, abandonment, erasures, lists, and soft outputs are outside the conference scope.
+
+\section{Frozen mathematical core}
+
+\subsection{Exact one-deletion likelihood}
+
+For $x=(x_1,\ldots,x_n)$ and $y=(y_1,\ldots,y_{n-1})$, define the mismatch count for deletion alignment $j$ by
+\begin{equation}
+ d_j(x,y)=
+ \sum_{i=1}^{j-1}\ind\{x_i\ne y_i\}
+ +\sum_{i=j+1}^{n}\ind\{x_i\ne y_{i-1}\}.
+ \label{eq:dj}
+\end{equation}
+The aggregate likelihood is
+\begin{equation}
+\boxed{
+\Lambda_y(x)=
+\sum_{j=1}^{n}q_j
+p_s^{d_j(x,y)}(1-p_s)^{n-1-d_j(x,y)}.}
+\label{eq:likelihood}
+\end{equation}
+At $p_s=0$, the Bernoulli term is interpreted by its ordinary indicator/limit convention.
+
+All alignment mismatch counts must be computed in $O(n)$ time using
+\begin{align}
+ d_1(x,y)
+ &=\sum_{i=2}^{n}\ind\{x_i\ne y_{i-1}\},\\
+ d_{j+1}(x,y)
+ &=d_j(x,y)
+ -\ind\{x_{j+1}\ne y_j\}
+ +\ind\{x_j\ne y_j\}.
+ \label{eq:recurrence}
+\end{align}
+Consequently, exact scoring of one codeword costs $O(n)$ time and $O(1)$ auxiliary memory beyond the stored words.
+
+\subsection{Required strict failure result}
+
+A tie-dependent example is not sufficient as the headline result. The conference paper must use a strict best-path/aggregate-ML reversal.
+
+\begin{proposition}[Frozen strict-reversal theorem target]
+\label{prop:strict}
+Assume uniform deletion, $q_j=1/n$, and $0<p_s<1/2$. For $n\ge3$, define
+\[
+y=0^{n-3}10,
+\qquad
+x_A=0^{n-3}101,
+\qquad
+x_B=0^n,
+\qquad
+\C=\{x_A,x_B\}.
+\]
+The most probable individual compatible history strictly favors $x_A$:
+\[
+M_y(x_A)=\frac1n(1-p_s)^{n-1}
+>
+\frac1n p_s(1-p_s)^{n-2}=M_y(x_B).
+\]
+However, aggregate ML strictly favors $x_B$ whenever
+\begin{equation}
+np_s>1+2p_s^2.
+\label{eq:reversal-condition}
+\end{equation}
+Thus, for every fixed $p_s>0$, a sufficiently large finite blocklength produces a strict disagreement between best-path first-hit ordering and aggregate ML ordering.
+\end{proposition}
+
+The exact aggregate expressions to be audited are
+\begin{align}
+\Lambda_y(x_B)
+&=p_s(1-p_s)^{n-2},\\
+\Lambda_y(x_A)
+&=\frac1n\Bigl[
+(1-p_s)^{n-1}
++p_s(1-p_s)^{n-2}
++p_s^2(1-p_s)^{n-3}
++(n-3)p_s^3(1-p_s)^{n-4}
+\Bigr].
+\end{align}
+Their strict ordering reduces to \cref{eq:reversal-condition}. This result is frozen as a central theorem target, but its proof must still pass an independent symbolic and manual audit before manuscript submission.
+
+\subsection{Boundary lemma}
+
+For a fixed observation $y$, any individual-history enumerator induces an order on distinct candidates according to the first supporting history emitted. First-hit decoding is ML for every codebook if and only if that induced order is nonincreasing in $\Lambda_y(x)$, with a declared tie convention. This is retained as a short boundary lemma, not as the sole foundational theorem.
+
+\subsection{Unseen-candidate certificate}
+
+For deletion position $j$, substitution pattern $e\in\{0,1\}^{n-1}$, and deleted input bit $b\in\{0,1\}$, define
+\[
+x=\Ins_j(y\oplus e,b)
+\]
+with component weight
+\[
+\omega_j(e)=q_jp_s^{w_H(e)}(1-p_s)^{n-1-w_H(e)}.
+\]
+Each alignment stream emits $(e,b)$ in nonincreasing $\omega_j(e)$. Let $\eta_j(t)$ be the largest not-yet-emitted component weight in stream $j$ after search step $t$, or zero if the stream is exhausted.
+
+\begin{theorem}[Independent-stream exact certificate]
+\label{thm:certificate}
+Every completely undiscovered candidate satisfies
+\[
+\Lambda_y(x)\le U_t^{\mathrm{new}}:=\sum_{j=1}^{n}\eta_j(t).
+\]
+Let $\D_t$ be the set of distinct candidates already generated. Every discovered codeword is exactly scored. Define
+\[
+s_t^\star=\max_{c\in\C\cap\D_t}\Lambda_y(c)
+\]
+and
+\[
+\mathcal T_t^\star=
+\{c\in\C\cap\D_t:\Lambda_y(c)=s_t^\star\}.
+\]
+If
+\[
+s_t^\star>\sum_{j=1}^{n}\eta_j(t),
+\]
+then $\mathcal T_t^\star$ is the complete global ML tie set. If all streams are exhausted, the same conclusion holds without the strict inequality.
+\end{theorem}
+
+\begin{riskbox}[Novelty discipline]
+The independent-stream threshold in \cref{thm:certificate} is a transparent correctness baseline. Sorted-list thresholding and generic residual-frontier ideas have substantial prior art. Paper~I must not claim that the bare sum $\sum_j\eta_j$ is independently a new generic search principle. The coding contribution must rest on the strict synchronization-channel failure result, the inverse-alignment construction, exact code-modular ML certification, and preferably a channel-specific frontier refinement or nontrivial complexity theorem.
+\end{riskbox}
+
+\subsection{Required channel-specific strengthening}
+
+For an ISIT-strength submission, Paper~I should contain at least one result beyond the independent-stream certificate. The preferred target is an alignment-consistent upper bound that uses
+\[
+ d_{j+1}(x,y)=d_j(x,y)
+ -\ind\{x_{j+1}\ne y_j\}
+ +\ind\{x_j\ne y_j\}
+\]
+to rule out mutually incompatible combinations of per-stream frontier maxima.
+
+The accepted strengthening may be one of:
+\begin{enumerate}
+  \item a polynomial-time alignment-consistency bound that is provably no looser than $\sum_j\eta_j$ and is strictly tighter for a characterized family;
+  \item an optimality result showing that the independent-stream certificate is tight under a precisely stated oracle/model restriction;
+  \item a nontrivial finite-blocklength complexity theorem for the exact one-deletion search.
+\end{enumerate}
+
+If none is obtained, the work may still be considered for ITW only if novelty survives Phase~1 and the exact computational advantage is unusually strong.
+
+\section{Frozen decoder architecture}
+
+\subsection{Reference algorithm}
+
+The conference reference decoder is the discover--membership-test--exact-score variant:
+
+\begin{enumerate}
+  \item Initialize one probability-ordered inverse-alignment stream for each deletion position $j$.
+  \item Repeatedly emit the globally largest next component $(j,e,b)$ and form $x=\Ins_j(y\oplus e,b)$.
+  \item Canonicalize $x$ and suppress duplicate candidate processing.
+  \item On first discovery, call \texttt{IsCodeword}$(x)$.
+  \item Only when $x$ is a codeword, compute the complete aggregate score \cref{eq:likelihood} using \cref{eq:recurrence}; then update the incumbent and discovered tie set.
+  \item Stop only when the incumbent score is strictly larger than $\sum_j\eta_j$, or when every stream is exhausted.
+\end{enumerate}
+
+Testing membership before exact likelihood evaluation is frozen because noncodewords cannot compete in the ML maximization. This preserves exactness while avoiding unnecessary $O(n)$ scores. The implementation must still count every distinct candidate and every membership call so that the computational comparison remains transparent.
+
+\subsection{Frozen workload definitions}
+
+Every run must record
+\begin{align*}
+Q_{\mathrm{hist}}&=\text{number of emitted history components},\\
+Q_{\mathrm{disc}}&=\text{number of distinct candidate words generated},\\
+Q_{\mathrm{code}}&=\text{number of code-membership calls},\\
+Q_{\mathrm{score}}&=\text{number of exact aggregate codeword scores},\\
+D_{\mathrm{dup}}&=1-Q_{\mathrm{disc}}/Q_{\mathrm{hist}},\\
+M_{\mathrm{peak}}&=\text{peak frontier, cache, and score memory},\\
+\Delta_{\mathrm{stop}}&=s_t^\star-\sum_j\eta_j\quad\text{at certification}.
+\end{align*}
+Wall-clock time must include stream generation, hashing, membership, scoring, and certification. It must not report only the likelihood kernel.
+
+\section{Frozen conference evidence package}
+
+\subsection{Exactness certification}
+
+Before performance claims, the following binary tests must pass:
+
+\begin{enumerate}
+  \item verify \cref{eq:likelihood,eq:recurrence} against an independently written exact rational-arithmetic oracle;
+  \item enumerate all codebooks for $n\le4$ and all observations $y\in\{0,1\}^{n-1}$;
+  \item enumerate all two-codeword codebooks for $n\le8$ and all observations;
+  \item test representative linear and nonlinear codes through $n\le16$ over all observations where feasible and exhaustive random channel realizations otherwise;
+  \item verify zero ML disagreements, zero incorrect tie sets, and zero false stopping certificates;
+  \item explicitly include long runs, alternating words, edge deletions, repeated symbols, and score ties.
+\end{enumerate}
+
+Exact arithmetic is the release oracle. Floating-point or log-domain implementations must be compared against it, and near-zero stopping margins must trigger higher precision rather than an uncertified decision.
+
+\subsection{Pilot performance matrix}
+
+The first viability study is frozen to the following primary matrix:
+
+\begin{center}
+\begin{tabularx}{0.96\textwidth}{@{}p{0.25\textwidth}X@{}}
+\toprule
+\textbf{Dimension} & \textbf{Frozen values}\\
+\midrule
+Blocklength & $n\in\{16,24,32,48,64\}$; shortened codes permitted to match lengths.\\
+Nominal rate & approximately $R\in\{2/3,3/4,5/6\}$.\\
+Deletion law & uniform $q_j=1/n$ in all headline results.\\
+Substitution probability & $p_s\in\{0,0.01,0.02,0.05,0.10\}$.\\
+Code families & random binary linear; shortened BCH; CRC-defined linear blocks; one small nonlinear membership-oracle code in certification.\\
+Final-test repetitions & sufficient to support the reported 99.9th percentile; otherwise that percentile is omitted rather than extrapolated.\\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+A smaller pilot may identify infeasible points, but final conference figures must use a test matrix frozen before the final random seeds are generated.
+
+\subsection{Required baselines}
+
+The minimum fair comparison is:
+\begin{enumerate}
+  \item exhaustive codeword-wise exact ML;
+  \item individual-history first-hit / best-path decoding, to show the reliability error caused by omitted aggregation;
+  \item FIBER-GRAND with the independent-stream bound;
+  \item FIBER-GRAND with the channel-specific strengthened bound, if obtained;
+  \item one strong exact code-specific or trellis/branch-and-bound baseline in every regime where such a baseline is naturally available.
+\end{enumerate}
+
+All methods receive the same $p_s$, deletion law, observation, and code definition. Code-generation time and one-time preprocessing must be reported separately from per-block decoding time.
+
+\subsection{Frozen figures}
+
+The conference paper contains at most three central figures:
+\begin{enumerate}
+  \item the strict best-path/aggregate-ML reversal, including the boundary $np_s=1+2p_s^2$;
+  \item complementary CDFs of $Q_{\mathrm{score}}$, $Q_{\mathrm{code}}$, or normalized work, with median through 99.9th percentile;
+  \item computational gain and stopping-bound comparison across at least three code families.
+\end{enumerate}
+
+Exact-ML agreement should be reported in a compact table or certification statement rather than consuming a full BLER figure, because all exact ML implementations have the same BLER by construction.
+
+\section{Submission gates and decision rules}
+\label{sec:gates}
+
+\begin{gatebox}[Gate P0 --- scope freeze: PASS upon issuance of this document]
+The paper studies only the declared one-deletion+BSC model, exact hard-decision ML, membership-only code modularity, the strict failure theorem, the exact inverse-alignment decoder, certification, and the frozen evidence package. Deferred subjects remain excluded.
+\end{gatebox}
+
+\begin{gatebox}[Gate P1 --- novelty]
+A claim-by-claim audit finds no prior work that already contains the same strict coding theorem and the same exact code-modular aggregate search contribution. Generic threshold/search components are explicitly credited. At least one headline result remains genuinely distinct after the audit.
+\end{gatebox}
+
+\begin{gatebox}[Gate P2 --- mathematics]
+The strict-reversal theorem, likelihood identity, recurrence, and stopping certificate pass independent manual and symbolic proof review under explicit assumptions and tie rules.
+\end{gatebox}
+
+\begin{gatebox}[Gate P3 --- exact software]
+All frozen complete-world and adversarial tests produce zero ML disagreements, zero tie-set errors, and zero false certificates. This gate is binary.
+\end{gatebox}
+
+\begin{gatebox}[Gate P4 --- computational viability]
+For at least three unmodified code families and a contiguous nondegenerate operating region, the decoder achieves both:
+\begin{enumerate}
+  \item at least $100\times$ reduction in median exact codeword-likelihood evaluations relative to exhaustive ML; and
+  \item at least $10\times$ reduction at the 99.9th percentile,
+\end{enumerate}
+with a material end-to-end wall-clock gain after membership, hashing, and frontier overhead are included. These are research gates, not presently claimed results.
+\end{gatebox}
+
+\begin{gatebox}[Gate P5 --- conference-strength specialization]
+At least one channel-specific strengthened bound, nontrivial complexity theorem, or comparably strong structural result survives novelty review and measurably improves the scientific story beyond a direct application of generic threshold aggregation.
+\end{gatebox}
+
+\begin{stopbox}[Decision rule]
+\textbf{ISIT GO:} P1--P5 all pass.\par
+\textbf{ITW GO:} P1--P4 pass, P5 is partial, and the strict theorem plus empirical gains remain compelling.\par
+\textbf{NARROW:} correctness passes but gains occur only in a clearly identified high-rate/low-$p_s$ regime; submit only with that restricted claim.\par
+\textbf{STOP or fundamentally reframe:} novelty is absorbed by prior art, the certificate is near-exhaustive across useful regimes, tail complexity is uncontrolled, or exact end-to-end speedup is absent.
+\end{stopbox}
+
+\section{Explicit exclusions from the conference version}
+
+The following subjects are not part of Paper~I's conference version:
+\begin{itemize}
+  \item two or more deletions, insertions, mixed IDS errors, duplications, timing slips, bounded drift, or general transducers;
+  \item soft or nonidentical bit reliabilities, quantized LLRs, nonbinary alphabets, or channel mismatch theory;
+  \item fiber guesswork, random-coding identities, error exponents, finite-blocklength achievability/converse theory, or computation-constrained reliability laws;
+  \item soft-output LLRs, list decoding, abandonment, erasures, or approximate certificates;
+  \item hardware, GPU, FPGA, energy, URLLC, variable-length demapping, packet-level transformations, or DNA-storage demonstrations;
+  \item new codes designed for FIBER-GRAND or claims that the decoder is uniformly preferable to specialized deletion codes;
+  \item a general field-defining claim based only on simulation.
+\end{itemize}
+
+These exclusions are not abandoned research topics. They are deferred to later papers so that the first conference submission has one falsifiable mathematical and algorithmic story.
+
+\section{Transactions on Information Theory extension boundary}
+
+The journal extension of Paper~I may add only material that deepens the same one-deletion foundation, including:
+\begin{enumerate}
+  \item a complete representation-invariant structural characterization of when first-hit history order is universally ML;
+  \item full proofs and a broader taxonomy of strict counterexamples and compatible non-injective cases;
+  \item stronger alignment-consistent and code-relaxed stopping bounds with formal complexity analysis;
+  \item nonuniform deletion laws and nonidentical/soft substitution reliabilities;
+  \item larger and broader code studies, exact tail analysis, and reproducible implementation details;
+  \item lower bounds or optimality results under a declared code-oracle model.
+\end{enumerate}
+
+Fiber-guesswork theory remains Paper~II. Multiple edits and weighted transducers remain Paper~III. Hardware and system demonstrations remain Paper~IV.
+
+\section{Frozen conference manuscript structure}
+
+The initial five-page conference manuscript should use the following order:
+\begin{enumerate}
+  \item \textbf{Introduction and failure mechanism:} one-deletion problem, strict reversal theorem, precise novelty boundary.
+  \item \textbf{Aggregate likelihood:} transformation fiber, exact likelihood, $O(n)$ recurrence.
+  \item \textbf{Exact decoder:} inverse-alignment streams, duplicate suppression, membership-first exact scoring, stopping theorem.
+  \item \textbf{Certification and results:} exact oracle, zero-disagreement statement, complexity CCDFs, three-code comparison, strengthened-bound result.
+  \item \textbf{Conclusion:} exact scope of the result and journal-extension direction.
+\end{enumerate}
+
+A longer technical report may contain full proofs, complete parameter tables, additional exactness cases, and all reproducibility details. The conference paper must not dilute its page budget with the excluded general research program.
+
+\section{Immediate next phase}
+
+The next phase is a novelty kill test, performed before substantial software optimization or large simulation campaigns.
+
+\begin{gatebox}[Required Phase-1 deliverable]
+Produce a claim-by-claim novelty matrix for the frozen results in this document. For each claim, identify the closest prior theorem or algorithm, state the exact overlap and exact difference, and issue one of four verdicts: \emph{distinct}, \emph{partially overlapping}, \emph{already known}, or \emph{uncertain---requires deeper retrieval}. The phase ends with a GO/NARROW/STOP verdict and revised claim wording that can be defended in an ISIT/ITW manuscript.
+\end{gatebox}
+
+The audit must separately cover:
+\begin{enumerate}
+  \item GRAND, SGRAND, ORBGRAND, GCD, and synchronization-error GRAND variants;
+  \item ML decoding and embedding/alignment multiplicity for deletion channels;
+  \item sequential, stack, priority-first, A$^\ast$, trellis, BCJR, and branch-and-bound synchronization decoding;
+  \item weighted automata/transducers and most-probable-string versus most-probable-path inference;
+  \item sorted-list/top-$k$ threshold algorithms and exact aggregation stopping rules;
+  \item code-agnostic membership-oracle decoding and relevant patents/preprints.
+\end{enumerate}
+
+No large computational claim should be pursued until this audit confirms that at least one headline theorem or channel-specific algorithmic result remains novel.
+
+\section{Freeze record}
+
+\begin{center}
+\begin{tabularx}{0.94\textwidth}{@{}p{0.28\textwidth}X@{}}
+\toprule
+Baseline proposal & \path{FIBER_GRAND_Research_Proposal_rev4_scientific_audit.tex}\\
+Frozen artifact & \path{FIBER_GRAND_Paper_I_Phase0_Frozen_Scope_v1.tex}\\
+Freeze date & 2 August 2026\\
+Primary conference objective & ISIT if P1--P5 pass; ITW if P1--P4 pass and P5 is partial\\
+Primary journal extension & IEEE Transactions on Information Theory\\
+Next authorized work & Phase~1 novelty kill test\\
+Unauthorized expansion & Any item listed in the explicit exclusions section\\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\end{document}

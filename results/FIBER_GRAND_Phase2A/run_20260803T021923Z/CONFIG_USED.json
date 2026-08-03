@@ -1,0 +1,135 @@
+{
+  "schema_version": 2,
+  "package_version": "1.0.0",
+  "master_seed": 20260802,
+  "pilot": {
+    "blocklengths": [
+      16,
+      24,
+      32
+    ],
+    "rates": [
+      {
+        "label": "R2_3",
+        "target": 0.6666666666666666
+      },
+      {
+        "label": "R3_4",
+        "target": 0.75
+      }
+    ],
+    "p_points": [
+      {
+        "num": 1,
+        "den": 100
+      },
+      {
+        "num": 1,
+        "den": 20
+      }
+    ],
+    "code_families": [
+      "random_systematic_linear",
+      "crc_defined_linear"
+    ],
+    "natural_trials_per_cell": 4,
+    "natural_max_histories": 1500000,
+    "stress_max_histories": 2500000,
+    "exhaustive_ml_max_n": 16,
+    "workers": 0,
+    "stress": {
+      "enabled": true,
+      "repetitions_per_weight": 1,
+      "weights_by_n_and_p": {
+        "16": {
+          "1/100": [
+            0,
+            1,
+            2
+          ],
+          "1/20": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
+        "24": {
+          "1/100": [
+            0,
+            1,
+            2
+          ],
+          "1/20": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
+        "32": {
+          "1/100": [
+            0,
+            1,
+            2
+          ],
+          "1/20": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      },
+      "alignment_schedules": [
+        "even_odd"
+      ],
+      "rate_labels": [
+        "R3_4"
+      ],
+      "code_families": [
+        "random_systematic_linear"
+      ]
+    },
+    "alignment_schedules": [
+      "forward",
+      "even_odd"
+    ]
+  },
+  "bound_scan": {
+    "blocklengths": [
+      16,
+      24,
+      32
+    ],
+    "p_points": [
+      {
+        "num": 1,
+        "den": 100
+      },
+      {
+        "num": 1,
+        "den": 20
+      }
+    ],
+    "random_observations": 12,
+    "shells": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "advanced_fractions": [
+      0.0,
+      0.25,
+      0.5,
+      0.75,
+      1.0
+    ],
+    "alignment_schedules": [
+      "forward",
+      "even_odd"
+    ]
+  }
+}

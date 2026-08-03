@@ -1,0 +1,52 @@
+FIBER-GRAND Paper I — Phase 2A bounded-gate wrapper
+WRAPPER_LOG=/tmp/FIBER_GRAND_PHASE2A_WRAPPER_20260803T021923Z_2222381.log
+[repo] root=/home/afazeli2006/GRAND_Work
+[repo] origin=git@github.com:afazeliUofT/Grand_Work.git
+[repo] branch=main
+[git] local excludes verified at /home/afazeli2006/GRAND_Work/.git/info/exclude
+[package] located=/mnt/c/Users/alifa/Downloads/FIBER_GRAND_PHASE2A_BOUNDED_GATE_v1_0_2026-08-02.zip
+[package] sha256=59fda59ce3d78f3608bbefef67a55de7eeec44f40d56b5c886d10e640b63efa0 (verified)
+[package] installed=/home/afazeli2006/GRAND_Work/experiments/FIBER_GRAND_PHASE2A_BOUNDED_GATE_v1_0
+$ /usr/bin/python3 -m venv /home/afazeli2006/.venvs/fiber_grand_phase2a_v1_0
+[command return code] 0
+[venv] interpreter=/home/afazeli2006/.venvs/fiber_grand_phase2a_v1_0/bin/python
+[venv] version=(3, 12, 3); no third-party dependencies are required
+[venv] the wrapper executes the package with this interpreter; parent-shell activation is unnecessary
+[run] output=/home/afazeli2006/GRAND_Work/results/FIBER_GRAND_Phase2A/run_20260803T021923Z
+$ /home/afazeli2006/.venvs/fiber_grand_phase2a_v1_0/bin/python -m unittest discover -s tests -v
+test_chain_schedule_geometry (test_core.CoreTests.test_chain_schedule_geometry) ... ok
+test_code_interfaces (test_core.CoreTests.test_code_interfaces) ... ok
+test_decoder_modes_agree_small (test_core.CoreTests.test_decoder_modes_agree_small) ... ok
+test_insert_delete_inverse (test_core.CoreTests.test_insert_delete_inverse) ... ok
+test_recurrence (test_core.CoreTests.test_recurrence) ... ok
+test_uac_three_ways (test_core.CoreTests.test_uac_three_ways) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.339s
+
+OK
+[command return code] 0
+$ /home/afazeli2006/.venvs/fiber_grand_phase2a_v1_0/bin/python /home/afazeli2006/GRAND_Work/experiments/FIBER_GRAND_PHASE2A_BOUNDED_GATE_v1_0/run_phase2a.py --config /home/afazeli2006/GRAND_Work/experiments/FIBER_GRAND_PHASE2A_BOUNDED_GATE_v1_0/config/phase2a_default.json --output /home/afazeli2006/GRAND_Work/results/FIBER_GRAND_Phase2A/run_20260803T021923Z
+[validation] likelihood_recurrence_vs_explicit_channel: PASS (2728 cases)
+[validation] strict_reversal_family: PASS (1062 cases)
+[validation] uac_and_chain_bounds_vs_independent_references: PASS (5336 cases)
+[validation] all_nonempty_codebooks_n_le_4_all_observations: PASS (1050660 cases)
+[pilot] paired trial count=214; workers=4
+[pilot] completed 1/214 paired trials
+[pilot] completed 20/214 paired trials
+[pilot] completed 40/214 paired trials
+[pilot] completed 60/214 paired trials
+[pilot] completed 80/214 paired trials
+[pilot] completed 100/214 paired trials
+[pilot] completed 120/214 paired trials
+[pilot] completed 140/214 paired trials
+[pilot] completed 160/214 paired trials
+[pilot] completed 180/214 paired trials
+[pilot] completed 200/214 paired trials
+[pilot] completed 214/214 paired trials
+[pilot] running alignment-bound structural scan
+[phase2a] status=PASS
+[phase2a] output=/home/afazeli2006/GRAND_Work/results/FIBER_GRAND_Phase2A/run_20260803T021923Z
+[phase2a] return_zip=/home/afazeli2006/GRAND_Work/results/FIBER_GRAND_Phase2A/run_20260803T021923Z/FIBER_GRAND_PHASE2A_RETURN_run_20260803T021923Z.zip
+[phase2a] return_zip_sha256=e3e56ee5a97f573369ac857a46082bcd8306caf5363e21d2542a8768674ab426
+[command return code] 0

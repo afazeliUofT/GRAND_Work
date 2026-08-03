@@ -1,0 +1,89 @@
+{
+  "created_utc": "2026-08-03T02:19:43+00:00",
+  "elapsed_ns": 16000527999,
+  "error": null,
+  "master_seed": 20260802,
+  "phase": "Phase 2A exact validation",
+  "records": [
+    {
+      "cases": 2728,
+      "detail": {
+        "arithmetic": "fractions.Fraction",
+        "n": "2..6",
+        "p": "1/5"
+      },
+      "elapsed_ns": 268640925,
+      "name": "likelihood_recurrence_vs_explicit_channel",
+      "status": "PASS"
+    },
+    {
+      "cases": 1062,
+      "detail": {
+        "a_values": [
+          3,
+          4,
+          9,
+          19,
+          49,
+          99
+        ],
+        "condition": "n p > 1+2p^2",
+        "n": "4..180"
+      },
+      "elapsed_ns": 168720026,
+      "name": "strict_reversal_family",
+      "status": "PASS"
+    },
+    {
+      "cases": 5336,
+      "detail": {
+        "all_observations": "n=2..8",
+        "cases_by_n": {
+          "10": 900,
+          "2": 16,
+          "3": 48,
+          "4": 112,
+          "5": 224,
+          "6": 448,
+          "7": 896,
+          "8": 1792,
+          "9": 900
+        },
+        "chain_relaxation": "brute force versus O(n^2) DP; U_AC <= U_CR <= U_ind",
+        "deletion_weights": "nonuniform positive integers",
+        "optimized_dp": "three-coordinate O(n^3)",
+        "reference_dp": "four-coordinate O(n^4)",
+        "sampled_observations": "n=9,10 (at least 48 plus extremes)"
+      },
+      "elapsed_ns": 12967462008,
+      "name": "uac_and_chain_bounds_vs_independent_references",
+      "status": "PASS"
+    },
+    {
+      "cases": 1050660,
+      "detail": {
+        "a": 4,
+        "alignment_schedules": [
+          "forward",
+          "even_odd"
+        ],
+        "bound_modes": [
+          "independent",
+          "chain_relaxed",
+          "alignment_consistent"
+        ],
+        "cases_by_n": {
+          "2": 60,
+          "3": 2040,
+          "4": 1048560
+        },
+        "p": "1/5"
+      },
+      "elapsed_ns": 2595521001,
+      "name": "all_nonempty_codebooks_n_le_4_all_observations",
+      "status": "PASS"
+    }
+  ],
+  "scope_note": "This closes the Phase-2A arithmetic/DP gate and all codebooks through n=4; it is not the final full Gate-P3 campaign through n=16.",
+  "status": "PASS"
+}

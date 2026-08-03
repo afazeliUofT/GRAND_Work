@@ -1,0 +1,10 @@
+{
+  "name": "FIBER_GRAND_PHASE2A_BOUNDED_GATE",
+  "version": "1.0.0",
+  "date": "2026-08-02",
+  "python_minimum": "3.10",
+  "dependencies": [],
+  "default_entrypoint": "run_phase2a.py",
+  "default_config": "config/phase2a_default.json",
+  "scientific_scope": "Proof closure, exact validation, and bounded pilot for Paper I only"
+}

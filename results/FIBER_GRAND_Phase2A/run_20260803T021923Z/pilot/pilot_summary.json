@@ -1,0 +1,18 @@
+{
+  "alignment_consistent_censored": 0,
+  "bound_scan_cases": 3360,
+  "chain_relaxed_censored": 0,
+  "created_utc": "2026-08-03T02:20:04+00:00",
+  "disagreements": 0,
+  "elapsed_ns": 20220309484,
+  "exhaustive_ml_checks": 71,
+  "exhaustive_ml_failures": 0,
+  "independent_censored": 0,
+  "natural_trials": 192,
+  "note": "This is a bounded Phase-2A screening pilot, not the final conference 99.9th-percentile campaign.",
+  "paired_trials": 214,
+  "phase": "Phase 2A bounded decoder pilot",
+  "status": "PASS",
+  "stress_trials": 22,
+  "workers": 4
+}
