@@ -1,0 +1,19 @@
+\begin{table*}[t]
+\caption{Frozen $n=32$, $p_s=0.05$ natural-channel evidence (64 trials per cell). Ratios are medians unless marked otherwise. A dash means exhaustive calibration was not run at that dimension.}
+\label{tab:n32}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3.5pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabular}{@{}lrrrrrrr@{}}
+\toprule
+Code / dimension & $Q_{\rm mem}$ & $Q_{\rm score}$ & $|\mathcal C|/Q_{\rm score}$ & P10 $|\mathcal C|/Q_{\rm score}$ & $|\mathcal C|/Q_{\rm mem}$ & Exhaustive / FIBER & B\&B / FIBER\\
+\midrule
+CRC, $k=21$ & 970.5 & 3 & 699051 & 190650 & 2160.9 & 522.0 & 0.991\\
+Random, $k=21$ & 972.0 & 1.5 & 1.57\,$\times 10^6$ & 262144 & 2157.6 & 465.6 & 1.66\\
+CRC, $k=24$ & 964.5 & 4 & 4.19\,$\times 10^6$ & 2.1\,$\times 10^6$ & 17395 & -- & 1.2\\
+Random, $k=24$ & 966.5 & 4 & 4.19\,$\times 10^6$ & 1.86\,$\times 10^6$ & 17359 & -- & 2.39\\
+Ext. Hamming, $k=26$ & 954.0 & 13.5 & 4.98\,$\times 10^6$ & 3.36\,$\times 10^6$ & 70345 & -- & 2.18\\
+\bottomrule
+\end{tabular}
+\end{table*}

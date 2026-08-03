@@ -1,0 +1,15 @@
+{
+  "created_utc": "2026-08-03T13:21:00+00:00",
+  "main_pdf": {
+    "pages": 4,
+    "sha256": "2f71c82c541834bc301ec285f5cb98bda62d7a2ed32176cdd683cab46b06c641"
+  },
+  "new_simulations_run": false,
+  "render_review": "PASS - no clipping, overlap, broken glyphs, or unreadable tables observed at 150-160 dpi",
+  "status": "PASS",
+  "supplement_pdf": {
+    "pages": 4,
+    "sha256": "e33e3189f080d4eedb1035b9643abf4ce525068116978f2e29df743abb3cab0a"
+  },
+  "unit_tests": "PASS"
+}

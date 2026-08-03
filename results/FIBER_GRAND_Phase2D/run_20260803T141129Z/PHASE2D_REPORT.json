@@ -1,0 +1,85 @@
+{
+  "claim_checks": {
+    "failures": [],
+    "main_bytes": 18868,
+    "status": "PASS",
+    "supplement_bytes": 10072
+  },
+  "created_utc": "2026-08-03T14:11:31+00:00",
+  "decision": {
+    "conference_submission_ready": false,
+    "created_utc": "2026-08-03T14:11:31+00:00",
+    "execution_consistency_pass": true,
+    "external_novelty_review_required": true,
+    "external_proof_review_required": true,
+    "label": "READY_FOR_EXTERNAL_PROOF_AND_NOVELTY_REVIEW",
+    "new_simulations_run": false,
+    "next_step": "Send the manuscript and proof supplement to independent reviewers; do not launch a new simulation campaign.",
+    "phase2c_evidence_frozen": true
+  },
+  "frozen_validation": {
+    "commit": "2f7736b70bf7f6f659a6707fad716407635a7deb",
+    "decision_label": "GO_PAPER_I_BASELINE_EXACT_DECODER",
+    "failures": [],
+    "hashes": {
+      "campaign": {
+        "bytes": 2645,
+        "repository_path": "results/FIBER_GRAND_Phase2C/run_20260803T125100Z/campaign/CAMPAIGN_REPORT.json",
+        "sha256": "9ed266563db217fbd257ee415f2f8222b181ebcdff99581ae04298ff93fd2969"
+      },
+      "cells": {
+        "bytes": 6074,
+        "repository_path": "results/FIBER_GRAND_Phase2C/run_20260803T125100Z/campaign/CELL_SUMMARY.csv",
+        "sha256": "6c4f1957e4008119c073caedd37230a41f32e6d44618b08085d023bf13174818"
+      },
+      "decision": {
+        "bytes": 1539,
+        "repository_path": "results/FIBER_GRAND_Phase2C/run_20260803T125100Z/SCIENTIFIC_DECISION.json",
+        "sha256": "dc58bd85351349a8babe27345cc7b67790c3430e0209f473f8123d219d072984"
+      },
+      "report": {
+        "bytes": 16791,
+        "repository_path": "results/FIBER_GRAND_Phase2C/run_20260803T125100Z/PHASE2C_REPORT.json",
+        "sha256": "688571cf28f3ac6a9ee403694db88f5be1fb991105bd5a2c73fc1246375fb5f0"
+      },
+      "theory_checks": {
+        "bytes": 873,
+        "repository_path": "results/FIBER_GRAND_Phase2C/run_20260803T125100Z/theory/THEORY_CHECKS.json",
+        "sha256": "40436edff49c7d65c28134814368719036b5bdea07826f5b3dedf28e587ccf58"
+      },
+      "theory_source": {
+        "bytes": 14623,
+        "repository_path": "results/FIBER_GRAND_Phase2C/run_20260803T125100Z/theory/FIBER_GRAND_Phase2C_Baseline_Exact_Decoder_Theorems.tex",
+        "sha256": "50930efd43546f8f77fd37d72e7001232499113151392df90e2fa5ace284801b"
+      }
+    },
+    "run_relative": "results/FIBER_GRAND_Phase2C/run_20260803T125100Z",
+    "status": "PASS",
+    "theory_exact_cases": 335146,
+    "trial_count": 996,
+    "verified_n32_cells": [
+      "n32_k21_crc_defined_linear_R2_3",
+      "n32_k21_random_systematic_linear_R2_3",
+      "n32_k24_crc_defined_linear_R3_4",
+      "n32_k24_random_systematic_linear_R3_4",
+      "n32_k26_extended_hamming_HAMMING"
+    ]
+  },
+  "latex_build": {
+    "failures": [],
+    "latexmk_available": false,
+    "main": {
+      "output": "",
+      "returncode": null,
+      "status": "NO_LATEXMK"
+    },
+    "precompiled_fallback_used": true,
+    "status": "PASS_WITH_PRECOMPILED_FALLBACK",
+    "supplement": {
+      "output": "",
+      "returncode": null,
+      "status": "NO_LATEXMK"
+    }
+  },
+  "status": "PASS"
+}

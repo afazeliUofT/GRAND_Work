@@ -1,0 +1,13 @@
+{
+  "auto_push_requested": true,
+  "branch": "main",
+  "created_utc": "2026-08-03T14:11:30+00:00",
+  "new_simulations_authorized": false,
+  "origin": "git@github.com:afazeliUofT/Grand_Work.git",
+  "package_installation": "/home/afazeli2006/GRAND_Work/experiments/FIBER_GRAND_PHASE2D_MANUSCRIPT_INTEGRATION_REVIEW_v1_0",
+  "package_zip": "/mnt/c/Users/alifa/Downloads/FIBER_GRAND_PHASE2D_MANUSCRIPT_INTEGRATION_REVIEW_v1_0_2026-08-03.zip",
+  "package_zip_sha256": "7aca6640b3b310151a86975d3a0e8a4b1d2baede41aa99f2cd9870e27d011adb",
+  "repository_root": "/home/afazeli2006/GRAND_Work",
+  "venv_python": "/home/afazeli2006/.venvs/fiber_grand_phase2d_v1_0/bin/python",
+  "wrapper": "/home/afazeli2006/GRAND_Work/RUN_FIBER_GRAND_PHASE2D.py"
+}

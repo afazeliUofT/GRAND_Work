@@ -1,0 +1,35 @@
+FIBER-GRAND Paper I - Phase 2D manuscript-integration wrapper
+WRAPPER_LOG=/tmp/FIBER_GRAND_PHASE2D_WRAPPER_20260803T141129Z_2382231.log
+[repo] root=/home/afazeli2006/GRAND_Work
+[repo] origin=git@github.com:afazeliUofT/Grand_Work.git
+[repo] branch=main
+[repo] Phase 2C GO commit verified as ancestor: 2f7736b70bf7f6f659a6707fad716407635a7deb
+[git] local excludes verified at /home/afazeli2006/GRAND_Work/.git/info/exclude
+[git] repository line-ending policy verified at /home/afazeli2006/GRAND_Work/.gitattributes
+[package] located=/mnt/c/Users/alifa/Downloads/FIBER_GRAND_PHASE2D_MANUSCRIPT_INTEGRATION_REVIEW_v1_0_2026-08-03.zip
+[package] sha256=7aca6640b3b310151a86975d3a0e8a4b1d2baede41aa99f2cd9870e27d011adb (verified)
+[package] installed=/home/afazeli2006/GRAND_Work/experiments/FIBER_GRAND_PHASE2D_MANUSCRIPT_INTEGRATION_REVIEW_v1_0
+$ /usr/bin/python3 -m venv /home/afazeli2006/.venvs/fiber_grand_phase2d_v1_0
+[command return code] 0
+[venv] interpreter=/home/afazeli2006/.venvs/fiber_grand_phase2d_v1_0/bin/python
+[venv] version=(3, 12, 3); no third-party Python dependencies are required
+[venv] parent-shell activation is unnecessary
+[run] output=/home/afazeli2006/GRAND_Work/results/FIBER_GRAND_Phase2D/run_20260803T141129Z
+$ /home/afazeli2006/.venvs/fiber_grand_phase2d_v1_0/bin/python -m unittest discover -s tests -v
+test_expected_five_n32_cells (test_phase2d.Phase2DTests.test_expected_five_n32_cells) ... ok
+test_main_claim_discipline (test_phase2d.Phase2DTests.test_main_claim_discipline) ... ok
+test_no_simulation_contract (test_phase2d.Phase2DTests.test_no_simulation_contract) ... ok
+test_query_savings_thresholds (test_phase2d.Phase2DTests.test_query_savings_thresholds) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.001s
+
+OK
+[command return code] 0
+$ /home/afazeli2006/.venvs/fiber_grand_phase2d_v1_0/bin/python /home/afazeli2006/GRAND_Work/experiments/FIBER_GRAND_PHASE2D_MANUSCRIPT_INTEGRATION_REVIEW_v1_0/run_phase2d.py --repo-root /home/afazeli2006/GRAND_Work --config /home/afazeli2006/GRAND_Work/experiments/FIBER_GRAND_PHASE2D_MANUSCRIPT_INTEGRATION_REVIEW_v1_0/config/phase2d_default.json --output /home/afazeli2006/GRAND_Work/results/FIBER_GRAND_Phase2D/run_20260803T141129Z
+[phase2d] status=PASS
+[phase2d] decision=READY_FOR_EXTERNAL_PROOF_AND_NOVELTY_REVIEW
+[phase2d] output=/home/afazeli2006/GRAND_Work/results/FIBER_GRAND_Phase2D/run_20260803T141129Z
+[phase2d] return_zip=/home/afazeli2006/GRAND_Work/results/FIBER_GRAND_Phase2D/run_20260803T141129Z/FIBER_GRAND_PHASE2D_RETURN_run_20260803T141129Z.zip
+[phase2d] return_zip_sha256=58e36016bf1b28364599ea3c48ebcb04e40f881734406e83df318ff7ab6e5215
+[command return code] 0

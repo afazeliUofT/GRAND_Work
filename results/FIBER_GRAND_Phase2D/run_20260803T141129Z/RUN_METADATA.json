@@ -1,0 +1,14 @@
+{
+  "argv": [
+    "/home/afazeli2006/GRAND_Work/experiments/FIBER_GRAND_PHASE2D_MANUSCRIPT_INTEGRATION_REVIEW_v1_0/run_phase2d.py",
+    "--repo-root",
+    "/home/afazeli2006/GRAND_Work",
+    "--config",
+    "/home/afazeli2006/GRAND_Work/experiments/FIBER_GRAND_PHASE2D_MANUSCRIPT_INTEGRATION_REVIEW_v1_0/config/phase2d_default.json",
+    "--output",
+    "/home/afazeli2006/GRAND_Work/results/FIBER_GRAND_Phase2D/run_20260803T141129Z"
+  ],
+  "created_utc": "2026-08-03T14:11:31+00:00",
+  "package_root": "/home/afazeli2006/GRAND_Work/experiments/FIBER_GRAND_PHASE2D_MANUSCRIPT_INTEGRATION_REVIEW_v1_0",
+  "repo": "/home/afazeli2006/GRAND_Work"
+}

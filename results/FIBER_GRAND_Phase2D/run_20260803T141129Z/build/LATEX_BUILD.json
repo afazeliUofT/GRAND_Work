@@ -1,0 +1,16 @@
+{
+  "failures": [],
+  "latexmk_available": false,
+  "main": {
+    "output": "",
+    "returncode": null,
+    "status": "NO_LATEXMK"
+  },
+  "precompiled_fallback_used": true,
+  "status": "PASS_WITH_PRECOMPILED_FALLBACK",
+  "supplement": {
+    "output": "",
+    "returncode": null,
+    "status": "NO_LATEXMK"
+  }
+}

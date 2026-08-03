@@ -1,0 +1,9 @@
+test_expected_five_n32_cells (test_phase2d.Phase2DTests.test_expected_five_n32_cells) ... ok
+test_main_claim_discipline (test_phase2d.Phase2DTests.test_main_claim_discipline) ... ok
+test_no_simulation_contract (test_phase2d.Phase2DTests.test_no_simulation_contract) ... ok
+test_query_savings_thresholds (test_phase2d.Phase2DTests.test_query_savings_thresholds) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.001s
+
+OK

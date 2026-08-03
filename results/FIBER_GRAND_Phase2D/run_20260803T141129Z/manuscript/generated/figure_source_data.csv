@@ -1,0 +1,6 @@
+cell_id,score_savings,membership_ratio
+n32_k21_crc_defined_linear_R2_3,699050.6666666666,2160.8990794908004
+n32_k21_random_systematic_linear_R2_3,1572864.0,2157.572920679947
+n32_k24_crc_defined_linear_R3_4,4194304.0,17394.733549760283
+n32_k24_random_systematic_linear_R3_4,4194304.0,17358.738220489402
+n32_k26_extended_hamming_HAMMING,4977855.296703297,70344.79846612792
