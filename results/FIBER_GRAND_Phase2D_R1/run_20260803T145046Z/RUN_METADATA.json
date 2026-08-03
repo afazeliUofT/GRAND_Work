@@ -1,0 +1,15 @@
+{
+  "argv": [
+    "/home/afazeli2006/GRAND_Work/experiments/FIBER_GRAND_PHASE2D_R1_PROVENANCE_REPAIR_EXTERNAL_REVIEW_HANDOFF_v1_1/run_phase2d_r1.py",
+    "--repo-root",
+    "/home/afazeli2006/GRAND_Work",
+    "--config",
+    "/home/afazeli2006/GRAND_Work/experiments/FIBER_GRAND_PHASE2D_R1_PROVENANCE_REPAIR_EXTERNAL_REVIEW_HANDOFF_v1_1/config/phase2d_r1_default.json",
+    "--output",
+    "/home/afazeli2006/GRAND_Work/results/FIBER_GRAND_Phase2D_R1/run_20260803T145046Z"
+  ],
+  "created_utc": "2026-08-03T14:50:54+00:00",
+  "new_simulations_authorized": false,
+  "package_root": "/home/afazeli2006/GRAND_Work/experiments/FIBER_GRAND_PHASE2D_R1_PROVENANCE_REPAIR_EXTERNAL_REVIEW_HANDOFF_v1_1",
+  "repository_root": "/home/afazeli2006/GRAND_Work"
+}

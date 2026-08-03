@@ -1,0 +1,23 @@
+{
+  "accepted_difference_count": 1,
+  "created_utc": "2026-08-03T14:50:54+00:00",
+  "crlf_normalization_count": 1,
+  "full_committed_package_files": 36,
+  "mismatches": [
+    {
+      "committed_sha256": "b7a6390492aeef544d735a6ba29393667ba7cf044b22c36814a6dc9e4d8161b8",
+      "diagnosis": "CRLF_TO_LF_NORMALIZATION",
+      "original_manifest_sha256": "0c126605470385e6420ab71e816009cefbc92384b4368b406e0f994279645495",
+      "path": "manuscript/generated/figure_source_data.csv",
+      "reconstructed_crlf_sha256": "0c126605470385e6420ab71e816009cefbc92384b4368b406e0f994279645495",
+      "row_count": 6,
+      "scientific_effect": "text line endings only; parsed CSV records are unchanged"
+    }
+  ],
+  "original_entries": 35,
+  "phase2d_commit": "fabf10608a65d4b445c5e58f20ed6ac194af71c6",
+  "phase2d_package": "experiments/FIBER_GRAND_PHASE2D_MANUSCRIPT_INTEGRATION_REVIEW_v1_0",
+  "scientific_interpretation": "The committed package differs from its ZIP manifest only by Git CRLF-to-LF normalization of the preregistered generated CSV. Parsed values and every other package blob are unchanged.",
+  "status": "PASS",
+  "unexplained_mismatch_count": 0
+}

@@ -1,0 +1,85 @@
+{
+  "bundle_directory": "FIBER_GRAND_Paper_I_External_Review_Bundle",
+  "bundle_zip": "FIBER_GRAND_Paper_I_External_Review_Bundle_Phase2D_R1.zip",
+  "bundle_zip_sha256": "a485bbf4f655f73b4250f9048a7b913b07db8d25000f6d8737f06373c0d02cd0",
+  "created_utc": "2026-08-03T14:50:55+00:00",
+  "exported_files": [
+    {
+      "destination": "01_Conference_Manuscript.pdf",
+      "sha256": "2f71c82c541834bc301ec285f5cb98bda62d7a2ed32176cdd683cab46b06c641",
+      "source": "results/FIBER_GRAND_Phase2D/run_20260803T141129Z/manuscript/FIBER_GRAND_Paper_I_Conference_Candidate.pdf"
+    },
+    {
+      "destination": "01_Conference_Manuscript.tex",
+      "sha256": "af356a8febe385600a185b502502af0a62f633143ae7fd0771dd6b6174093a8b",
+      "source": "results/FIBER_GRAND_Phase2D/run_20260803T141129Z/manuscript/FIBER_GRAND_Paper_I_Conference_Candidate.tex"
+    },
+    {
+      "destination": "02_Proof_Supplement.pdf",
+      "sha256": "e33e3189f080d4eedb1035b9643abf4ce525068116978f2e29df743abb3cab0a",
+      "source": "results/FIBER_GRAND_Phase2D/run_20260803T141129Z/supplement/FIBER_GRAND_Paper_I_Proof_Supplement.pdf"
+    },
+    {
+      "destination": "02_Proof_Supplement.tex",
+      "sha256": "42c1fa0246ec88baab629780209b8d0a24107e17b25255b4c26a21443aee4844",
+      "source": "results/FIBER_GRAND_Phase2D/run_20260803T141129Z/supplement/FIBER_GRAND_Paper_I_Proof_Supplement.tex"
+    },
+    {
+      "destination": "03_CLAIM_NOVELTY_MATRIX.md",
+      "sha256": "e8cd48f079cf52732b17ec30334c8026bcf04b2637aa1f98829d768a5c9c2ffe",
+      "source": "results/FIBER_GRAND_Phase2D/run_20260803T141129Z/audit/CLAIM_NOVELTY_MATRIX.md"
+    },
+    {
+      "destination": "04_EXTERNAL_PROOF_REVIEW_CHECKLIST.md",
+      "sha256": "33c22fe96b7801651e6b645ae95d238e1e47be96f1c0a3b40a25531edb68d78b",
+      "source": "results/FIBER_GRAND_Phase2D/run_20260803T141129Z/audit/EXTERNAL_PROOF_REVIEW_CHECKLIST.md"
+    },
+    {
+      "destination": "05_RESULTS_CLAIM_CHECKLIST.md",
+      "sha256": "763613bbcf038810f156d5dca50703cbe81cd05c9bfc922ba4641959aa75475d",
+      "source": "results/FIBER_GRAND_Phase2D/run_20260803T141129Z/audit/RESULTS_CLAIM_CHECKLIST.md"
+    },
+    {
+      "destination": "06_REVIEWER_HANDOFF.md",
+      "sha256": "2024cff059bea23a9b8a8c5db8121cf261c6f7391ad723857040ae751e5b058b",
+      "source": "results/FIBER_GRAND_Phase2D/run_20260803T141129Z/audit/REVIEWER_HANDOFF.md"
+    },
+    {
+      "destination": "07_KNOWN_LIMITATIONS.md",
+      "sha256": "3a4a05bc8863beb2ec2f08e2a0169bca7786c8f719bde75a2e3dd842d1e00c9f",
+      "source": "results/FIBER_GRAND_Phase2D/run_20260803T141129Z/docs/KNOWN_LIMITATIONS.md"
+    },
+    {
+      "destination": "08_SCIENTIFIC_SCOPE.md",
+      "sha256": "4d88b3822842de1964ea807821744b6a0553a4633c30658b20a96e07f610f1db",
+      "source": "results/FIBER_GRAND_Phase2D/run_20260803T141129Z/docs/SCIENTIFIC_SCOPE.md"
+    },
+    {
+      "destination": "09_PHASE2D_REPORT.md",
+      "sha256": "c7822a827f54582c0c721dd395671dceead32f3c1d902e8859f24183ba0bf414",
+      "source": "results/FIBER_GRAND_Phase2D/run_20260803T141129Z/PHASE2D_REPORT.md"
+    },
+    {
+      "destination": "10_PHASE2D_SCIENTIFIC_DECISION.json",
+      "sha256": "3734da77718dcbd579e9a109120dfbeae59b669a72f1a9d4e553d38b9ad93c85",
+      "source": "results/FIBER_GRAND_Phase2D/run_20260803T141129Z/SCIENTIFIC_DECISION.json"
+    },
+    {
+      "destination": "11_PHASE2C_FROZEN_REPORT.json",
+      "sha256": "688571cf28f3ac6a9ee403694db88f5be1fb991105bd5a2c73fc1246375fb5f0",
+      "source": "results/FIBER_GRAND_Phase2D/run_20260803T141129Z/frozen_evidence/PHASE2C_REPORT.json"
+    },
+    {
+      "destination": "12_PHASE2C_FROZEN_DECISION.json",
+      "sha256": "dc58bd85351349a8babe27345cc7b67790c3430e0209f473f8123d219d072984",
+      "source": "results/FIBER_GRAND_Phase2D/run_20260803T141129Z/frozen_evidence/SCIENTIFIC_DECISION.json"
+    }
+  ],
+  "new_simulations_run": false,
+  "phase2d_commit": "fabf10608a65d4b445c5e58f20ed6ac194af71c6",
+  "review_tasks": [
+    "independent proof review",
+    "claim-by-claim primary-source novelty review"
+  ],
+  "status": "PASS"
+}

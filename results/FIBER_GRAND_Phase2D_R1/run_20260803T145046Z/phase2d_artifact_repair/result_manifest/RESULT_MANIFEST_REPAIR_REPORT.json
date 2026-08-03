@@ -1,0 +1,50 @@
+{
+  "accepted_difference_count": 2,
+  "created_utc": "2026-08-03T14:50:54+00:00",
+  "crlf_normalization_count": 1,
+  "expected_post_manifest_console_append_count": 1,
+  "full_committed_run_files": 43,
+  "mismatches": [
+    {
+      "appended_bytes": 424,
+      "appended_line_count": 5,
+      "appended_lines": [
+        "[phase2d] status=PASS",
+        "[phase2d] decision=READY_FOR_EXTERNAL_PROOF_AND_NOVELTY_REVIEW",
+        "[phase2d] output=/home/afazeli2006/GRAND_Work/results/FIBER_GRAND_Phase2D/run_20260803T141129Z",
+        "[phase2d] return_zip=/home/afazeli2006/GRAND_Work/results/FIBER_GRAND_Phase2D/run_20260803T141129Z/FIBER_GRAND_PHASE2D_RETURN_run_20260803T141129Z.zip",
+        "[phase2d] return_zip_sha256=58e36016bf1b28364599ea3c48ebcb04e40f881734406e83df318ff7ab6e5215"
+      ],
+      "committed_log_bytes": 424,
+      "committed_sha256": "f2dae7f0fa934b74635a07faa1f4348ab11e2ac78a0564fde66207adbe466904",
+      "diagnosis": "EXPECTED_POST_MANIFEST_CONSOLE_APPEND",
+      "local_return_zip_sha256": "58e36016bf1b28364599ea3c48ebcb04e40f881734406e83df318ff7ab6e5215",
+      "local_return_zip_status": "MATCHES_COMMITTED_SIDECAR",
+      "manifest_prefix_bytes": 0,
+      "manifest_prefix_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_manifest_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "path": "PACKAGE_CONSOLE.log",
+      "prefix_terminal_line": "<EMPTY_PREFIX>",
+      "return_zip_sidecar": "FIBER_GRAND_PHASE2D_RETURN_run_20260803T141129Z.zip.sha256",
+      "return_zip_sidecar_sha256": "58e36016bf1b28364599ea3c48ebcb04e40f881734406e83df318ff7ab6e5215",
+      "run_status_json": "PASS",
+      "scientific_decision_json": "READY_FOR_EXTERNAL_PROOF_AND_NOVELTY_REVIEW",
+      "scientific_effect": "five deterministic status lines were appended after scientific-manifest creation; no manuscript, proof, audit, or numerical evidence changed"
+    },
+    {
+      "committed_sha256": "509cd4a569f2ac87d63b1782fc618610845544fe5b2e262f8b3215519a48b9d7",
+      "diagnosis": "CRLF_TO_LF_NORMALIZATION",
+      "original_manifest_sha256": "1346831dd7d0015ab0c121a73d2142ff5f00c731591ee4eab23ce68f864fc49f",
+      "path": "manuscript/generated/figure_source_data.csv",
+      "reconstructed_crlf_sha256": "1346831dd7d0015ab0c121a73d2142ff5f00c731591ee4eab23ce68f864fc49f",
+      "row_count": 6,
+      "scientific_effect": "text line endings only; parsed CSV records are unchanged"
+    }
+  ],
+  "original_entries": 37,
+  "phase2d_commit": "fabf10608a65d4b445c5e58f20ed6ac194af71c6",
+  "phase2d_run": "results/FIBER_GRAND_Phase2D/run_20260803T141129Z",
+  "scientific_interpretation": "The frozen Phase 2D scientific run is PASS. The original scientific-output manifest predated five deterministic console-status lines and Git LF normalization of one generated CSV. Canonical manifests now hash the exact local Phase 2D commit; no scientific computation or document is rerun or altered.",
+  "status": "PASS",
+  "unexplained_mismatch_count": 0
+}

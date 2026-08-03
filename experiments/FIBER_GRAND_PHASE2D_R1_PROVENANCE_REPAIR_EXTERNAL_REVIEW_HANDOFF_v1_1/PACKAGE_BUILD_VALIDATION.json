@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "package_version": "1.1.0",
+  "unit_tests": {
+    "cases": 5,
+    "status": "PASS"
+  },
+  "synthetic_closed_world_repair": {
+    "status": "PASS",
+    "result_manifest_differences": [
+      "EXPECTED_POST_MANIFEST_CONSOLE_APPEND",
+      "CRLF_TO_LF_NORMALIZATION"
+    ],
+    "package_manifest_differences": [
+      "CRLF_TO_LF_NORMALIZATION"
+    ],
+    "external_review_bundle_created": true
+  },
+  "new_simulations_run": false,
+  "note": "Pre-delivery construction validation does not replace the canonical WSL run against the user's local Phase 2D commit."
+}

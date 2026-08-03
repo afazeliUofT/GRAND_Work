@@ -1,0 +1,9 @@
+{
+  "branch": "main",
+  "origin_repository": "afazeliuoft/grand_work",
+  "package_directory": "experiments/FIBER_GRAND_PHASE2D_R1_PROVENANCE_REPAIR_EXTERNAL_REVIEW_HANDOFF_v1_1",
+  "repaired_phase2d_commit": "fabf10608a65d4b445c5e58f20ed6ac194af71c6",
+  "result_directory": "results/FIBER_GRAND_Phase2D_R1/run_20260803T145046Z",
+  "scientific_decision": "READY_FOR_EXTERNAL_PROOF_AND_NOVELTY_REVIEW",
+  "scientific_run_status": "PASS"
+}

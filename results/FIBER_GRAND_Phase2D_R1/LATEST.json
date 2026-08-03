@@ -1,0 +1,8 @@
+{
+  "created_utc": "2026-08-03T14:50:55+00:00",
+  "package_zip_sha256": "e8585380c6ed4875178f4ceb165227db157c96827eea503a7ffd9fd036f13802",
+  "repaired_phase2d_commit": "fabf10608a65d4b445c5e58f20ed6ac194af71c6",
+  "result_directory": "results/FIBER_GRAND_Phase2D_R1/run_20260803T145046Z",
+  "scientific_decision": "READY_FOR_EXTERNAL_PROOF_AND_NOVELTY_REVIEW",
+  "scientific_run_status": "PASS"
+}

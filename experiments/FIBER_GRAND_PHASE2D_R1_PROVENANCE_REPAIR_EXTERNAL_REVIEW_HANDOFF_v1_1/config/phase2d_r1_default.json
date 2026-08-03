@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "package_version": "1.1.0",
+  "required_phase2c_commit": "2f7736b70bf7f6f659a6707fad716407635a7deb",
+  "phase2d_expected_subject": "FIBER-GRAND Phase 2D manuscript integration PASS run_20260803T141129Z",
+  "phase2d_run_relative": "results/FIBER_GRAND_Phase2D/run_20260803T141129Z",
+  "phase2d_package_relative": "experiments/FIBER_GRAND_PHASE2D_MANUSCRIPT_INTEGRATION_REVIEW_v1_0",
+  "phase2d_wrapper_relative": "RUN_FIBER_GRAND_PHASE2D.py",
+  "expected_status": "PASS",
+  "expected_decision": "READY_FOR_EXTERNAL_PROOF_AND_NOVELTY_REVIEW",
+  "expected_result_mismatch_paths": [
+    "PACKAGE_CONSOLE.log",
+    "manuscript/generated/figure_source_data.csv"
+  ],
+  "expected_package_mismatch_paths": [
+    "manuscript/generated/figure_source_data.csv"
+  ]
+}

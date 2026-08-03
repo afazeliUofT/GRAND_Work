@@ -1,0 +1,44 @@
+FIBER-GRAND Paper I - Phase 2D-R1 provenance-repair/review-handoff wrapper
+WRAPPER_LOG=/tmp/FIBER_GRAND_PHASE2D_R1_WRAPPER_20260803T145046Z_2394956.log
+$ git -C /home/afazeli2006/GRAND_Work fetch origin main
+From github.com:afazeliUofT/Grand_Work
+ * branch            main       -> FETCH_HEAD
+[command return code] 0
+[repo] root=/home/afazeli2006/GRAND_Work
+[repo] origin=git@github.com:afazeliUofT/Grand_Work.git
+[repo] branch=main
+[repo] local_head=fabf10608a65d4b445c5e58f20ed6ac194af71c6
+[repo] origin/main=2f7736b70bf7f6f659a6707fad716407635a7deb; local push is fast-forward safe
+[repo] Phase 2C GO commit verified as ancestor: 2f7736b70bf7f6f659a6707fad716407635a7deb
+[git] local excludes verified at /home/afazeli2006/GRAND_Work/.git/info/exclude
+[git] repository line-ending policy verified at /home/afazeli2006/GRAND_Work/.gitattributes
+[package] located=/mnt/c/Users/alifa/Downloads/FIBER_GRAND_PHASE2D_R1_PROVENANCE_REPAIR_EXTERNAL_REVIEW_HANDOFF_v1_1_2026-08-03.zip
+[package] sha256=e8585380c6ed4875178f4ceb165227db157c96827eea503a7ffd9fd036f13802 (verified)
+[package] installed=/home/afazeli2006/GRAND_Work/experiments/FIBER_GRAND_PHASE2D_R1_PROVENANCE_REPAIR_EXTERNAL_REVIEW_HANDOFF_v1_1
+$ /usr/bin/python3 -m venv /home/afazeli2006/.venvs/fiber_grand_phase2d_r1_v1_1
+[command return code] 0
+[venv] interpreter=/home/afazeli2006/.venvs/fiber_grand_phase2d_r1_v1_1/bin/python
+[venv] version=(3, 12, 3); no third-party Python dependencies are required
+[venv] parent-shell activation is unnecessary
+[run] output=/home/afazeli2006/GRAND_Work/results/FIBER_GRAND_Phase2D_R1/run_20260803T145046Z
+$ /home/afazeli2006/.venvs/fiber_grand_phase2d_r1_v1_1/bin/python -m unittest discover -s tests -v
+test_crlf_normalization (test_phase2d_r1.ProvenanceUnitTests.test_crlf_normalization) ... ok
+test_crlf_rejects_content_change (test_phase2d_r1.ProvenanceUnitTests.test_crlf_rejects_content_change) ... ok
+test_review_bundle_contract (test_phase2d_r1.ProvenanceUnitTests.test_review_bundle_contract) ... ok
+test_strict_prefix_accepts_empty_manifest_snapshot (test_phase2d_r1.ProvenanceUnitTests.test_strict_prefix_accepts_empty_manifest_snapshot) ... ok
+test_strict_prefix_rejects_complete_blob (test_phase2d_r1.ProvenanceUnitTests.test_strict_prefix_rejects_complete_blob) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.000s
+
+OK
+[command return code] 0
+$ /home/afazeli2006/.venvs/fiber_grand_phase2d_r1_v1_1/bin/python /home/afazeli2006/GRAND_Work/experiments/FIBER_GRAND_PHASE2D_R1_PROVENANCE_REPAIR_EXTERNAL_REVIEW_HANDOFF_v1_1/run_phase2d_r1.py --repo-root /home/afazeli2006/GRAND_Work --config /home/afazeli2006/GRAND_Work/experiments/FIBER_GRAND_PHASE2D_R1_PROVENANCE_REPAIR_EXTERNAL_REVIEW_HANDOFF_v1_1/config/phase2d_r1_default.json --output /home/afazeli2006/GRAND_Work/results/FIBER_GRAND_Phase2D_R1/run_20260803T145046Z
+[phase2d-r1] status=PASS
+[phase2d-r1] decision=READY_FOR_EXTERNAL_PROOF_AND_NOVELTY_REVIEW
+[phase2d-r1] output=/home/afazeli2006/GRAND_Work/results/FIBER_GRAND_Phase2D_R1/run_20260803T145046Z
+[phase2d-r1] return_zip=/home/afazeli2006/GRAND_Work/results/FIBER_GRAND_Phase2D_R1/run_20260803T145046Z/FIBER_GRAND_PHASE2D_R1_RETURN_run_20260803T145046Z.zip
+[phase2d-r1] return_zip_sha256=33a0bcf171039cac39b6872fdecba7b1a6c1bbc3a03d325f70b9dd193e6184b6
+[command return code] 0
+[review] external-review bundle copied to /mnt/c/Users/alifa/Downloads/FIBER_GRAND_Paper_I_External_Review_Bundle_Phase2D_R1.zip
+[review] external-review bundle sha256=a485bbf4f655f73b4250f9048a7b913b07db8d25000f6d8737f06373c0d02cd0

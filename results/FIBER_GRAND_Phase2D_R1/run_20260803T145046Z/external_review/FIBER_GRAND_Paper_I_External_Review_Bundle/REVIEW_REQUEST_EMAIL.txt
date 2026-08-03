@@ -1,0 +1,19 @@
+Subject: Independent proof and novelty review request — FIBER-GRAND Paper I
+
+Dear Professor [Name],
+
+I would appreciate an independent review of the attached FIBER-GRAND Paper I bundle.
+The work studies exact ML decoding for an arbitrary binary membership-testable code over
+a channel with exactly one uniformly located deletion and independent substitutions.
+
+Please assess two issues separately: (1) correctness of the theorem chain and proof
+supplement, returning a smallest counterexample or precise repair for any failed item;
+and (2) novelty of each candidate contribution relative to the closest primary prior
+work, especially GRAND complexity, exact synchronization-error search, weighted
+path-versus-string inference, and threshold aggregation.
+
+The bundle contains a checklist and frozen evidence summaries. A brief final verdict of
+ISIT-ready, ITW-ready after repair, major revision, or reject would be especially useful.
+
+Sincerely,
+Ali Fazeli

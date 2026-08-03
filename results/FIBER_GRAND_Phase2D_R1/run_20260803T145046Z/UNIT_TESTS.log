@@ -1,0 +1,10 @@
+test_crlf_normalization (test_phase2d_r1.ProvenanceUnitTests.test_crlf_normalization) ... ok
+test_crlf_rejects_content_change (test_phase2d_r1.ProvenanceUnitTests.test_crlf_rejects_content_change) ... ok
+test_review_bundle_contract (test_phase2d_r1.ProvenanceUnitTests.test_review_bundle_contract) ... ok
+test_strict_prefix_accepts_empty_manifest_snapshot (test_phase2d_r1.ProvenanceUnitTests.test_strict_prefix_accepts_empty_manifest_snapshot) ... ok
+test_strict_prefix_rejects_complete_blob (test_phase2d_r1.ProvenanceUnitTests.test_strict_prefix_rejects_complete_blob) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.000s
+
+OK

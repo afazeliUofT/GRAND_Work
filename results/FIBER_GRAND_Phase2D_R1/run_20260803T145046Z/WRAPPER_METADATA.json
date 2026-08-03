@@ -1,0 +1,15 @@
+{
+  "auto_push_requested": true,
+  "branch": "main",
+  "created_utc": "2026-08-03T14:50:54+00:00",
+  "local_head_before": "fabf10608a65d4b445c5e58f20ed6ac194af71c6",
+  "new_simulations_authorized": false,
+  "origin": "git@github.com:afazeliUofT/Grand_Work.git",
+  "origin_main_before": "2f7736b70bf7f6f659a6707fad716407635a7deb",
+  "package_installation": "/home/afazeli2006/GRAND_Work/experiments/FIBER_GRAND_PHASE2D_R1_PROVENANCE_REPAIR_EXTERNAL_REVIEW_HANDOFF_v1_1",
+  "package_zip": "/mnt/c/Users/alifa/Downloads/FIBER_GRAND_PHASE2D_R1_PROVENANCE_REPAIR_EXTERNAL_REVIEW_HANDOFF_v1_1_2026-08-03.zip",
+  "package_zip_sha256": "e8585380c6ed4875178f4ceb165227db157c96827eea503a7ffd9fd036f13802",
+  "repository_root": "/home/afazeli2006/GRAND_Work",
+  "venv_python": "/home/afazeli2006/.venvs/fiber_grand_phase2d_r1_v1_1/bin/python",
+  "wrapper": "/home/afazeli2006/GRAND_Work/RUN_FIBER_GRAND_PHASE2D_R1.py"
+}

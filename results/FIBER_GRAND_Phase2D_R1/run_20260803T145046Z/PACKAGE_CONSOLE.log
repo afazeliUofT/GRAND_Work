@@ -1,0 +1,5 @@
+[phase2d-r1] status=PASS
+[phase2d-r1] decision=READY_FOR_EXTERNAL_PROOF_AND_NOVELTY_REVIEW
+[phase2d-r1] output=/home/afazeli2006/GRAND_Work/results/FIBER_GRAND_Phase2D_R1/run_20260803T145046Z
+[phase2d-r1] return_zip=/home/afazeli2006/GRAND_Work/results/FIBER_GRAND_Phase2D_R1/run_20260803T145046Z/FIBER_GRAND_PHASE2D_R1_RETURN_run_20260803T145046Z.zip
+[phase2d-r1] return_zip_sha256=33a0bcf171039cac39b6872fdecba7b1a6c1bbc3a03d325f70b9dd193e6184b6
