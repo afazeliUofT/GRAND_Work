@@ -1,0 +1,450 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[letterpaper,margin=0.9in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{microtype}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\C}{\mathcal C}
+\newcommand{\D}{\mathcal D}
+\newcommand{\ind}{\mathbf 1}
+\newcommand{\Prb}{\mathbb P}
+\newcommand{\argmax}{\operatorname*{arg\,max}}
+
+\title{FIBER-GRAND Paper I\\Phase-2B-R1 Mathematical Proof Closure and Exact Compiled-Certificate Contract}
+\author{Ali Fazeli}
+\date{3 August 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This proof document closes the mathematical obligations carried into Phase~2B-R1 for exact decoding on a binary channel with exactly one deletion
+and independent substitutions. It proves a strict best-path/aggregate-likelihood
+reversal, the exact aggregate likelihood and recurrence, the independent-stream
+certificate, a recurrence-relaxed shell bound, and an alignment-consistent shell bound.
+It removes a redundant state coordinate from the preliminary exact dynamic program,
+improving its worst-case complexity from $O(n^4)$ time and $O(n^3)$ memory to $O(n^3)$
+time and $O(n^2)$ rolling memory. It also proves that the cheaper $O(n^2)$ recurrence
+relaxation is powerless under the ordinary forward shell-completion frontier, but becomes
+strict under a valid nonmonotone tie order. The statements have passed internal exact-arithmetic and implementation cross-checks; independent human proof review, novelty, and empirical usefulness remain separate gates. Phase~2B-R1 changes only artifact provenance and does not alter the mathematical statements.
+\end{abstract}
+
+\section{Model and conventions}
+
+Let $X=(X_1,\ldots,X_n)\in\{0,1\}^n$. Independent substitutions act as
+$\widetilde X_i=X_i\oplus N_i$, where the $N_i$ are i.i.d. Bernoulli$(p_s)$ and
+$0\le p_s<1/2$. Exactly one coordinate $J$ is deleted, with
+$\Prb[J=j]=q_j$, $q_j\ge0$, and $\sum_jq_j=1$. The observation
+$Y\in\{0,1\}^{n-1}$ is known, as are $p_s$ and $\{q_j\}$. The code
+$\C\subseteq\{0,1\}^n$ is arbitrary and has a uniform prior. The complete ML tie set is
+\[
+ \operatorname{ML}(y)=\argmax_{c\in\C}W(y\mid c).
+\]
+A scalar output, when needed, is the lexicographically smallest word in this set.
+
+For $x\in\{0,1\}^n$ and $y\in\{0,1\}^{n-1}$, define
+\begin{equation}
+ d_j(x,y)=\sum_{i=1}^{j-1}\ind\{x_i\ne y_i\}
+ +\sum_{i=j+1}^{n}\ind\{x_i\ne y_{i-1}\}.
+ \label{eq:dj}
+\end{equation}
+This is the substitution mismatch count when coordinate $j$ of $x$ is deleted.
+
+
+
+\section{Boundary conventions and exact-complexity interpretation}
+
+The main algorithmic regime is $0<p_s<1/2$.  The following boundary conventions prevent
+silent overstatement.
+
+\begin{proposition}[Boundary cases and zero deletion weights]
+The aggregate likelihood and independent-stream certificate remain valid at $p_s=0$ and
+$p_s=1/2$ when powers at the boundary are interpreted directly from the channel law.
+At $p_s=0$, only zero-mismatch components have positive mass, and all strict-gain formulas
+in this document collapse to non-strict equalities when their displayed factor contains
+$p_s$.  At $p_s=1/2$, every substitution pattern of length $n-1$ has the same probability,
+so shell order contains no likelihood information and no strict shell-consistency gain is
+claimed.  If $q_j=0$, alignment $j$ contributes zero to every candidate likelihood.  It may
+be retained as a zero-weight stream or omitted; if omitted, its frontier constraint is not
+used in a strengthened bound.
+\end{proposition}
+
+\begin{proof}
+Conditioning on the deletion coordinate proves the likelihood identity for every
+$p_s\in[0,1]$.  The certificate uses only that each unprocessed component is bounded by its
+stream frontier, and therefore does not require strict monotonicity.  At $p_s=0$ the only
+positive substitution term has mismatch count zero.  At $p_s=1/2$, each length-$(n-1)$
+error vector has probability $2^{-(n-1)}$.  A coordinate with $q_j=0$ contributes the zero
+function, so deleting that term and its list leaves the objective unchanged.
+\end{proof}
+
+All $O(\cdot)$ claims below count exact arithmetic additions and comparisons under a
+unit-cost arithmetic model.  For rational channel parameters represented by integer
+weights and a rational odds ratio, the operands have $O(n)$ bits for fixed parameters.
+Consequently, bit complexity includes the cost of arbitrary-precision arithmetic and is
+not asserted to equal the arithmetic-operation count.  The Phase~2B implementation uses exact fixed-capacity 512-bit multiword integers
+with overflow detection.  That capacity is sufficient for the frozen Phase~2B parameter
+range; no general unbounded-integer implementation claim is made.  Kernel time is
+reported empirically.
+
+\section{Exact aggregate likelihood}
+
+\begin{proposition}[Likelihood and sliding recurrence]
+For every $x$ and $y$,
+\begin{equation}
+ W(y\mid x)=\sum_{j=1}^{n}q_jp_s^{d_j(x,y)}(1-p_s)^{n-1-d_j(x,y)}.
+ \label{eq:likelihood}
+\end{equation}
+Moreover,
+\begin{align}
+ d_1(x,y)&=\sum_{i=2}^{n}\ind\{x_i\ne y_{i-1}\},\\
+ d_{j+1}(x,y)&=d_j(x,y)-\ind\{x_{j+1}\ne y_j\}+\ind\{x_j\ne y_j\},
+ \qquad 1\le j<n.
+ \label{eq:recurrence}
+\end{align}
+Thus all $n$ components of one candidate likelihood can be evaluated in $O(n)$ time.
+\end{proposition}
+
+\begin{proof}
+Condition on $J=j$. The $n-1$ surviving coordinates must match $y$, and exactly
+$d_j(x,y)$ of them require a substitution. Independence gives the $j$th term in
+\eqref{eq:likelihood}; summing over $J$ gives the result. A substitution on the deleted
+coordinate has marginalized probability one, so deleting before or after substitutions
+is equivalent for the observed law.
+
+When the hypothesized deletion moves from $j$ to $j+1$, every comparison is unchanged
+except the comparison between $y_j$ and the two adjacent symbols: the former suffix term
+$\ind\{x_{j+1}\ne y_j\}$ is removed and the new prefix term
+$\ind\{x_j\ne y_j\}$ is added. This proves \eqref{eq:recurrence}. Computing $d_1$ and
+performing $n-1$ constant-time updates gives the stated complexity.
+\end{proof}
+
+\section{Strict best-path/aggregate-ML reversal}
+
+For a candidate $x$, define its most probable compatible individual history by
+\[
+ M_y(x)=\max_{1\le j\le n}q_jp_s^{d_j(x,y)}(1-p_s)^{n-1-d_j(x,y)}.
+\]
+
+\begin{theorem}[Strict reversal family]
+Assume uniform deletion, $q_j=1/n$, and $0<p_s<1/2$. For $n\ge4$, let
+\[
+ y=0^{n-3}10,\qquad x_A=0^{n-3}101,\qquad x_B=0^n,
+ \qquad \C=\{x_A,x_B\}.
+\]
+Then $M_y(x_A)>M_y(x_B)$. Nevertheless,
+\[
+ W(y\mid x_B)>W(y\mid x_A)
+ \quad\Longleftrightarrow\quad
+ np_s>1+2p_s^2.
+\]
+Consequently, for every fixed $p_s>0$, sufficiently large finite $n$ gives a strict
+best-history/ML disagreement.
+\end{theorem}
+
+\begin{proof}
+Deleting the final symbol of $x_A$ gives $y$ with no substitution, hence
+\[
+ M_y(x_A)=\frac1n(1-p_s)^{n-1}.
+\]
+Every deletion alignment of $x_B$ leaves $0^{n-1}$, which differs from $y$ in one
+coordinate, so
+\[
+ M_y(x_B)=\frac1n p_s(1-p_s)^{n-2}<M_y(x_A).
+\]
+For $x_A$, the mismatch counts $0,1,2,3$ have multiplicities
+$1,1,1,n-3$, respectively. Aggregation therefore gives
+\begin{align*}
+ W(y\mid x_B)&=p_s(1-p_s)^{n-2},\\
+ W(y\mid x_A)&=\frac1n\bigl[(1-p_s)^{n-1}
+ +p_s(1-p_s)^{n-2}+p_s^2(1-p_s)^{n-3}
+ +(n-3)p_s^3(1-p_s)^{n-4}\bigr].
+\end{align*}
+Direct factorization yields
+\[
+ \frac{n\bigl(W(y\mid x_B)-W(y\mid x_A)\bigr)}{(1-p_s)^{n-4}}
+ =(1-2p_s)(np_s-1-2p_s^2).
+\]
+The first factor is positive, proving the equivalence. For fixed $p_s>0$, any integer
+$n>(1+2p_s^2)/p_s$ satisfies the condition.
+\end{proof}
+
+\section{Independent-stream certificate}
+
+For alignment $j$, error pattern $e\in\{0,1\}^{n-1}$, and deleted bit $b$, let
+$x=\operatorname{Ins}_j(y\oplus e,b)$ and
+\[
+ \omega_j(e)=q_jp_s^{w_H(e)}(1-p_s)^{n-1-w_H(e)}.
+\]
+Each stream emits its unique pairs $(e,b)$ in nonincreasing $\omega_j(e)$. After time
+$t$, let $\eta_j(t)$ be the largest unprocessed component weight in stream $j$, or zero
+if the stream is exhausted. Let $\D_t$ be the distinct candidates generated by time $t$.
+
+\begin{theorem}[Exact independent-stream certificate]
+Every completely undiscovered candidate satisfies
+\[
+ W(y\mid x)\le U_{\mathrm{ind}}(t):=\sum_{j=1}^{n}\eta_j(t).
+\]
+Assume at least one codeword has been discovered and every discovered codeword has been
+scored using its complete likelihood. Define
+\[
+ s_t^\star=\max_{c\in\C\cap\D_t}W(y\mid c),\qquad
+ \mathcal T_t^\star=\{c\in\C\cap\D_t:W(y\mid c)=s_t^\star\}.
+\]
+If $s_t^\star>U_{\mathrm{ind}}(t)$, then $\mathcal T_t^\star$ is the complete global ML
+tie set. The same conclusion holds after all streams are exhausted without requiring a
+strict inequality.
+\end{theorem}
+
+\begin{proof}
+For each fixed $j$, the map $(e,b)\mapsto\operatorname{Ins}_j(y\oplus e,b)$ is a
+bijection from the stream entries to $\{0,1\}^n$. A completely undiscovered $x$ has not
+had its unique $j$th component emitted in any stream; therefore that component is at most
+$\eta_j(t)$. Summing its $n$ components gives the first claim.
+
+Every discovered codeword outside $\mathcal T_t^\star$ has score at most $s_t^\star$ by
+definition. Every undiscovered codeword has score at most $U_{\mathrm{ind}}(t)$, which is
+strictly below $s_t^\star$. Hence no undiscovered codeword can enter or tie the incumbent
+set. If all streams are exhausted, no candidate remains undiscovered.
+\end{proof}
+
+\begin{remark}
+The strict inequality is essential for certifying the complete tie set. A non-strict
+comparison can certify only a selected maximizer under additional tie-handling logic.
+The threshold principle itself has prior art; this theorem records the exact conditions
+needed by the coding specialization.
+\end{remark}
+
+
+\section{Alignment-consistent shell bound}
+
+Set $m=n-1$ and
+\[
+ g_j(d)=q_jp_s^d(1-p_s)^{m-d}.
+\]
+For a nonexhausted stream, let $r_j$ be the mismatch shell of its largest unprocessed
+component; set $r_j=n$ after exhaustion and extend the notation by $g_j(n)=0$. Since
+$p_s<1/2$, every $g_j$ is nonincreasing on $\{0,\ldots,m\}$.
+Define
+\begin{align*}
+ \mathcal U_{\mathrm{sh}}(y,\mathbf r)
+ &=\{x\in\{0,1\}^n:d_j(x,y)\ge r_j\text{ for all }j\},\\
+ U_{\mathrm{AC}}(y,\mathbf r)
+ &=\max_{x\in\mathcal U_{\mathrm{sh}}(y,\mathbf r)}
+ \sum_{j=1}^{n}g_j(d_j(x,y)),
+\end{align*}
+where the maximum of the empty set is zero.
+
+\begin{theorem}[Alignment-consistent shell certificate and optimized DP]
+Every completely undiscovered candidate has likelihood at most
+$U_{\mathrm{AC}}(y,\mathbf r)$, and
+\[
+ U_{\mathrm{AC}}(y,\mathbf r)
+ \le\sum_{j=1}^{n}g_j(r_j)=U_{\mathrm{ind}}.
+\]
+The exact value of $U_{\mathrm{AC}}$ can be computed using $O(n^3)$ exact arithmetic operations and $O(n^2)$ rolling big-integer states.
+\end{theorem}
+
+\begin{proof}
+If a candidate had $d_j(x,y)<r_j$ in some stream, its unique component in that stream
+would already have been emitted, so the candidate would have been discovered. Thus every
+completely undiscovered candidate belongs to $\mathcal U_{\mathrm{sh}}$. If a stream is
+exhausted, this feasible set is empty because $d_j\le m<n$, and the claim is immediate.
+Otherwise monotonicity gives $g_j(d_j)\le g_j(r_j)$ term by term, proving both upper bounds.
+
+It remains to compute the constrained maximum. Scan $x_1,\ldots,x_n$. At the first stage,
+choose a value $a\in\{0,\ldots,m\}$ for $d_1$ and a bit $b=x_1$. Instead of retaining
+$a$ forever, initialize the state
+\[
+ (b,d,R)=(b,a,a)
+\]
+with value $g_1(a)$, provided $a\ge r_1$. Here $R$ is the number of mismatches still
+required among the suffix comparisons $(x_2,y_1),\ldots,(x_n,y_{n-1})$ in order for the
+initial guess to equal the actual $d_1$.
+
+At transition $j$, choose $c=x_{j+1}$ and set
+\begin{align*}
+ u&=\ind\{c\ne y_j\},\qquad v=\ind\{b\ne y_j\},\\
+ R'&=R-u,\\
+ d'&=d-u+v.
+\end{align*}
+Discard the transition if $R'<0$, $d'\notin\{0,\ldots,m\}$, or $d'<r_{j+1}$.
+Otherwise update state $(c,d',R')$ by adding $g_{j+1}(d')$ and retain the largest value
+among paths reaching that state. At the final stage accept only states with $R=0$.
+
+For every word $x$, choosing $a=d_1(x,y)$ creates a unique feasible path and the recurrence
+for $d_j$ gives exactly its objective value. Conversely, a terminal path with $R=0$ has
+subtracted exactly $a$ suffix mismatches, so the initial guess equals the actual $d_1$;
+therefore the path corresponds to a valid word in $\mathcal U_{\mathrm{sh}}$. The DP is
+exact.
+
+At any stage, $b$ has two values and both $d$ and $R$ have $O(n)$ values, so there are
+$O(n^2)$ states. There are $n$ stages and two outgoing bit choices per state. Hence the algorithm uses $O(n^3)$ exact additions/comparisons and two rolling layers of $O(n^2)$ big-integer states.
+\end{proof}
+
+\begin{corollary}[Strict improvement on a characterized family]
+Assume $n\ge3$, uniform deletion, $0<p_s<1/2$, $y=0^{n-1}$, and $r_j=1$ for every alignment. Then
+\begin{align*}
+ U_{\mathrm{AC}}
+ &=\frac{2}{n}p_s(1-p_s)^{n-2}
+ +\frac{n-2}{n}p_s^2(1-p_s)^{n-3},\\
+ U_{\mathrm{ind}}&=p_s(1-p_s)^{n-2},\\
+ U_{\mathrm{ind}}-U_{\mathrm{AC}}
+ &=\frac{n-2}{n}p_s(1-p_s)^{n-3}(1-2p_s)>0.
+\end{align*}
+\end{corollary}
+
+\begin{proof}
+For $y=0^{n-1}$, $d_j(x,y)=w_H(x)-x_j$. The constraints $d_j\ge1$ for all $j$ are
+equivalent to $w_H(x)\ge2$. For a word of weight $w$, the aggregate score is
+\[
+ \frac1n\bigl[w p_s^{w-1}(1-p_s)^{n-w}
+ +(n-w)p_s^w(1-p_s)^{n-1-w}\bigr].
+\]
+Writing $\rho=p_s/(1-p_s)<1$ shows that this expression decreases for $w\ge2$, so the
+maximum is attained at $w=2$. Substitution gives $U_{\mathrm{AC}}$. The independent
+bound is the sum of $n$ equal shell-one frontiers, and subtraction gives the strict gap.
+\end{proof}
+
+\section{Recurrence-relaxed certificate and schedule geometry}
+
+Continue to write $m=n-1$ and
+\[
+ g_j(d)=q_jp_s^d(1-p_s)^{m-d},\qquad 0\le d\le m.
+\]
+For a frontier vector $\mathbf r=(r_1,\ldots,r_n)$, define
+$\mathcal R(y,\mathbf r)$ as the set of pairs
+$(x,\boldsymbol\delta)$ with $x\in\{0,1\}^n$ and
+$\boldsymbol\delta\in\{0,\ldots,m\}^n$ such that
+\begin{align}
+ \delta_j&\ge r_j,\qquad 1\le j\le n,\label{eq:cr-threshold}\\
+ \delta_{j+1}&=\delta_j-\ind\{x_{j+1}\ne y_j\}
+                  +\ind\{x_j\ne y_j\},\qquad 1\le j<n.\label{eq:cr-recurrence}
+\end{align}
+Unlike a true mismatch vector, $\delta_1$ is not required to equal the suffix mismatch
+count in \eqref{eq:dj}. Define
+\[
+ U_{\mathrm{CR}}(y,\mathbf r)=
+ \max_{(x,\boldsymbol\delta)\in\mathcal R(y,\mathbf r)}
+ \sum_{j=1}^n g_j(\delta_j),
+\]
+with the maximum of the empty set equal to zero.
+
+\begin{theorem}[Recurrence-relaxed hierarchy and dynamic program]
+For every observation and frontier vector,
+\[
+ U_{\mathrm{AC}}(y,\mathbf r)
+ \le U_{\mathrm{CR}}(y,\mathbf r)
+ \le U_{\mathrm{ind}}(\mathbf r):=\sum_{j=1}^n g_j(r_j),
+\]
+where a term with $r_j=n$ is interpreted as zero. The exact value of $U_{\mathrm{CR}}$ can be computed using $O(n^2)$ exact arithmetic operations and $O(n)$ rolling big-integer states.
+\end{theorem}
+
+\begin{proof}
+Every true mismatch vector satisfies \eqref{eq:cr-recurrence}; dropping only its global
+initial-value closure enlarges the feasible set, proving
+$U_{\mathrm{AC}}\le U_{\mathrm{CR}}$. Since $p_s<1/2$, every $g_j$ is nonincreasing,
+and \eqref{eq:cr-threshold} gives $g_j(\delta_j)\le g_j(r_j)$ term by term. This proves
+the second inequality. If any $r_j=n$, both constrained feasible sets are empty because
+$\delta_j\le m$.
+
+For the dynamic program, at stage $j$ retain the largest accumulated objective for each
+state $(x_j,\delta_j)$. Initialize every $x_1\in\{0,1\}$ and every
+$\delta_1\in\{r_1,\ldots,m\}$. At a transition choose $x_{j+1}\in\{0,1\}$, compute
+$\delta_{j+1}$ from \eqref{eq:cr-recurrence}, and discard the transition if it leaves
+$\{0,\ldots,m\}$ or violates \eqref{eq:cr-threshold}. There are $O(n)$ possible mismatch
+values, two current bits, $n$ stages, and two outgoing choices. Hence it uses $O(n^2)$ exact additions/comparisons and two rolling layers of $O(n)$ big-integer states.
+\end{proof}
+
+\begin{proposition}[Forward shell-completion degeneracy]
+Fix $0\le s\le m-1$ and $0\le k\le n$. Suppose the frontier after an intermediate
+forward-order shell completion is
+\[
+ r_j=\begin{cases}s+1,&j\le k,\\s,&j>k.\end{cases}
+\]
+Then $U_{\mathrm{CR}}(y,\mathbf r)=U_{\mathrm{ind}}(\mathbf r)$ for every observation,
+every deletion distribution, and every $0<p_s<1/2$.
+\end{proposition}
+
+\begin{proof}
+The hierarchy already gives $U_{\mathrm{CR}}\le U_{\mathrm{ind}}$. It suffices to
+construct a recurrence-relaxed path with $\delta_j=r_j$ for all $j$. If $k=0$ or $k=n$,
+choose $x$ constant and initialize $\delta_1$ to the common frontier value; every
+recurrence increment is zero. If $0<k<n$, choose
+\[
+ x_1=\cdots=x_k=y_k,\qquad
+ x_{k+1}=\cdots=x_n=1-y_k,
+\]
+and initialize $\delta_1=s+1$. All recurrence increments vanish except at $j=k$, where
+the increment is $-1$. Thus $\boldsymbol\delta=\mathbf r$, and its objective equals the
+independent sum. The upper bound is therefore attained.
+\end{proof}
+
+\begin{proposition}[A strict nonmonotone-frontier example]
+Let $n=3$, $y=(1,0)$, uniform deletion, $0<p_s<1/2$, and
+$\mathbf r=(1,0,1)$. Then
+\begin{align*}
+ U_{\mathrm{AC}}(y,\mathbf r)=U_{\mathrm{CR}}(y,\mathbf r)&=p_s(1-p_s),\\
+ U_{\mathrm{ind}}(\mathbf r)&=\frac{1-p_s^2}{3},\\
+ U_{\mathrm{ind}}-U_{\mathrm{CR}}&=\frac{(1-p_s)(1-2p_s)}{3}>0.
+\end{align*}
+The frontier $\mathbf r=(1,0,1)$ occurs after completing shell zero in alignments
+$1$ and $3$, before alignment $2$. Under uniform deletion these components have equal
+probability, so the order $1,3,2$ remains a valid nonincreasing access order.
+\end{proposition}
+
+\begin{proof}
+If a relaxed path had $\delta_2=0$, then $\delta_1\ge1$ and a one-step change of at most
+one force $\delta_1=1$ and a decrement of $-1$. Because $y_1=1$, this requires
+$x_1=1$ and $x_2=0$. But $y_2=0$ and $x_2=0$ imply
+$\delta_3-\delta_2=-\ind\{x_3\ne0\}\le0$, contradicting $\delta_3\ge1$.
+Therefore every relaxed feasible path has $\delta_j\ge1$ for all $j$. Monotonicity of
+$g_j$ gives an objective at most three shell-one components, namely $p_s(1-p_s)$ under
+uniform deletion. The actual word $x=000$ has mismatch vector $(1,1,1)$, so both
+$U_{\mathrm{AC}}$ and $U_{\mathrm{CR}}$ attain this value. The independent expression
+and strict difference follow by direct subtraction.
+\end{proof}
+
+
+\section{What this document does and does not establish}
+
+The mathematical statements above are independent of simulation. Exact arithmetic must
+nonetheless compare the optimized DP with both exhaustive maximization and the original
+four-coordinate DP, compare the recurrence relaxation with an independently implemented
+exhaustive relaxation, and check both alignment schedules against exhaustive codeword-wise
+ML on feasible complete worlds. Those checks detect implementation errors;
+they do not create the proofs.
+
+This document does not establish novelty of constrained rank aggregation, practical
+latency benefit, final tail complexity, or suitability for a particular conference. The
+Phase-2B computational gate must measure whether the strengthened bound reduces actual
+search work enough to offset its evaluation cost.
+
+
+
+\section{Phase-2B theorem-search status and claim boundary}
+
+The strict inequality $U_{\mathrm{AC}}<U_{\mathrm{ind}}$ proves that deletion-alignment
+compatibility contains information absent from independent-list thresholding.  It does
+not by itself prove an asymptotic separation in emitted histories, membership probes, or
+end-to-end time.  No infinite-family theorem of the form
+$Q_{\mathrm{ind}}/Q_{\mathrm{AC}}=\Omega(n)$ is claimed in this version.  Phase~2B
+therefore treats such a theorem as an optional strengthening and uses the compiled replay
+as a kill gate for the practical-acceleration route.
+
+The defensible mathematical claim is limited to the exact channel likelihood, the strict
+best-history/aggregate-ML reversal family, the exact threshold certificate, the
+alignment-consistent and recurrence-relaxed bound hierarchy, the exact dynamic programs,
+and the characterized strict/degenerate frontier families.  Generic threshold
+aggregation, expensive-predicate filtering, and the general path-versus-string distinction
+remain credited prior art.
+
+\end{document}

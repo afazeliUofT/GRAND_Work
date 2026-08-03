@@ -1,0 +1,8 @@
+{
+  "branch": "main",
+  "note": "Commit hash is printed by the wrapper after this file is committed.",
+  "origin_repository": "afazeliuoft/grand_work",
+  "package_directory": "experiments/FIBER_GRAND_PHASE2B_R1_MANIFEST_REPAIR_AND_REPLAY_GATE_v1_1",
+  "result_directory": "results/FIBER_GRAND_Phase2B_R1/run_20260803T083231Z",
+  "scientific_run_status": "PASS"
+}

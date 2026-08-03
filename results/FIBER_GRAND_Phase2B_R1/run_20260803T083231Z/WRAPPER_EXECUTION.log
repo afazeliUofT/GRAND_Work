@@ -1,0 +1,42 @@
+FIBER-GRAND Paper I — Phase 2B-R1 manifest-repair and replay gate wrapper
+WRAPPER_LOG=/tmp/FIBER_GRAND_PHASE2B_R1_WRAPPER_20260803T083231Z_2359386.log
+[repo] root=/home/afazeli2006/GRAND_Work
+[repo] origin=git@github.com:afazeliUofT/Grand_Work.git
+[repo] branch=main
+[repo] frozen Phase 2A PASS commit verified as ancestor: c4073f84a2e8c7f6d19281db64e862347602fa02
+[repo] recorded Phase 2B failed-run commit verified as ancestor: 35eeebb685e50824d8ddc3e88403e1c5a9f0bd1c
+[git] local excludes verified at /home/afazeli2006/GRAND_Work/.git/info/exclude
+[git] repository line-ending policy verified at /home/afazeli2006/GRAND_Work/.gitattributes
+[package] located=/mnt/c/Users/alifa/Downloads/FIBER_GRAND_PHASE2B_R1_MANIFEST_REPAIR_AND_REPLAY_GATE_v1_1_2026-08-03.zip
+[package] sha256=468350e52390abbba7ca519019eca23a2e23b2d2204f8ddd8e94fc3df3a7e2ec (verified)
+[package] installed=/home/afazeli2006/GRAND_Work/experiments/FIBER_GRAND_PHASE2B_R1_MANIFEST_REPAIR_AND_REPLAY_GATE_v1_1
+$ /usr/bin/python3 -m venv /home/afazeli2006/.venvs/fiber_grand_phase2b_r1_v1_1
+[command return code] 0
+[venv] interpreter=/home/afazeli2006/.venvs/fiber_grand_phase2b_r1_v1_1/bin/python
+[venv] version=(3, 12, 3); no third-party dependencies are required
+[venv] the wrapper executes the package with this interpreter; parent-shell activation is unnecessary
+[run] output=/home/afazeli2006/GRAND_Work/results/FIBER_GRAND_Phase2B_R1/run_20260803T083231Z
+$ /home/afazeli2006/.venvs/fiber_grand_phase2b_r1_v1_1/bin/python -m unittest discover -s tests -v
+test_accepts_only_exact_four_line_append (test_artifact_repair.ConsoleAppendClassifierTests.test_accepts_only_exact_four_line_append) ... ok
+test_rejects_extra_appended_line (test_artifact_repair.ConsoleAppendClassifierTests.test_rejects_extra_appended_line) ... ok
+test_rejects_non_line_boundary_prefix (test_artifact_repair.ConsoleAppendClassifierTests.test_rejects_non_line_boundary_prefix) ... ok
+test_rejects_wrong_sidecar_digest (test_artifact_repair.ConsoleAppendClassifierTests.test_rejects_wrong_sidecar_digest) ... ok
+test_full_repair_passes_only_frozen_transformations (test_artifact_repair.FrozenManifestRepairTests.test_full_repair_passes_only_frozen_transformations) ... ok
+test_full_repair_rejects_modified_replay_input (test_artifact_repair.FrozenManifestRepairTests.test_full_repair_rejects_modified_replay_input) ... ok
+test_bound_hierarchy (test_phase2b.Phase2BTests.test_bound_hierarchy) ... ok
+test_boundaries_and_zero_weights (test_phase2b.Phase2BTests.test_boundaries_and_zero_weights) ... ok
+test_code_reproducibility (test_phase2b.Phase2BTests.test_code_reproducibility) ... ok
+test_stable_seed (test_phase2b.Phase2BTests.test_stable_seed) ... ok
+test_strict_reversal (test_phase2b.Phase2BTests.test_strict_reversal) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.113s
+
+OK
+[command return code] 0
+$ /home/afazeli2006/.venvs/fiber_grand_phase2b_r1_v1_1/bin/python /home/afazeli2006/GRAND_Work/experiments/FIBER_GRAND_PHASE2B_R1_MANIFEST_REPAIR_AND_REPLAY_GATE_v1_1/run_phase2b_r1.py --repo-root /home/afazeli2006/GRAND_Work --config /home/afazeli2006/GRAND_Work/experiments/FIBER_GRAND_PHASE2B_R1_MANIFEST_REPAIR_AND_REPLAY_GATE_v1_1/config/phase2b_r1_default.json --output /home/afazeli2006/GRAND_Work/results/FIBER_GRAND_Phase2B_R1/run_20260803T083231Z --cache-root /home/afazeli2006/.cache/fiber_grand_phase2b_r1_v1_1
+[phase2b-r1] status=PASS
+[phase2b-r1] output=/home/afazeli2006/GRAND_Work/results/FIBER_GRAND_Phase2B_R1/run_20260803T083231Z
+[phase2b-r1] return_zip=/home/afazeli2006/GRAND_Work/results/FIBER_GRAND_Phase2B_R1/run_20260803T083231Z/FIBER_GRAND_PHASE2B_R1_RETURN_run_20260803T083231Z.zip
+[phase2b-r1] return_zip_sha256=fae9053838dd76268813ba19ac18371ab312d9011e97384a448e11fd57fec955
+[command return code] 0

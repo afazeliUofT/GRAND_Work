@@ -1,0 +1,2 @@
+# No third-party Python packages are required.
+# A C++17 compiler is required; on Ubuntu/WSL: sudo apt update && sudo apt install -y build-essential

@@ -1,0 +1,41 @@
+{
+  "phase": "FIBER-GRAND Phase 2B-R1 package construction",
+  "created_utc": "2026-08-03T08:00:00+00:00",
+  "status": "PASS",
+  "checks": {
+    "python_unit_tests": {
+      "status": "PASS",
+      "cases": 11,
+      "scope": "console-append classifier, positive and negative temporary-Git repair, bound hierarchy, boundary handling, code reproducibility, deterministic seeds, and strict reversal"
+    },
+    "cpp17_self_test": {
+      "status": "PASS",
+      "flags": "-O3 -DNDEBUG -std=c++17 -Wall -Wextra -pedantic"
+    },
+    "proof_support_checks": {
+      "status": "PASS",
+      "exact_cases": 858
+    },
+    "latex_proof_source": {
+      "status": "PASS",
+      "passes": 2,
+      "rendered_pages": 7
+    },
+    "end_to_end_smoke_integration": {
+      "status": "PASS",
+      "artifact_repair": {
+        "crlf_normalizations": 5,
+        "expected_console_appends": 1,
+        "unexplained_mismatches": 0
+      },
+      "replay": {
+        "synthetic_bound_cases": 198,
+        "frozen_bound_cases": 40,
+        "frozen_decoder_trials": 10,
+        "bound_mismatches": 0,
+        "decoder_mismatches": 0
+      },
+      "note": "The smoke profile validates package integration. The default full 3360-bound/214-decoder WSL replay remains the canonical scientific run."
+    }
+  }
+}

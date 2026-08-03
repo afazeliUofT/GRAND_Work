@@ -1,0 +1,59 @@
+{
+  "artifact_repair": {
+    "expected_console_prefix_terminal_line": "[pilot] running alignment-bound structural scan",
+    "expected_crlf_paths": [
+      "pilot/bound_scan.csv",
+      "pilot/cell_summary.csv",
+      "pilot/paired_trials.csv",
+      "pilot/schedule_summary.csv",
+      "pilot/stress_summary.csv"
+    ],
+    "expected_post_manifest_append_path": "PACKAGE_CONSOLE.log",
+    "require_clean_worktree_copy": true,
+    "frozen_replay_export_paths": [
+      "pilot/bound_scan.csv",
+      "pilot/paired_trials.csv"
+    ]
+  },
+  "base_commit": "c4073f84a2e8c7f6d19281db64e862347602fa02",
+  "master_seed": 20260803,
+  "phase": "Phase 2B-R1 manifest repair and replay gate",
+  "phase2a_package_relative": "experiments/FIBER_GRAND_PHASE2A_BOUNDED_GATE_v1_0",
+  "phase2a_run_relative": "results/FIBER_GRAND_Phase2A/run_20260803T021923Z",
+  "replay": {
+    "bound_limit": 40,
+    "hard_median_fast_over_ind_max": 1000.0,
+    "hard_min_cases": 1,
+    "hard_work_ratio": 1.0,
+    "kernel_speedup_min": 1.0,
+    "trial_limit": 12
+  },
+  "required_prior_phase2b_commit": "35eeebb685e50824d8ddc3e88403e1c5a9f0bd1c",
+  "schema_version": 2,
+  "targeted_pilot": {
+    "alignment_schedule": "even_odd",
+    "enabled": true,
+    "families": [
+      "random_systematic_linear"
+    ],
+    "gate": {
+      "cells_required": 1,
+      "median_overhead_max": 1000.0,
+      "median_wall_ratio_min": 0.0,
+      "median_work_ratio_min": 1.0,
+      "p95_latency_ratio_min": 0.0
+    },
+    "max_histories": 1500000,
+    "n": 32,
+    "p_den": 20,
+    "p_num": 1,
+    "random_code_instances": 1,
+    "rates": [
+      {
+        "label": "R2_3",
+        "target": 0.6666666666666666
+      }
+    ],
+    "trials_per_cell": 4
+  }
+}

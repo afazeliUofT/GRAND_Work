@@ -1,0 +1,14 @@
+{
+  "binary_sha256": "ed19d9cdc5bb56bccf74a3a3959ab4a949e48f61014013c06d5d9c18c5c9008a",
+  "cache_key": "831255c46a47aa79bb9b",
+  "compiler": "/usr/bin/g++",
+  "compiler_version": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+  "created_utc": "2026-08-03T08:32:34+00:00",
+  "flags": [
+    "-O3",
+    "-DNDEBUG",
+    "-std=c++17"
+  ],
+  "source_sha256": "2521275368a6403e728abceae6283c5f5eabaa5c7bc5bc1db65c55e8e911d074",
+  "status": "PASS"
+}

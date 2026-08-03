@@ -1,0 +1,16 @@
+test_accepts_only_exact_four_line_append (test_artifact_repair.ConsoleAppendClassifierTests.test_accepts_only_exact_four_line_append) ... ok
+test_rejects_extra_appended_line (test_artifact_repair.ConsoleAppendClassifierTests.test_rejects_extra_appended_line) ... ok
+test_rejects_non_line_boundary_prefix (test_artifact_repair.ConsoleAppendClassifierTests.test_rejects_non_line_boundary_prefix) ... ok
+test_rejects_wrong_sidecar_digest (test_artifact_repair.ConsoleAppendClassifierTests.test_rejects_wrong_sidecar_digest) ... ok
+test_full_repair_passes_only_frozen_transformations (test_artifact_repair.FrozenManifestRepairTests.test_full_repair_passes_only_frozen_transformations) ... ok
+test_full_repair_rejects_modified_replay_input (test_artifact_repair.FrozenManifestRepairTests.test_full_repair_rejects_modified_replay_input) ... ok
+test_bound_hierarchy (test_phase2b.Phase2BTests.test_bound_hierarchy) ... ok
+test_boundaries_and_zero_weights (test_phase2b.Phase2BTests.test_boundaries_and_zero_weights) ... ok
+test_code_reproducibility (test_phase2b.Phase2BTests.test_code_reproducibility) ... ok
+test_stable_seed (test_phase2b.Phase2BTests.test_stable_seed) ... ok
+test_strict_reversal (test_phase2b.Phase2BTests.test_strict_reversal) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.113s
+
+OK

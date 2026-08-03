@@ -1,0 +1,11 @@
+{
+  "boundary_review": {
+    "arithmetic_complexity": "O(n^3) arithmetic operations, not unit-cost bit complexity",
+    "p_s=0": "certificate remains valid; strict-gain results collapse to equality",
+    "p_s=1/2": "likelihood components are shell-independent; no strict shell-order gain",
+    "zero_q_j": "zero-weight streams may be omitted or retained with zero contribution"
+  },
+  "created_utc": "2026-08-03T08:32:33+00:00",
+  "exact_cases": 858,
+  "status": "PASS"
+}

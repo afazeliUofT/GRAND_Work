@@ -1,0 +1,12 @@
+{
+  "conference_specialization_gate_passed": false,
+  "conference_submission_ready": false,
+  "created_utc": "2026-08-03T08:32:54+00:00",
+  "execution_correctness_pass": true,
+  "external_novelty_review_required": true,
+  "external_proof_review_required": true,
+  "label": "NARROW_UAC_TO_MATHEMATICAL_RESULT",
+  "large_campaign_authorized": false,
+  "note": "Even a bounded GO authorizes only the next defined evidence phase, not a paper-level novelty claim or Transactions extension.",
+  "reason": "The exact shell-consistent bound remains correct, but the compiled replay did not meet the preregistered acceleration gate."
+}

@@ -1,0 +1,14 @@
+{
+  "auto_push_requested": true,
+  "branch": "main",
+  "created_utc": "2026-08-03T08:32:32+00:00",
+  "origin": "git@github.com:afazeliUofT/Grand_Work.git",
+  "package_installation": "/home/afazeli2006/GRAND_Work/experiments/FIBER_GRAND_PHASE2B_R1_MANIFEST_REPAIR_AND_REPLAY_GATE_v1_1",
+  "package_zip": "/mnt/c/Users/alifa/Downloads/FIBER_GRAND_PHASE2B_R1_MANIFEST_REPAIR_AND_REPLAY_GATE_v1_1_2026-08-03.zip",
+  "package_zip_sha256": "468350e52390abbba7ca519019eca23a2e23b2d2204f8ddd8e94fc3df3a7e2ec",
+  "profile": "manifest_repair_full_replay_default",
+  "repository_root": "/home/afazeli2006/GRAND_Work",
+  "venv_python": "/home/afazeli2006/.venvs/fiber_grand_phase2b_r1_v1_1/bin/python",
+  "wrapper": "/home/afazeli2006/GRAND_Work/RUN_FIBER_GRAND_PHASE2B_R1.py",
+  "wrapper_sha256": "ea4f26a3851a8de2131e9acc7a6cabcd11ef1396c72e7015d6c9e1f47c5cf421"
+}

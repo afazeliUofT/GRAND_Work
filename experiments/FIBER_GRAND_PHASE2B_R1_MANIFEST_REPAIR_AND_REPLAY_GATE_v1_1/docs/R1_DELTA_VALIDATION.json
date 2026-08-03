@@ -1,0 +1,73 @@
+{
+  "cpp_self_test": {
+    "compiler": "g++",
+    "status": "PASS"
+  },
+  "frozen_console_reconstruction": {
+    "classification": "EXPECTED_POST_MANIFEST_CONSOLE_APPEND",
+    "committed_full_sha256": "ce71ba9e29357213e5f3569362eb90d67358741b17ec6791b822b0b49d476680",
+    "manifest_prefix_sha256": "17c91daf36217424174cb8e991e8922f2d01329eae9208dcd61b640102d1e6df",
+    "status": "PASS"
+  },
+  "latex_two_pass": {
+    "status": "PASS"
+  },
+  "package_version": "1.1.0",
+  "proof_support": {
+    "exact_cases": 858,
+    "status": "PASS"
+  },
+  "r1_delta_files": [
+    "fiber_phase2b/artifact_repair.py",
+    "fiber_phase2b/replay.py (input-source parameter only)",
+    "fiber_phase2b/report.py",
+    "run_phase2b_r1.py",
+    "tests/test_artifact_repair.py",
+    "config/phase2b_r1_default.json",
+    "config/phase2b_r1_smoke.json",
+    "wrapper and provenance documentation"
+  ],
+  "scope_note": "Construction validation; canonical WSL execution against the user repository remains required.",
+  "unchanged_scientific_core_files": [
+    {
+      "byte_identical": true,
+      "old_sha256": "2521275368a6403e728abceae6283c5f5eabaa5c7bc5bc1db65c55e8e911d074",
+      "path": "cpp/fiber_grand_phase2b.cpp",
+      "r1_sha256": "2521275368a6403e728abceae6283c5f5eabaa5c7bc5bc1db65c55e8e911d074"
+    },
+    {
+      "byte_identical": true,
+      "old_sha256": "17bf879f8be7f669093709b7c284fe1a399aefa0cc55f0cf540f22b4530b2935",
+      "path": "fiber_phase2b/compiler.py",
+      "r1_sha256": "17bf879f8be7f669093709b7c284fe1a399aefa0cc55f0cf540f22b4530b2935"
+    },
+    {
+      "byte_identical": true,
+      "old_sha256": "a5877b52a5c83b480e802c07707a5af84a63b22fcffd0c245a3c1d1af7fa7764",
+      "path": "fiber_phase2b/proof_checks.py",
+      "r1_sha256": "a5877b52a5c83b480e802c07707a5af84a63b22fcffd0c245a3c1d1af7fa7764"
+    },
+    {
+      "byte_identical": true,
+      "old_sha256": "e2e2f48e9e309f264935ad4167560407d971685230936a5cc1b2b898a17ea85b",
+      "path": "fiber_phase2b/reference.py",
+      "r1_sha256": "e2e2f48e9e309f264935ad4167560407d971685230936a5cc1b2b898a17ea85b"
+    },
+    {
+      "byte_identical": true,
+      "old_sha256": "f3be6a37d67c2fb41afc591c413af904db695ac22201e04eb684eb1bcb1d0fe0",
+      "path": "fiber_phase2b/targeted.py",
+      "r1_sha256": "f3be6a37d67c2fb41afc591c413af904db695ac22201e04eb684eb1bcb1d0fe0"
+    },
+    {
+      "byte_identical": true,
+      "old_sha256": "ec8977bb11953c81faa112fc2712219c5502160f50b907cd6bfa9788f1784585",
+      "path": "fiber_phase2b/util.py",
+      "r1_sha256": "ec8977bb11953c81faa112fc2712219c5502160f50b907cd6bfa9788f1784585"
+    }
+  ],
+  "unit_tests": {
+    "count": 11,
+    "status": "PASS"
+  }
+}

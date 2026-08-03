@@ -1,0 +1,110 @@
+{
+  "accepted_difference_count": 6,
+  "base_commit": "c4073f84a2e8c7f6d19281db64e862347602fa02",
+  "base_to_head_phase2a_path_unchanged": true,
+  "created_utc": "2026-08-03T08:32:33+00:00",
+  "crlf_normalization_count": 5,
+  "expected_crlf_paths": [
+    "pilot/bound_scan.csv",
+    "pilot/cell_summary.csv",
+    "pilot/paired_trials.csv",
+    "pilot/schedule_summary.csv",
+    "pilot/stress_summary.csv"
+  ],
+  "expected_post_manifest_console_append_count": 1,
+  "frozen_replay_export_failures": [],
+  "frozen_replay_export_paths": [
+    "pilot/bound_scan.csv",
+    "pilot/paired_trials.csv"
+  ],
+  "frozen_replay_export_root": "FROZEN_REPLAY_INPUTS",
+  "frozen_replay_inputs_manifest": "FROZEN_REPLAY_INPUTS_MANIFEST.sha256",
+  "full_committed_run_files": 32,
+  "mismatch_count": 6,
+  "mismatches": [
+    {
+      "appended_bytes": 361,
+      "appended_line_count": 4,
+      "appended_lines": [
+        "[phase2a] status=PASS",
+        "[phase2a] output=/home/afazeli2006/GRAND_Work/results/FIBER_GRAND_Phase2A/run_20260803T021923Z",
+        "[phase2a] return_zip=/home/afazeli2006/GRAND_Work/results/FIBER_GRAND_Phase2A/run_20260803T021923Z/FIBER_GRAND_PHASE2A_RETURN_run_20260803T021923Z.zip",
+        "[phase2a] return_zip_sha256=e3e56ee5a97f573369ac857a46082bcd8306caf5363e21d2542a8768674ab426"
+      ],
+      "committed_log_bytes": 1215,
+      "committed_sha256": "ce71ba9e29357213e5f3569362eb90d67358741b17ec6791b822b0b49d476680",
+      "diagnosis": "EXPECTED_POST_MANIFEST_CONSOLE_APPEND",
+      "local_return_zip_sha256": "e3e56ee5a97f573369ac857a46082bcd8306caf5363e21d2542a8768674ab426",
+      "local_return_zip_status": "MATCHES_COMMITTED_SIDECAR",
+      "manifest_prefix_bytes": 854,
+      "manifest_prefix_sha256": "17c91daf36217424174cb8e991e8922f2d01329eae9208dcd61b640102d1e6df",
+      "original_manifest_sha256": "17c91daf36217424174cb8e991e8922f2d01329eae9208dcd61b640102d1e6df",
+      "path": "PACKAGE_CONSOLE.log",
+      "prefix_terminal_line": "[pilot] running alignment-bound structural scan",
+      "return_zip_sidecar": "FIBER_GRAND_PHASE2A_RETURN_run_20260803T021923Z.zip.sha256",
+      "return_zip_sidecar_sha256": "e3e56ee5a97f573369ac857a46082bcd8306caf5363e21d2542a8768674ab426",
+      "run_status_json": "PASS",
+      "scientific_effect": "four deterministic status lines appended after manifest creation; no numerical output changed"
+    },
+    {
+      "committed_sha256": "25010c4280eadad583b35adbaf80fb60d79e0886f5166c5c95eb1bc54a293291",
+      "diagnosis": "CRLF_TO_LF_NORMALIZATION",
+      "original_manifest_sha256": "ba5c06f3f893150f36ce851759045cef509a20d4cb8fc567d8bd338f09f0a06c",
+      "path": "pilot/bound_scan.csv",
+      "reconstructed_crlf_sha256": "ba5c06f3f893150f36ce851759045cef509a20d4cb8fc567d8bd338f09f0a06c",
+      "scientific_effect": "text line endings only; parsed CSV fields are unchanged"
+    },
+    {
+      "committed_sha256": "f88fcb1aa76469a7b3ffe80fbe1fae9315d3c00ed9070999d2f95a7a5c0b5575",
+      "diagnosis": "CRLF_TO_LF_NORMALIZATION",
+      "original_manifest_sha256": "f2d833a6a6506992e8d1f10dbb0735bd43a351a16da02cf2bae13db1067ae980",
+      "path": "pilot/cell_summary.csv",
+      "reconstructed_crlf_sha256": "f2d833a6a6506992e8d1f10dbb0735bd43a351a16da02cf2bae13db1067ae980",
+      "scientific_effect": "text line endings only; parsed CSV fields are unchanged"
+    },
+    {
+      "committed_sha256": "a6f193e6472aaf6848a3607ce8cdbf16bc5592ba744c67533ba8e2bac0f94ac0",
+      "diagnosis": "CRLF_TO_LF_NORMALIZATION",
+      "original_manifest_sha256": "0916c5a7353726e470dea186b0b053f848cc71df1d8c5928d8776052df5c4e54",
+      "path": "pilot/paired_trials.csv",
+      "reconstructed_crlf_sha256": "0916c5a7353726e470dea186b0b053f848cc71df1d8c5928d8776052df5c4e54",
+      "scientific_effect": "text line endings only; parsed CSV fields are unchanged"
+    },
+    {
+      "committed_sha256": "a09647f7195c10e3ca635d0918367b3b5c39a3d679d3e9fee382c163f1eb7c19",
+      "diagnosis": "CRLF_TO_LF_NORMALIZATION",
+      "original_manifest_sha256": "300b95cfb064de6cef2d5c6c0203e1a11d253602b5386a08785ebf67cc6f34eb",
+      "path": "pilot/schedule_summary.csv",
+      "reconstructed_crlf_sha256": "300b95cfb064de6cef2d5c6c0203e1a11d253602b5386a08785ebf67cc6f34eb",
+      "scientific_effect": "text line endings only; parsed CSV fields are unchanged"
+    },
+    {
+      "committed_sha256": "674092ecf05e771406c615b71383c50d8e4f5df01c5e14710887aba622cce989",
+      "diagnosis": "CRLF_TO_LF_NORMALIZATION",
+      "original_manifest_sha256": "3acdd68538d6c14a6fab1ce2cb6fce7023eec516be5974f470406c4529107a09",
+      "path": "pilot/stress_summary.csv",
+      "reconstructed_crlf_sha256": "3acdd68538d6c14a6fab1ce2cb6fce7023eec516be5974f470406c4529107a09",
+      "scientific_effect": "text line endings only; parsed CSV fields are unchanged"
+    }
+  ],
+  "missing_committed_files": [],
+  "missing_worktree_files": [],
+  "observed_crlf_paths": [
+    "pilot/bound_scan.csv",
+    "pilot/cell_summary.csv",
+    "pilot/paired_trials.csv",
+    "pilot/schedule_summary.csv",
+    "pilot/stress_summary.csv"
+  ],
+  "original_entries": 26,
+  "phase2a_run": "results/FIBER_GRAND_Phase2A/run_20260803T021923Z",
+  "policy_failures": [],
+  "repair_version": "Phase2B-R1-v1.1",
+  "scientific_interpretation": "The canonical manifest hashes the exact blobs at the frozen Phase-2A commit. Accepted differences are restricted to the preregistered CSV CRLF-to-LF normalizations and the verified four-line PACKAGE_CONSOLE.log append. Replay inputs are exported directly from the frozen commit. No Phase-2A simulation, decoder output, or numerical result is altered or rerun.",
+  "status": "PASS",
+  "tracked_index_clean": true,
+  "unexplained_mismatch_count": 0,
+  "unexplained_mismatches": [],
+  "worktree_mismatch_count": 0,
+  "worktree_mismatches": []
+}

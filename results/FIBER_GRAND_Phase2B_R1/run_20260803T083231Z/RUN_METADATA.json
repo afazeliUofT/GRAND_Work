@@ -1,0 +1,25 @@
+{
+  "argv": [
+    "/home/afazeli2006/GRAND_Work/experiments/FIBER_GRAND_PHASE2B_R1_MANIFEST_REPAIR_AND_REPLAY_GATE_v1_1/run_phase2b_r1.py",
+    "--repo-root",
+    "/home/afazeli2006/GRAND_Work",
+    "--config",
+    "/home/afazeli2006/GRAND_Work/experiments/FIBER_GRAND_PHASE2B_R1_MANIFEST_REPAIR_AND_REPLAY_GATE_v1_1/config/phase2b_r1_default.json",
+    "--output",
+    "/home/afazeli2006/GRAND_Work/results/FIBER_GRAND_Phase2B_R1/run_20260803T083231Z",
+    "--cache-root",
+    "/home/afazeli2006/.cache/fiber_grand_phase2b_r1_v1_1"
+  ],
+  "created_utc": "2026-08-03T08:32:32+00:00",
+  "environment": {
+    "cpu_count": 16,
+    "created_utc": "2026-08-03T08:32:32+00:00",
+    "executable": "/home/afazeli2006/.venvs/fiber_grand_phase2b_r1_v1_1/bin/python",
+    "machine": "x86_64",
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "python": "3.12.3 (main, Jun 19 2026, 12:46:00) [GCC 13.3.0]"
+  },
+  "phase": "Phase 2B-R1 manifest repair and full replay gate",
+  "repo": "/home/afazeli2006/GRAND_Work",
+  "version": "1.1.0"
+}

@@ -1,0 +1,21 @@
+{
+  "bound_cases": 3360,
+  "bound_mismatches": 0,
+  "cpp_bounds_process_ns": 739608976,
+  "cpp_decode_process_ns": 1052194306,
+  "cpp_uac_kernel_ns": 680631679,
+  "created_utc": "2026-08-03T08:32:54+00:00",
+  "decode_mismatches": 0,
+  "exact_pass": true,
+  "hard_case_count": 15,
+  "hard_case_median_fast_over_ind_time": 14.213690778278652,
+  "hard_end_to_end_pass": false,
+  "kernel_speed_pass": false,
+  "kernel_speedup": 25.21641632551752,
+  "python_uac_ns": 17163091782,
+  "status": "PASS",
+  "synthetic_bound_cases": 198,
+  "synthetic_bound_mismatches": 0,
+  "targeted_pilot_authorized": false,
+  "trial_cases": 214
+}

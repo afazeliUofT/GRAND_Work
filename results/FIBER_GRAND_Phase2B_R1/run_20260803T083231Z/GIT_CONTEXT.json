@@ -1,0 +1,7 @@
+{
+  "base_commit": "c4073f84a2e8c7f6d19281db64e862347602fa02",
+  "base_is_ancestor": true,
+  "head": "35eeebb685e50824d8ddc3e88403e1c5a9f0bd1c",
+  "prior_phase2b_is_ancestor": true,
+  "required_prior_phase2b_commit": "35eeebb685e50824d8ddc3e88403e1c5a9f0bd1c"
+}

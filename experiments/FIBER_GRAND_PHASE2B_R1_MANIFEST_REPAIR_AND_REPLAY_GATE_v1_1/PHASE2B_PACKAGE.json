@@ -1,0 +1,10 @@
+{
+  "name": "FIBER-GRAND Paper I Phase 2B-R1 Manifest Repair and Replay Gate",
+  "version": "1.1.0",
+  "base_phase2a_commit": "c4073f84a2e8c7f6d19281db64e862347602fa02",
+  "required_prior_phase2b_commit": "35eeebb685e50824d8ddc3e88403e1c5a9f0bd1c",
+  "scope": "closed-world Phase-2A artifact repair, proof closure candidate, exact C++17 kernel, frozen replay, and auto-gated targeted n=32 pilot",
+  "reruns_phase2a": false,
+  "large_campaign_authorized": false,
+  "external_review_required": true
+}
