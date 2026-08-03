@@ -1,0 +1,59 @@
+{
+  "bestpath_selected_disagreements": 420,
+  "bestpath_strict_disjoint_cases": 0,
+  "branch_complete": 432,
+  "cpp_process": {
+    "elapsed_ns": 27902166760,
+    "output": "/home/afazeli2006/GRAND_Work/results/FIBER_GRAND_Phase2C/run_20260803T125100Z/campaign/CPP_OUTPUT.tsv",
+    "returncode": 0
+  },
+  "created_utc": "2026-08-03T12:51:40+00:00",
+  "decision": {
+    "bestpath_selected_disagreements": 376,
+    "bestpath_strict_disjoint_cases": 0,
+    "branch_baseline_context": {
+      "complete_n24plus_cases": 72,
+      "dedup_faster_fraction": 0.4166666666666667,
+      "median_branch_over_dedup_walltime": 0.8317898449700492
+    },
+    "conference_submission_ready": false,
+    "created_utc": "2026-08-03T12:51:40+00:00",
+    "deduplicated_generation_speed_gate_pass": false,
+    "exact_exhaustive_speed_gate_pass": true,
+    "execution_correctness_pass": true,
+    "external_novelty_review_required": true,
+    "external_proof_review_required": true,
+    "label": "GO_PAPER_I_BASELINE_EXACT_DECODER",
+    "large_campaign_authorized": false,
+    "median_n32_exhaustive_over_dedup_walltime": 465.5917882890163,
+    "n32_dedup_speed_cells_passed": [],
+    "n32_exhaustive_calibration_cases": 16,
+    "n32_query_cells_passed": [
+      "n32_k21_crc_defined_linear_R2_3",
+      "n32_k21_random_systematic_linear_R2_3",
+      "n32_k24_crc_defined_linear_R3_4",
+      "n32_k24_random_systematic_linear_R3_4",
+      "n32_k26_extended_hamming_HAMMING"
+    ],
+    "natural_censor_fraction": 0.0,
+    "natural_censor_gate_pass": true,
+    "next_step": "Write and independently review the narrow Paper-I conference manuscript only if the label is GO_PAPER_I_BASELINE_EXACT_DECODER; no additional simulation is authorized by this package.",
+    "query_complexity_gate_pass": true,
+    "reason": "The baseline exact decoder passed correctness and demonstrated large, repeated codeword-likelihood savings together with a material exact-exhaustive wall-clock advantage."
+  },
+  "dedup_complete": 996,
+  "elapsed_ns": 28309784620,
+  "exhaustive_complete": 384,
+  "history_complete": 996,
+  "input_files": {
+    "cpp_input": "/home/afazeli2006/GRAND_Work/results/FIBER_GRAND_Phase2C/run_20260803T125100Z/campaign/CPP_INPUT.tsv",
+    "cpp_output": "/home/afazeli2006/GRAND_Work/results/FIBER_GRAND_Phase2C/run_20260803T125100Z/campaign/CPP_OUTPUT.tsv",
+    "metadata": "/home/afazeli2006/GRAND_Work/results/FIBER_GRAND_Phase2C/run_20260803T125100Z/campaign/TRIAL_SPECS.csv"
+  },
+  "natural_trials": 896,
+  "phase": "Phase 2C baseline exact-decoder gate",
+  "status": "PASS",
+  "stress_trials": 100,
+  "trial_count": 996,
+  "validation_violation_count": 0
+}

@@ -1,0 +1,1 @@
+$ /usr/bin/g++ -O3 -DNDEBUG -std=c++17 -Wall -Wextra -pedantic /home/afazeli2006/GRAND_Work/experiments/FIBER_GRAND_PHASE2C_BASELINE_EXACT_DECODER_GATE_v1_0/cpp/fiber_grand_phase2c.cpp -o /home/afazeli2006/.cache/fiber_grand_phase2c_v1_0/70c64451364af6904971/fiber_grand_phase2c

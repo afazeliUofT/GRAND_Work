@@ -1,0 +1,12 @@
+test_code_reproducibility_and_orthogonality (test_phase2c.Phase2CUnitTests.test_code_reproducibility_and_orthogonality) ... ok
+test_default_trial_contract (test_phase2c.Phase2CUnitTests.test_default_trial_contract) ... ok
+test_discovery_shell (test_phase2c.Phase2CUnitTests.test_discovery_shell) ... ok
+test_extended_hamming_distance_small (test_phase2c.Phase2CUnitTests.test_extended_hamming_distance_small) ... ok
+test_insertion_sphere_exact (test_phase2c.Phase2CUnitTests.test_insertion_sphere_exact) ... ok
+test_shell_bound (test_phase2c.Phase2CUnitTests.test_shell_bound) ... ok
+test_stopping_offset_examples (test_phase2c.Phase2CUnitTests.test_stopping_offset_examples) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.371s
+
+OK

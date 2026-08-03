@@ -1,0 +1,5 @@
+[phase2c] status=PASS
+[phase2c] decision=GO_PAPER_I_BASELINE_EXACT_DECODER
+[phase2c] output=/home/afazeli2006/GRAND_Work/results/FIBER_GRAND_Phase2C/run_20260803T125100Z
+[phase2c] return_zip=/home/afazeli2006/GRAND_Work/results/FIBER_GRAND_Phase2C/run_20260803T125100Z/FIBER_GRAND_PHASE2C_RETURN_run_20260803T125100Z.zip
+[phase2c] return_zip_sha256=6603ac38710504f05a6f21e6db3fe25ed420827b519975bf4e687f3db0cc23ef

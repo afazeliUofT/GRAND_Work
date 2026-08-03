@@ -1,0 +1,14 @@
+{
+  "auto_push_requested": true,
+  "branch": "main",
+  "created_utc": "2026-08-03T12:51:04+00:00",
+  "origin": "git@github.com:afazeliUofT/Grand_Work.git",
+  "package_installation": "/home/afazeli2006/GRAND_Work/experiments/FIBER_GRAND_PHASE2C_BASELINE_EXACT_DECODER_GATE_v1_0",
+  "package_zip": "/mnt/c/Users/alifa/Downloads/FIBER_GRAND_PHASE2C_BASELINE_EXACT_DECODER_GATE_v1_0_2026-08-03.zip",
+  "package_zip_sha256": "dedc6eb71748325edda2337a4ac34c4dd05f30c215f2de2457016fdbe073fadd",
+  "profile": "baseline_exact_decoder_default",
+  "repository_root": "/home/afazeli2006/GRAND_Work",
+  "venv_python": "/home/afazeli2006/.venvs/fiber_grand_phase2c_v1_0/bin/python",
+  "wrapper": "/home/afazeli2006/GRAND_Work/RUN_FIBER_GRAND_PHASE2C.py",
+  "wrapper_sha256": "5ec0b8bb85c2c3e73c891d188dbd680bfa87fcee2990d6895a8196175fc232a5"
+}

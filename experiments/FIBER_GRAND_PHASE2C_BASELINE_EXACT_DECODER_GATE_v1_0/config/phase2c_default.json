@@ -1,0 +1,135 @@
+{
+  "schema_version": 1,
+  "package_version": "1.0.0",
+  "required_base_commit": "7f8c87eb202dc7827439799ea7ed8e876dd4b73a",
+  "master_seed": 20260803,
+  "channel": {
+    "p_num": 1,
+    "p_den": 20,
+    "deletion_distribution": "uniform_exactly_one"
+  },
+  "natural_campaign": {
+    "trials_per_cell": 64,
+    "cells": [
+      {
+        "n": 16,
+        "k": 11,
+        "family": "random_systematic_linear",
+        "rate_label": "R2_3"
+      },
+      {
+        "n": 16,
+        "k": 12,
+        "family": "random_systematic_linear",
+        "rate_label": "R3_4"
+      },
+      {
+        "n": 16,
+        "k": 11,
+        "family": "crc_defined_linear",
+        "rate_label": "R2_3"
+      },
+      {
+        "n": 16,
+        "k": 12,
+        "family": "crc_defined_linear",
+        "rate_label": "R3_4"
+      },
+      {
+        "n": 16,
+        "k": 11,
+        "family": "extended_hamming",
+        "rate_label": "HAMMING"
+      },
+      {
+        "n": 24,
+        "k": 16,
+        "family": "random_systematic_linear",
+        "rate_label": "R2_3"
+      },
+      {
+        "n": 24,
+        "k": 18,
+        "family": "random_systematic_linear",
+        "rate_label": "R3_4"
+      },
+      {
+        "n": 24,
+        "k": 16,
+        "family": "crc_defined_linear",
+        "rate_label": "R2_3"
+      },
+      {
+        "n": 24,
+        "k": 18,
+        "family": "crc_defined_linear",
+        "rate_label": "R3_4"
+      },
+      {
+        "n": 32,
+        "k": 21,
+        "family": "random_systematic_linear",
+        "rate_label": "R2_3"
+      },
+      {
+        "n": 32,
+        "k": 24,
+        "family": "random_systematic_linear",
+        "rate_label": "R3_4"
+      },
+      {
+        "n": 32,
+        "k": 21,
+        "family": "crc_defined_linear",
+        "rate_label": "R2_3"
+      },
+      {
+        "n": 32,
+        "k": 24,
+        "family": "crc_defined_linear",
+        "rate_label": "R3_4"
+      },
+      {
+        "n": 32,
+        "k": 26,
+        "family": "extended_hamming",
+        "rate_label": "HAMMING"
+      }
+    ],
+    "random_code_instances": 4
+  },
+  "stress_campaign": {
+    "enabled": true,
+    "n": 32,
+    "weights": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "trials_per_weight_per_cell": 4
+  },
+  "limits": {
+    "max_generated_attempts": 20000000,
+    "branch_node_cap": 1000000,
+    "branch_time_ms": 1500
+  },
+  "baselines": {
+    "exhaustive_all_n_le": 16,
+    "exhaustive_calibration_per_cell_n24": 8,
+    "exhaustive_calibration_per_cell_n32_k_le_21": 8,
+    "branch_all_n_le": 16,
+    "branch_calibration_per_cell_n24": 8,
+    "branch_calibration_per_cell_n32": 8
+  },
+  "decision_gate": {
+    "n32_min_cells": 4,
+    "median_exact_score_savings": 100000.0,
+    "p10_exact_score_savings": 10000.0,
+    "median_membership_ratio": 100.0,
+    "median_history_over_dedup_walltime": 1.2,
+    "min_n32_exhaustive_speedup": 5.0,
+    "max_natural_censor_fraction": 0.02
+  }
+}

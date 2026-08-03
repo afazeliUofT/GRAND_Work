@@ -1,0 +1,35 @@
+{
+  "created_utc": "2026-08-03T12:51:07+00:00",
+  "elapsed_ns": 1512373476,
+  "exact_cases": 335146,
+  "phase": "Phase 2C theorem-support validation",
+  "records": [
+    {
+      "cases": 2047,
+      "name": "binary_one_insertion_sphere",
+      "status": "PASS"
+    },
+    {
+      "cases": 1792,
+      "name": "discovery_shell_characterization",
+      "status": "PASS"
+    },
+    {
+      "cases": 420,
+      "name": "shell_certificate_against_exhaustive_unseen_max",
+      "status": "PASS"
+    },
+    {
+      "cases": 328512,
+      "name": "realization_dependent_stopping_shell",
+      "status": "PASS"
+    },
+    {
+      "cases": 2375,
+      "name": "finite_length_work_cap_arithmetic",
+      "status": "PASS"
+    }
+  ],
+  "scope_note": "These exact checks support the proof source; they do not replace an independent mathematical or novelty review.",
+  "status": "PASS"
+}

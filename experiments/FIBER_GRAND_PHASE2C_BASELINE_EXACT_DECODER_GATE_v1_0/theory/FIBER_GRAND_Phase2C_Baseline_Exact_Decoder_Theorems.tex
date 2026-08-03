@@ -1,0 +1,358 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[letterpaper,margin=0.82in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\C}{\mathcal C}
+\newcommand{\D}{\mathcal D}
+\newcommand{\I}{\mathcal I}
+\newcommand{\one}{\mathbf 1}
+\newcommand{\Prb}{\mathbb P}
+\newcommand{\argmax}{\operatorname*{arg\,max}}
+\newcommand{\wt}{\operatorname{wt}}
+\newcommand{\Vol}{\operatorname{Vol}}
+\newcommand{\ML}{\operatorname{ML}}
+
+\title{FIBER-GRAND Paper I\\Baseline Exact One-Deletion Decoder: Theorem Closure for Phase 2C}
+\author{Ali Fazeli}
+\date{3 August 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This document closes the internal theorem obligations for the narrow Paper-I model: an arbitrary
+binary block code, exactly one uniformly located deletion, and independent hard-decision
+substitutions.  It proves the aggregate likelihood and its linear-time recurrence, gives a strict
+family in which most-probable-history ordering disagrees with aggregate maximum likelihood,
+characterizes inverse-alignment discovery shells, and proves an exact shell-certified decoder.
+A realization-dependent stopping theorem bounds the shell reached in terms of the actual number of
+surviving substitutions.  This yields finite-length membership-query and likelihood-evaluation
+bounds and a high-probability exponent of at most $h_2(p_s)$ in a membership-oracle model.  The
+classical cardinality of a binary one-insertion sphere is used to reduce generation from $2n$
+history pairs to $n+1$ distinct supersequences per error pattern.  The statements concern exactness
+and oracle/query complexity; they do not claim universal wall-clock optimality or absolute novelty.
+\end{abstract}
+
+\section{Channel, code, and conventions}
+Let $X=(X_1,\ldots,X_n)\in\{0,1\}^n$.  Independent substitutions form
+$\widetilde X_i=X_i\oplus N_i$, where $N_i\sim\mathrm{Bernoulli}(p_s)$ independently and
+$0\le p_s<1/2$. Exactly one coordinate $J$ is deleted uniformly from
+$\{1,\ldots,n\}$.  The observation $Y\in\{0,1\}^{m}$ has length $m=n-1$.
+The code $\C\subseteq\{0,1\}^n$ is arbitrary, nonempty, and has a uniform prior.  It is accessed
+through a membership test $\one\{x\in\C\}$.  The complete ML tie set is
+\[
+ \ML(y)=\argmax_{c\in\C} W(y\mid c).
+\]
+When one representative is required, the lexicographically smallest member is returned.
+
+For $x\in\{0,1\}^n$, $y\in\{0,1\}^{m}$, and deletion coordinate $j$, define
+\begin{equation}
+ d_j(x,y)=\sum_{i=1}^{j-1}\one\{x_i\ne y_i\}
+ +\sum_{i=j+1}^{n}\one\{x_i\ne y_{i-1}\}.
+ \label{eq:dj}
+\end{equation}
+Thus $d_j$ is the substitution mismatch count under alignment $j$.
+
+\section{Aggregate likelihood and strict pathwise failure}
+\begin{proposition}[Exact likelihood and sliding recurrence]
+For every $x$ and $y$,
+\begin{equation}
+ W(y\mid x)=\frac1n\sum_{j=1}^{n}
+ p_s^{d_j(x,y)}(1-p_s)^{m-d_j(x,y)}.
+ \label{eq:likelihood}
+\end{equation}
+Moreover,
+\begin{align}
+ d_1(x,y)&=\sum_{i=2}^{n}\one\{x_i\ne y_{i-1}\},\label{eq:d1}\\
+ d_{j+1}(x,y)&=d_j(x,y)-\one\{x_{j+1}\ne y_j\}
+ +\one\{x_j\ne y_j\},\qquad 1\le j<n.\label{eq:slide}
+\end{align}
+Hence all alignment components of one candidate are evaluated in $O(n)$ arithmetic operations.
+\end{proposition}
+\begin{proof}
+Condition on $J=j$.  The deleted coordinate is marginalized and the $m$ surviving coordinates
+require exactly $d_j$ substitutions.  This gives the $j$th term of \eqref{eq:likelihood}; summing
+uniformly over $J$ proves the formula.  Moving the hypothesized deletion from $j$ to $j+1$ removes
+the comparison $(x_{j+1},y_j)$ and adds $(x_j,y_j)$, proving \eqref{eq:slide}.
+\end{proof}
+
+Define the largest compatible individual-history probability
+\[
+ M_y(x)=\max_j\frac1n p_s^{d_j(x,y)}(1-p_s)^{m-d_j(x,y)}.
+\]
+
+\begin{theorem}[Strict best-history/aggregate-ML reversal]
+Assume $0<p_s<1/2$ and $n\ge4$. Let
+\[
+ y=0^{n-3}10,\qquad x_A=0^{n-3}101,\qquad x_B=0^n,
+ \qquad \C=\{x_A,x_B\}.
+\]
+Then $M_y(x_A)>M_y(x_B)$, whereas
+\[
+ W(y\mid x_B)>W(y\mid x_A)
+ \quad\Longleftrightarrow\quad np_s>1+2p_s^2.
+\]
+Thus, at every fixed $p_s>0$, sufficiently large finite $n$ gives a strict disagreement between
+best-history ordering and aggregate ML.
+\end{theorem}
+\begin{proof}
+Deleting the final symbol of $x_A$ gives $y$ without substitution, while every deletion from
+$x_B$ leaves one mismatch. Hence
+\[
+ M_y(x_A)=\frac1n(1-p_s)^m>
+ \frac1n p_s(1-p_s)^{m-1}=M_y(x_B).
+\]
+The mismatch multiplicities for $x_A$ at distances $0,1,2,3$ are respectively
+$1,1,1,n-3$, whereas every alignment of $x_B$ has distance one. Direct aggregation and
+factorization give
+\[
+ \frac{n\bigl(W(y\mid x_B)-W(y\mid x_A)\bigr)}{(1-p_s)^{n-4}}
+ =(1-2p_s)(np_s-1-2p_s^2),
+\]
+which proves the claim.
+\end{proof}
+
+\section{Discovery shells and distinct insertion generation}
+For $z\in\{0,1\}^{m}$, let $\I(z)$ be the set of all length-$n$ binary words obtained by inserting
+one bit into one of the $m+1$ gaps of $z$.
+
+\begin{lemma}[Binary one-insertion sphere]
+For every $z\in\{0,1\}^{m}$,
+\[
+ |\I(z)|=m+2=n+1.
+\]
+For a fixed inserted bit $b$, the distinct words can be generated by inserting $b$ in the first
+gap and immediately after each symbol of $z$ unequal to $b$.
+\end{lemma}
+\begin{proof}
+For fixed $b$, moving an insertion through a run of $b$ does not change the resulting word.  A new
+word appears initially and whenever the insertion crosses a symbol unequal to $b$.  The count is
+$1+\#\{i:z_i\ne b\}$.  Summing over $b=0,1$ gives $2+m$; the two classes have different Hamming
+weights and are disjoint.
+\end{proof}
+\begin{remark}
+The insertion-sphere cardinality is classical and is not claimed as a new coding theorem here.  Its
+role is to remove redundant history-pair generation before code membership is queried.
+\end{remark}
+
+Define the discovery shell
+\[
+ h_y(x)=\min_{1\le j\le n}d_j(x,y).
+\]
+For shell $s$, enumerate every $e\in\{0,1\}^{m}$ with $\wt(e)=s$, set $z=y\oplus e$, and generate
+$\I(z)$.
+
+\begin{proposition}[Exact shell characterization]
+A candidate $x$ is generated by the end of shell $s$ if and only if $h_y(x)\le s$.  Its first
+generation shell is exactly $h_y(x)$.
+\end{proposition}
+\begin{proof}
+For a fixed alignment $j$, deleting coordinate $j$ from $x$ gives a word $z$ satisfying
+$z=y\oplus e$ with $\wt(e)=d_j(x,y)$. Conversely, inserting $x_j$ into that $z$ at coordinate $j$
+reconstructs $x$. Minimizing over $j$ proves the statement.
+\end{proof}
+
+\section{Exact shell-certified decoder}
+For clarity, first assume $0<p_s<1/2$ and set $\rho=p_s/(1-p_s)$.  After completing shell $s<m$,
+every completely unseen candidate has $d_j\ge s+1$ for every alignment. Therefore define
+\begin{equation}
+ U_s=p_s^{s+1}(1-p_s)^{m-s-1}.
+ \label{eq:Us}
+\end{equation}
+For the exact-integer implementation with $p_s=1/(a+1)$, use the scaled score
+\begin{equation}
+ S_y(x)=\sum_{j=1}^{n}a^{m-d_j(x,y)},
+ \qquad W(y\mid x)=\frac{p_s^m}{n}S_y(x),
+ \label{eq:scaled}
+\end{equation}
+and scaled unseen bound
+\begin{equation}
+ B_s=na^{m-s-1}.
+ \label{eq:Bs}
+\end{equation}
+
+\begin{algorithm}[t]
+\caption{Baseline exact one-deletion FIBER-GRAND}
+\label{alg:fiber}
+\begin{algorithmic}[1]
+\State $\mathsf{seen}\gets\emptyset$; no incumbent
+\For{$s=0,1,\ldots,m$}
+  \ForAll{$e\in\{0,1\}^m$ with $\wt(e)=s$}
+    \State $z\gets y\oplus e$
+    \ForAll{$x\in\I(z)$ using the $n+1$-word distinct generator}
+      \If{$x\notin\mathsf{seen}$}
+        \State add $x$ to $\mathsf{seen}$ and query $x\in\C$
+        \If{$x\in\C$}
+          \State compute the complete aggregate score $W(y\mid x)$ via \eqref{eq:slide}
+          \State update the incumbent score and complete tie set
+        \EndIf
+      \EndIf
+    \EndFor
+  \EndFor
+  \If{an incumbent exists and either $s=m$ or incumbent $>U_s$}
+    \State \Return incumbent and complete tie set
+  \EndIf
+\EndFor
+\end{algorithmic}
+\end{algorithm}
+
+\begin{theorem}[Exact shell certificate and decoder correctness]
+After shell $s<m$, every unseen candidate $x$ satisfies $W(y\mid x)\le U_s$.  If the incumbent
+codeword score is strictly larger than $U_s$, the current incumbent set is the complete global ML
+tie set. Algorithm~\ref{alg:fiber} always terminates and returns $\ML(y)$.
+\end{theorem}
+\begin{proof}
+For an unseen $x$, the shell characterization implies $d_j(x,y)\ge s+1$ for all $j$.  Since
+$p_s<1/2$, each likelihood component decreases with distance, so
+\[
+ W(y\mid x)\le\frac1n\sum_{j=1}^n p_s^{s+1}(1-p_s)^{m-s-1}=U_s.
+\]
+Every discovered codeword has been scored completely.  A strict incumbent inequality therefore
+excludes every unseen codeword, including ties.  By shell $m$, all binary length-$n$ words have
+been generated, so termination and exactness follow even without an earlier strict certificate.
+\end{proof}
+
+\begin{remark}[Boundary cases]
+At $p_s=0$, only shell zero has positive probability and exact decoding stops after shell zero.  At
+$p_s=1/2$, all substitution patterns of a given length have equal probability and shell ordering
+provides no strict likelihood decrease; the decoder can still exhaust the finite candidate space,
+but the strict-gain results below do not apply.
+\end{remark}
+
+\section{Realization-dependent stopping and finite-length work}
+Let the transmitted codeword be $x_0$, the deleted coordinate be $J$, and let $T$ be the number of
+substitutions among the $m$ surviving symbols. Define
+\begin{equation}
+ L_n(p_s)=\min\{\ell\ge1:\rho^\ell<1/n\}
+ =\left\lfloor\log_{(1-p_s)/p_s}n\right\rfloor+1.
+ \label{eq:Ln}
+\end{equation}
+
+\begin{theorem}[Realization-dependent stopping shell]
+For $0<p_s<1/2$, Algorithm~\ref{alg:fiber} stops no later than
+\begin{equation}
+ S\le \min\{m,\,T+L_n(p_s)-1\}.
+ \label{eq:stopcap}
+\end{equation}
+This bound is code-independent.
+\end{theorem}
+\begin{proof}
+Under the true deletion alignment $J$, $d_J(x_0,y)=T$, so $x_0$ is discovered by shell $T$ and
+\[
+ W(y\mid x_0)\ge\frac1n p_s^T(1-p_s)^{m-T}.
+\]
+The running incumbent is at least this large.  At $s=T+L_n-1$, comparison with \eqref{eq:Us}
+gives
+\[
+ \frac{U_s}{\frac1n p_s^T(1-p_s)^{m-T}}
+ =n\rho^{L_n}<1.
+\]
+Thus the strict certificate holds by shell $s$, unless the finite search has already ended at
+$m$.
+\end{proof}
+
+Let
+\[
+ \Vol(m,s)=\sum_{w=0}^{\min\{m,s\}}\binom{m}{w}.
+\]
+
+\begin{corollary}[Deterministic work bounds]
+For a realization with $T$ surviving substitutions and $S$ defined by the right-hand side of
+\eqref{eq:stopcap}, the decoder makes at most
+\begin{align}
+ Q_{\mathrm{gen}}&\le(n+1)\Vol(m,S),\label{eq:qgen}\\
+ Q_{\mathrm{mem}}&\le(n+1)\Vol(m,S),\label{eq:qmem}\\
+ Q_{\mathrm{score}}&\le Q_{\mathrm{mem}}.\label{eq:qscore}
+\end{align}
+Direct alignment-history generation would attempt $2n\Vol(m,S)$ insertion pairs before global
+deduplication.
+\end{corollary}
+\begin{proof}
+Each error vector contributes exactly $n+1$ distinct one-insertion supersequences.  A global seen
+set can only reduce membership queries below generation attempts, and only codewords passing
+membership receive a complete likelihood evaluation.
+\end{proof}
+
+\begin{corollary}[Finite-confidence and expected caps]
+Since $T\sim\mathrm{Binomial}(m,p_s)$, let $\tau_\delta$ be the smallest integer satisfying
+$\Prb[T\le\tau_\delta]\ge1-\delta$.  With probability at least $1-\delta$,
+\[
+ Q_{\mathrm{mem}}\le(n+1)\Vol\!\left(m,
+ \min\{m,\tau_\delta+L_n(p_s)-1\}\right).
+\]
+Moreover,
+\[
+ \mathbb E[Q_{\mathrm{mem}}]
+ \le(n+1)\sum_{t=0}^{m}\binom mt p_s^t(1-p_s)^{m-t}
+ \Vol\!\left(m,\min\{m,t+L_n(p_s)-1\}\right).
+\]
+\end{corollary}
+
+\section{High-probability query exponent}
+Let $h_2(u)=-u\log_2u-(1-u)\log_2(1-u)$ be the binary entropy function.
+
+\begin{theorem}[High-probability oracle/query exponent]
+Fix $0<p_s<1/2$ and any $c>0$.  For a sequence of blocklengths $n\to\infty$, Algorithm
+\ref{alg:fiber} satisfies, with probability at least $1-n^{-c}$,
+\begin{equation}
+ Q_{\mathrm{mem}},\,Q_{\mathrm{score}}
+ \le 2^{n(h_2(p_s)+o(1))}.
+ \label{eq:exponent}
+\end{equation}
+Consequently, for a code sequence with rate $R>h_2(p_s)$ and size
+$|\C_n|=2^{nR+o(n)}$, the ratio between exhaustive codeword-wise ML likelihood evaluations and
+$Q_{\mathrm{score}}$ is at least
+\[
+ 2^{n(R-h_2(p_s)-o(1))}
+\]
+with probability at least $1-n^{-c}$.
+\end{theorem}
+\begin{proof}
+Set $\epsilon_n=\sqrt{c\ln n/(2m)}$. Hoeffding's inequality gives
+$\Prb[T>m(p_s+\epsilon_n)]\le n^{-c}$.  Also $L_n(p_s)=O(\log n)$, so on the complementary event
+\[
+ \frac{S}{m}\le p_s+\epsilon_n+O(\log n/n)=p_s+o(1)<\frac12
+\]
+for all sufficiently large $n$.  The standard Hamming-ball bound yields
+$\Vol(m,S)\le2^{m h_2(S/m)}=2^{n(h_2(p_s)+o(1))}$.  The polynomial prefactor $n+1$ is absorbed
+into $2^{o(n)}$, and \eqref{eq:qmem}--\eqref{eq:qscore} give \eqref{eq:exponent}.  Exhaustive
+codeword-wise ML evaluates all $|\C_n|$ complete candidate likelihoods, proving the ratio.
+\end{proof}
+
+\begin{remark}[Meaning and limitations]
+The theorem is stated in a membership-oracle/query model.  It separates code-membership calls,
+complete candidate-likelihood evaluations, generated hypotheses, and wall-clock time.  It does not
+claim that every membership implementation has unit cost, that the decoder is instance-optimal,
+or that it outperforms every code-specific trellis or algebraic decoder.  The exponent comparison
+is against exhaustive codeword-wise ML, not against all possible exact algorithms.
+\end{remark}
+
+\section{Claim discipline for Paper I}
+The following are the defensible narrow contributions to test and present:
+\begin{enumerate}
+ \item a strict binary one-deletion-plus-substitution family where best-history and aggregate ML
+       orderings disagree;
+ \item an exact inverse-alignment shell decoder for arbitrary membership-testable binary codes;
+ \item a channel-specific realization-dependent stopping theorem and finite-length work bounds;
+ \item high-probability sub-codebook query complexity when $R>h_2(p_s)$;
+ \item exhaustive and multi-baseline finite-length certification.
+\end{enumerate}
+The generic principles of summing path probabilities, threshold certification, GRAND-style
+membership testing, and binary one-insertion-sphere cardinality have prior art and must not be
+claimed as independently new.  Multiple deletions, insertions, soft information, transducers,
+hardware, and code design remain outside Paper I.
+
+\end{document}

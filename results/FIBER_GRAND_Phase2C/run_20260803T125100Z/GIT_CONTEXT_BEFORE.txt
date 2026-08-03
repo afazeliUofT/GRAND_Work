@@ -1,0 +1,10 @@
+ORIGIN=git@github.com:afazeliUofT/Grand_Work.git
+BRANCH=main
+
+## main...origin/main
+?? RUN_FIBER_GRAND_PHASE2A.py:Zone.Identifier
+?? RUN_FIBER_GRAND_PHASE2B.py:Zone.Identifier
+?? RUN_FIBER_GRAND_PHASE2B_R1.py:Zone.Identifier
+?? RUN_FIBER_GRAND_PHASE2C.py
+?? RUN_FIBER_GRAND_PHASE2C.py:Zone.Identifier
+?? experiments/FIBER_GRAND_PHASE2C_BASELINE_EXACT_DECODER_GATE_v1_0/

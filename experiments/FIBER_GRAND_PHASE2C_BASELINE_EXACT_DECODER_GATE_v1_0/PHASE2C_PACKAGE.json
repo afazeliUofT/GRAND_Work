@@ -1,0 +1,11 @@
+{
+  "name": "FIBER_GRAND_PHASE2C_BASELINE_EXACT_DECODER_GATE_v1_0",
+  "version": "1.0.0",
+  "date": "2026-08-03",
+  "required_base_commit": "7f8c87eb202dc7827439799ea7ed8e876dd4b73a",
+  "purpose": "Bounded theorem and exact-baseline evidence gate after U_AC was narrowed to a mathematical result",
+  "channel": "exactly one uniform deletion plus BSC substitutions",
+  "default_profile": "996 preregistered trials at p_s=0.05",
+  "third_party_python_dependencies": false,
+  "compiler_required": "C++17"
+}

@@ -1,0 +1,26 @@
+{
+  "argv": [
+    "/home/afazeli2006/GRAND_Work/experiments/FIBER_GRAND_PHASE2C_BASELINE_EXACT_DECODER_GATE_v1_0/run_phase2c.py",
+    "--repo-root",
+    "/home/afazeli2006/GRAND_Work",
+    "--config",
+    "/home/afazeli2006/GRAND_Work/experiments/FIBER_GRAND_PHASE2C_BASELINE_EXACT_DECODER_GATE_v1_0/config/phase2c_default.json",
+    "--output",
+    "/home/afazeli2006/GRAND_Work/results/FIBER_GRAND_Phase2C/run_20260803T125100Z",
+    "--cache-root",
+    "/home/afazeli2006/.cache/fiber_grand_phase2c_v1_0"
+  ],
+  "config": "/home/afazeli2006/GRAND_Work/experiments/FIBER_GRAND_PHASE2C_BASELINE_EXACT_DECODER_GATE_v1_0/config/phase2c_default.json",
+  "created_utc": "2026-08-03T12:51:05+00:00",
+  "environment": {
+    "cpu_count": 16,
+    "cwd": "/home/afazeli2006/GRAND_Work/experiments/FIBER_GRAND_PHASE2C_BASELINE_EXACT_DECODER_GATE_v1_0",
+    "machine": "x86_64",
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "processor": "x86_64",
+    "python": "3.12.3 (main, Jun 19 2026, 12:46:00) [GCC 13.3.0]"
+  },
+  "output": "/home/afazeli2006/GRAND_Work/results/FIBER_GRAND_Phase2C/run_20260803T125100Z",
+  "package_root": "/home/afazeli2006/GRAND_Work/experiments/FIBER_GRAND_PHASE2C_BASELINE_EXACT_DECODER_GATE_v1_0",
+  "package_version": "1.0.0"
+}

@@ -1,0 +1,38 @@
+FIBER-GRAND Paper I — Phase 2C baseline exact-decoder gate wrapper
+WRAPPER_LOG=/tmp/FIBER_GRAND_PHASE2C_WRAPPER_20260803T125100Z_2364112.log
+[repo] root=/home/afazeli2006/GRAND_Work
+[repo] origin=git@github.com:afazeliUofT/Grand_Work.git
+[repo] branch=main
+[repo] Phase 2B-R1 PASS commit verified as ancestor: 7f8c87eb202dc7827439799ea7ed8e876dd4b73a
+[git] local excludes verified at /home/afazeli2006/GRAND_Work/.git/info/exclude
+[git] repository line-ending policy verified at /home/afazeli2006/GRAND_Work/.gitattributes
+[package] located=/mnt/c/Users/alifa/Downloads/FIBER_GRAND_PHASE2C_BASELINE_EXACT_DECODER_GATE_v1_0_2026-08-03.zip
+[package] sha256=dedc6eb71748325edda2337a4ac34c4dd05f30c215f2de2457016fdbe073fadd (verified)
+[package] installed=/home/afazeli2006/GRAND_Work/experiments/FIBER_GRAND_PHASE2C_BASELINE_EXACT_DECODER_GATE_v1_0
+$ /usr/bin/python3 -m venv /home/afazeli2006/.venvs/fiber_grand_phase2c_v1_0
+[command return code] 0
+[venv] interpreter=/home/afazeli2006/.venvs/fiber_grand_phase2c_v1_0/bin/python
+[venv] version=(3, 12, 3); no third-party dependencies are required
+[venv] the wrapper executes the package with this interpreter; parent-shell activation is unnecessary
+[run] output=/home/afazeli2006/GRAND_Work/results/FIBER_GRAND_Phase2C/run_20260803T125100Z
+$ /home/afazeli2006/.venvs/fiber_grand_phase2c_v1_0/bin/python -m unittest discover -s tests -v
+test_code_reproducibility_and_orthogonality (test_phase2c.Phase2CUnitTests.test_code_reproducibility_and_orthogonality) ... ok
+test_default_trial_contract (test_phase2c.Phase2CUnitTests.test_default_trial_contract) ... ok
+test_discovery_shell (test_phase2c.Phase2CUnitTests.test_discovery_shell) ... ok
+test_extended_hamming_distance_small (test_phase2c.Phase2CUnitTests.test_extended_hamming_distance_small) ... ok
+test_insertion_sphere_exact (test_phase2c.Phase2CUnitTests.test_insertion_sphere_exact) ... ok
+test_shell_bound (test_phase2c.Phase2CUnitTests.test_shell_bound) ... ok
+test_stopping_offset_examples (test_phase2c.Phase2CUnitTests.test_stopping_offset_examples) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.371s
+
+OK
+[command return code] 0
+$ /home/afazeli2006/.venvs/fiber_grand_phase2c_v1_0/bin/python /home/afazeli2006/GRAND_Work/experiments/FIBER_GRAND_PHASE2C_BASELINE_EXACT_DECODER_GATE_v1_0/run_phase2c.py --repo-root /home/afazeli2006/GRAND_Work --config /home/afazeli2006/GRAND_Work/experiments/FIBER_GRAND_PHASE2C_BASELINE_EXACT_DECODER_GATE_v1_0/config/phase2c_default.json --output /home/afazeli2006/GRAND_Work/results/FIBER_GRAND_Phase2C/run_20260803T125100Z --cache-root /home/afazeli2006/.cache/fiber_grand_phase2c_v1_0
+[phase2c] status=PASS
+[phase2c] decision=GO_PAPER_I_BASELINE_EXACT_DECODER
+[phase2c] output=/home/afazeli2006/GRAND_Work/results/FIBER_GRAND_Phase2C/run_20260803T125100Z
+[phase2c] return_zip=/home/afazeli2006/GRAND_Work/results/FIBER_GRAND_Phase2C/run_20260803T125100Z/FIBER_GRAND_PHASE2C_RETURN_run_20260803T125100Z.zip
+[phase2c] return_zip_sha256=6603ac38710504f05a6f21e6db3fe25ed420827b519975bf4e687f3db0cc23ef
+[command return code] 0

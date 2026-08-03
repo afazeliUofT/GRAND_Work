@@ -1,0 +1,31 @@
+{
+  "cpp_build": {
+    "binary_sha256": "63f1cfb8b0521a1a5b837e183373119571ae9e40b9e6741b37ee9d7427efaad2",
+    "compiler": "g++ (Debian 14.2.0-19) 14.2.0",
+    "status": "PASS"
+  },
+  "created_utc": "2026-08-03T09:17:07+00:00",
+  "full_campaign_pretest": {
+    "decision": "GO_PAPER_I_BASELINE_EXACT_DECODER",
+    "natural_trials": 896,
+    "note": "These timings/results are construction checks and are not substituted for the user WSL evidence.",
+    "status": "PASS",
+    "stress_trials": 100,
+    "trial_count": 996,
+    "validation_violation_count": 0
+  },
+  "latex_two_pass": {
+    "source": "theory/FIBER_GRAND_Phase2C_Baseline_Exact_Decoder_Theorems.tex",
+    "status": "PASS"
+  },
+  "scope": "development-environment package-construction validation; canonical WSL run remains required",
+  "status": "PASS",
+  "theory_checks": {
+    "exact_cases": 335146,
+    "status": "PASS"
+  },
+  "unit_tests": {
+    "cases": 7,
+    "status": "PASS"
+  }
+}
