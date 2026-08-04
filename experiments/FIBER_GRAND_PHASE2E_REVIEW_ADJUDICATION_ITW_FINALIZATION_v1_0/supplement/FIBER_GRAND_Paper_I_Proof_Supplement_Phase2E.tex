@@ -1,0 +1,318 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[letterpaper,margin=0.82in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\C}{\mathcal C}\newcommand{\I}{\mathcal I}\newcommand{\one}{\mathbf 1}
+\newcommand{\Prb}{\mathbb P}\newcommand{\ML}{\operatorname{ML}}
+\newcommand{\Vol}{\operatorname{Vol}}\newcommand{\wt}{\operatorname{wt}}
+\title{FIBER-GRAND Paper I: Phase-2E Proof Supplement}
+\author{Ali Fazeli}
+\date{3 August 2026}
+\begin{document}\maketitle
+\begin{abstract}
+This supplement gives complete proofs for the repaired workshop candidate on exact aggregate-ML
+decoding of an arbitrary nonempty binary membership-testable code under exactly one uniformly
+located deletion and independent BSC substitutions. It incorporates the independent-review repairs:
+a finite-exhaustion case split in the stopping theorem, a monotonicity-and-continuity proof of the
+high-probability exponent, terminology separating a deletion-alignment component from a fully
+specified latent history, and a constructive witness showing why strict stopping is required for a
+complete ML tie set. It also gives a uniform-random-code occupancy benchmark for the finite scoring
+measurements. No generic path-summation, deletion-distance, threshold, membership-oracle, or
+insertion-sphere principle is claimed as new.
+\end{abstract}
+
+\section{Model and exact aggregate likelihood}
+Let $X=(X_1,\ldots,X_n)\in\{0,1\}^n$. Independent substitutions form
+$\widetilde X_i=X_i\oplus N_i$, where $N_i\sim\mathrm{Bernoulli}(p_s)$ independently and
+$0\le p_s<1/2$. Exactly one coordinate $J$ is deleted uniformly from $\{1,\ldots,n\}$. The
+observation $Y\in\{0,1\}^{m}$ has $m=n-1$. The code $\C\subseteq\{0,1\}^n$ is arbitrary and
+nonempty, has a uniform prior, and is accessed only through membership testing. For
+$x\in\{0,1\}^n$, $y\in\{0,1\}^m$, define
+\begin{equation}
+ d_j(x,y)=\sum_{i=1}^{j-1}\one\{x_i\ne y_i\}
+ +\sum_{i=j+1}^{n}\one\{x_i\ne y_{i-1}\}. \label{eq:dj}
+\end{equation}
+
+\begin{proposition}[Likelihood and sliding recurrence]\label{prop:like}
+For every $x,y$,
+\begin{equation}
+ W(y\mid x)=\frac1n\sum_{j=1}^{n}p_s^{d_j(x,y)}(1-p_s)^{m-d_j(x,y)}. \label{eq:likelihood}
+\end{equation}
+Moreover,
+\begin{align}
+ d_1(x,y)&=\sum_{i=2}^{n}\one\{x_i\ne y_{i-1}\},\label{eq:d1}\\
+ d_{j+1}(x,y)&=d_j(x,y)-\one\{x_{j+1}\ne y_j\}+\one\{x_j\ne y_j\},\quad 1\le j<n. \label{eq:slide}
+\end{align}
+Thus all alignment components are evaluated in $O(n)$ arithmetic operations.
+\end{proposition}
+\begin{proof}
+Condition on $J=j$. The $m$ survivor comparisons require exactly $d_j(x,y)$ substitutions. The
+substitution variable on the deleted coordinate is unobserved; summing over its two values contributes
+$(1-p_s)+p_s=1$. This gives the $j$th term of \eqref{eq:likelihood}; averaging over the uniform
+$J$ proves the formula. Moving the hypothesized deletion from $j$ to $j+1$ removes the suffix
+comparison $(x_{j+1},y_j)$ and adds the prefix comparison $(x_j,y_j)$, proving \eqref{eq:slide}.
+\end{proof}
+
+\section{Strict deletion-alignment-component reversal}
+Define the largest deletion-alignment component
+\begin{equation}
+ A_y(x)=\max_j\frac1n p_s^{d_j(x,y)}(1-p_s)^{m-d_j(x,y)}. \label{eq:Ay}
+\end{equation}
+This is after marginalizing the substitution on the deleted coordinate. If a ``history'' is instead
+defined to include that latent substitution bit, its largest probability is $(1-p_s)A_y(x)$ for
+$0<p_s<1/2$, a common factor that leaves all candidate orderings unchanged.
+
+\begin{theorem}[Strict component/aggregate-ML reversal]\label{thm:rev}
+For $n\ge4$ and $0<p_s<1/2$, set
+\[
+ y=0^{n-3}10,\qquad x_A=0^{n-3}101,\qquad x_B=0^n,\qquad \C=\{x_A,x_B\}.
+\]
+Then $A_y(x_A)>A_y(x_B)$, whereas
+\begin{equation}
+ W(y\mid x_B)>W(y\mid x_A)\quad\Longleftrightarrow\quad np_s>1+2p_s^2. \label{eq:revcondition}
+\end{equation}
+At equality in \eqref{eq:revcondition}, the aggregate scores tie while the component inequality
+remains strict.
+\end{theorem}
+\begin{proof}
+Deleting the final coordinate of $x_A$ gives $y$ without any survivor substitution, so
+$A_y(x_A)=n^{-1}(1-p_s)^m$. Every deletion of $x_B$ leaves $0^m$, which differs from $y$ in one
+coordinate; hence $A_y(x_B)=n^{-1}p_s(1-p_s)^{m-1}<A_y(x_A)$.
+
+For $x_A$, mismatch distances $0,1,2,3$ have multiplicities $1,1,1,n-3$, respectively; every
+alignment of $x_B$ has distance one. Therefore
+\begin{align*}
+ W(y\mid x_B)&=p_s(1-p_s)^{n-2},\\
+ W(y\mid x_A)&=\frac1n\bigl[(1-p_s)^{n-1}+p_s(1-p_s)^{n-2}
+ +p_s^2(1-p_s)^{n-3}+(n-3)p_s^3(1-p_s)^{n-4}\bigr].
+\end{align*}
+Direct factorization gives
+\[
+ \frac{n\{W(y\mid x_B)-W(y\mid x_A)\}}{(1-p_s)^{n-4}}
+ =(1-2p_s)(np_s-1-2p_s^2).
+\]
+The first factor is positive on the stated interval, proving the equivalence and equality case.
+\end{proof}
+\begin{remark}[Operating regime]
+At $p_s=0.05$, the strict aggregate reversal requires $0.05n>1.005$, hence integer $n\ge21$. The
+family therefore reverses at the tested $n=24,32$, but not at $n=16$. The theorem claims an explicit
+strict construction, not novelty of the general path-versus-aggregate distinction.
+\end{remark}
+
+\section{Insertion spheres and discovery shells}
+For $z\in\{0,1\}^{m}$, let $\I(z)$ be the set of length-$n$ binary words formed by one insertion.
+\begin{lemma}[Classical binary one-insertion sphere]\label{lem:sphere}
+For every $z$, $|\I(z)|=m+2=n+1$. For inserted bit $b$, all distinct outputs arise by inserting
+$b$ in the first gap and immediately after each symbol of $z$ unequal to $b$.
+\end{lemma}
+\begin{proof}
+Moving an inserted $b$ through a run of $b$ does not change the output. A distinct output appears
+initially and every time the insertion crosses a symbol unequal to $b$, giving
+$1+\#\{i:z_i\ne b\}$. Summing over $b=0,1$ gives $m+2$. The two classes differ in Hamming weight
+and are disjoint.
+\end{proof}
+\begin{remark}
+Lemma~\ref{lem:sphere} is classical. Likewise, $h_y(x)=\min_jd_j(x,y)$ is, up to orientation, the
+known minimum one-deletion alignment distance. The only role below is its immediate relation to the
+inverse enumeration.
+\end{remark}
+
+Define
+\begin{equation}
+ h_y(x)=\min_{1\le j\le n}d_j(x,y). \label{eq:hy}
+\end{equation}
+At shell $s$, enumerate every $e\in\{0,1\}^m$ with $\wt(e)=s$, set $z=y\oplus e$, and generate
+$\I(z)$.
+\begin{proposition}[Inverse-enumeration first appearance]\label{prop:shell}
+Candidate $x$ is generated by the end of shell $s$ if and only if $h_y(x)\le s$. Its first
+generation shell is exactly $h_y(x)$.
+\end{proposition}
+\begin{proof}
+For alignment $j$, deleting $x_j$ gives $z=y\oplus e$ with $\wt(e)=d_j(x,y)$, and reinserting
+$x_j$ at coordinate $j$ reconstructs $x$. Thus $x$ appears at shell $d_j$ for each alignment and
+no later than $h_y(x)$. Conversely, any generation of $x$ at shell $s$ has an insertion coordinate
+$j$ whose deletion returns $y\oplus e$ with $\wt(e)=s$, so $d_j(x,y)=s$ and $h_y(x)\le s$.
+\end{proof}
+
+\section{Exact unseen-shell certificate}
+Assume $0<p_s<1/2$. After completing shell $s<m$, define
+\begin{equation}
+ U_s=p_s^{s+1}(1-p_s)^{m-s-1}. \label{eq:Us}
+\end{equation}
+\begin{theorem}[Unseen-word bound and complete-tie certificate]\label{thm:cert}
+Every word unseen after shell $s<m$ has likelihood at most $U_s$. If a completely scored incumbent
+codeword has likelihood strictly greater than $U_s$, the current incumbent set is the complete
+global ML tie set. Exhaustion at shell $m$ always returns the exact tie set.
+\end{theorem}
+\begin{proof}
+By Proposition~\ref{prop:shell}, unseen $x$ has $h_y(x)>s$ and therefore
+$d_j(x,y)\ge s+1$ for every $j$. Since $p_s/(1-p_s)<1$, each term of \eqref{eq:likelihood} is at
+most $U_s$; their average is no larger. A strict incumbent comparison excludes both an unseen
+strictly better word and an unseen tie. At shell $m$, all candidates have appeared.
+\end{proof}
+
+\begin{proposition}[Strictness is necessary for complete ties]\label{prop:strictwitness}
+There are interior channel parameters for which a discovered incumbent equals $U_s$ while an unseen
+codeword ties it. In particular, let $n=4$, $m=3$, $y=001$, $p_s=1/3$, $s=0$, and
+$\C=\{0010,0000\}$. Then $0010$ is discovered at shell zero, $0000$ is unseen after shell zero,
+and
+\[
+ W(y\mid0010)=W(y\mid0000)=U_0=\frac4{27}.
+\]
+Thus replacing $>$ by $\ge$ can return an incomplete ML tie set.
+\end{proposition}
+\begin{proof}
+The alignment-distance vectors are $(2,2,1,0)$ for $0010$ and $(1,1,1,1)$ for $0000$. The first
+minimum is zero and the second is one. At $p_s=1/3$, direct substitution into
+\eqref{eq:likelihood} gives $4/27$ for both; \eqref{eq:Us} also gives $U_0=(1/3)(2/3)^2=4/27$.
+\end{proof}
+
+\begin{remark}[Boundary cases]
+At $p_s=0$, use the standard Bernoulli-mass convention $0^0=1$: a word has positive likelihood
+exactly when some alignment distance is zero, so every positive-likelihood word is generated at
+shell zero. At $p_s=1/2$, every candidate has likelihood $2^{-m}$ and no strict shell decay exists;
+complete tie certification therefore requires finite exhaustion.
+\end{remark}
+
+\section{Realization-dependent stopping and finite work}
+Let $T$ be the number of substitutions among the $m$ surviving symbols, put
+$\rho=p_s/(1-p_s)$, and define
+\begin{equation}
+ L_n(p_s)=\min\{\ell\ge1:\rho^\ell<1/n\}
+ =\left\lfloor\log_{(1-p_s)/p_s}n\right\rfloor+1. \label{eq:Ln}
+\end{equation}
+The floor formula remains correct when $n$ is an exact power of the logarithm base because the
+defining inequality is strict.
+
+\begin{theorem}[Stopping shell]\label{thm:stop}
+For $0<p_s<1/2$, the exact decoder stops no later than
+\begin{equation}
+ S\le\min\{m,T+L_n(p_s)-1\}. \label{eq:stop}
+\end{equation}
+This bound is independent of the code beyond nonemptiness and membership access.
+\end{theorem}
+\begin{proof}
+Under the true deletion alignment, the transmitted codeword has mismatch count $T$. It is therefore
+discovered by shell $T$ and has aggregate likelihood at least
+\begin{equation}
+ \frac1n p_s^T(1-p_s)^{m-T}. \label{eq:truecomponent}
+\end{equation}
+Let $s_0=T+L_n-1$. If $s_0\ge m$, finite exhaustion gives
+$S\le m=\min\{m,s_0\}$. Suppose instead that $s_0<m$, so $U_{s_0}$ is defined. Comparing
+\eqref{eq:Us} with \eqref{eq:truecomponent},
+\[
+ \frac{U_{s_0}}{n^{-1}p_s^T(1-p_s)^{m-T}}=n\rho^{L_n}<1.
+\]
+The running incumbent is at least \eqref{eq:truecomponent}, so the strict certificate fires by
+shell $s_0$.
+\end{proof}
+
+Let $\Vol(m,s)=\sum_{w=0}^{\min\{m,s\}}\binom mw$.
+\begin{corollary}[Deterministic, confidence, and expected work]\label{cor:work}
+For the realized $T$ and the right-hand side $S_0$ of \eqref{eq:stop},
+\begin{equation}
+ Q_{\rm gen},Q_{\rm mem}\le(n+1)\Vol(m,S_0),\qquad Q_{\rm score}\le Q_{\rm mem}. \label{eq:work}
+\end{equation}
+A history-pair generator attempts $2n\Vol(m,S_0)$ insertion pairs before global deduplication.
+If $\tau_\delta$ is the least integer with $\Prb[T\le\tau_\delta]\ge1-\delta$, then with
+probability at least $1-\delta$,
+\begin{equation}
+ Q_{\rm mem}\le(n+1)\Vol\!\left(m,\min\{m,\tau_\delta+L_n-1\}\right). \label{eq:confidence}
+\end{equation}
+Moreover,
+\begin{equation}
+ \mathbb E Q_{\rm mem}\le(n+1)\sum_{t=0}^{m}\binom mtp_s^t(1-p_s)^{m-t}
+ \Vol\!\left(m,\min\{m,t+L_n-1\}\right). \label{eq:expected}
+\end{equation}
+\end{corollary}
+\begin{proof}
+Shells through $S_0$ contain $\Vol(m,S_0)$ error vectors, each with exactly $n+1$ distinct
+one-insertion outputs. Global deduplication can only reduce membership calls, and only members are
+completely scored. Since $T\sim\mathrm{Binomial}(m,p_s)$, monotonicity in $T$ gives
+\eqref{eq:confidence}, and conditioning on $T$ gives \eqref{eq:expected}.
+\end{proof}
+
+\section{Standard high-probability entropy corollary}
+Let $h_2(u)=-u\log_2u-(1-u)\log_2(1-u)$.
+\begin{theorem}[Oracle/query exponent]\label{thm:exp}
+Fix $0<p_s<1/2$ and $c>0$. For all sufficiently large $n$, with probability at least $1-n^{-c}$,
+\begin{equation}
+ Q_{\rm mem},Q_{\rm score}\le2^{n(h_2(p_s)+o(1))}. \label{eq:exponent}
+\end{equation}
+If $|\C_n|=2^{nR+o(n)}$ with $R>h_2(p_s)$, then on the same event exhaustive codeword-wise ML
+performs at least $2^{n(R-h_2(p_s)-o(1))}$ times as many complete candidate-likelihood evaluations.
+\end{theorem}
+\begin{proof}
+Put
+\[
+ \epsilon_n=\sqrt{\frac{c\ln n}{2m}},\qquad
+ a_n=p_s+\epsilon_n+\frac{L_n-1}{m}.
+\]
+Hoeffding's inequality gives
+$\Prb[T>m(p_s+\epsilon_n)]\le e^{-2m\epsilon_n^2}=n^{-c}$. On the complementary event,
+Theorem~\ref{thm:stop} implies $S/m\le a_n$. Since $\epsilon_n=o(1)$ and $L_n=O(\log n)$,
+$a_n=p_s+o(1)$; for all sufficiently large $n$, $a_n<1/2$. Hamming-ball volume and $h_2$
+are increasing on $[0,1/2]$, so
+\[
+ \Vol(m,S)\le2^{m h_2(a_n)}.
+\]
+By continuity, $h_2(a_n)=h_2(p_s)+o(1)$, while $m/n\to1$ and
+$\log_2(n+1)/n\to0$. Combining with \eqref{eq:work} yields \eqref{eq:exponent}. Dividing
+$|\C_n|$ by $Q_{\rm score}$ gives the stated exhaustive-scoring ratio.
+\end{proof}
+\begin{remark}
+The value $h_2(p_s)$ and the typical-volume mechanism are classical for BSC guesswork/GRAND. The
+content here is only that the exact synchronization decoder inherits this upper exponent after the
+channel-specific stopping theorem and a polynomial one-deletion factor. This is not an expected
+GRAND guesswork identity and not a lower bound for all exact decoders.
+\end{remark}
+
+\section{Uniform-random-code occupancy benchmark}
+\begin{proposition}[Exact fixed-set occupancy]\label{prop:occupancy}
+Let the ambient space have size $N=2^n$. Fix a query set $A$ of size $G$ containing $x_0$. Choose
+$\C$ uniformly among all $M$-subsets of the ambient space conditioned on $x_0\in\C$. Then
+\begin{equation}
+ \mathbb E[|A\cap\C|\mid A,x_0]
+ =1+(G-1)\frac{M-1}{N-1}. \label{eq:occupancy}
+\end{equation}
+\end{proposition}
+\begin{proof}
+Write $|A\cap\C|=1+\sum_{x\in A\setminus\{x_0\}}\one\{x\in\C\}$. For each such $x$, symmetry
+under the conditioned uniform choice gives
+$\Prb[x\in\C\mid x_0\in\C]=(M-1)/(N-1)$. Linearity of expectation proves the formula.
+\end{proof}
+\begin{remark}[Interpretation]
+This is an exact occupancy identity for a fixed query set and random codebook. It is used only as a
+first-order benchmark. It does not assert that CRC or Hamming codes are random subsets, that the
+query set is independent of the code, or that a conditional median equals this expectation. For
+$n=32$ and the shell-one generation cap $G=1056$, the predictions are $1.52$, $5.12$, and $17.48$
+for $k=21,24,26$, close to the observed median complete-score counts $1.5$--$3$, $4$, and $13.5$.
+\end{remark}
+
+\section{Claim boundaries after independent review}
+The generic aggregate likelihood, path-versus-string distinction, minimum deletion-alignment
+metric, membership-oracle interface, insertion-sphere size, threshold logic, and $h_2(p_s)$ typical
+volume are prior art or standard consequences. The repaired contribution claims only:
+\begin{enumerate}
+\item the explicit strict binary reversal family and exact threshold;
+\item the closed-form aggregate unseen-shell bound $U_s$ for this channel;
+\item complete-tie exact certification using that bound;
+\item the code-independent realization-dependent stop $S\le T+L_n-1$;
+\item finite-length exact evidence and a transparent operation-count separation;
+\item the occupancy benchmark as an explanatory model, not a universal complexity theorem.
+\end{enumerate}
+No theorem asserts linear-code structure, unit-cost membership, unique ML decoding, instance
+optimality, universal latency superiority, or performance under more than one edit.
+
+\end{document}

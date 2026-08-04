@@ -1,0 +1,13 @@
+{
+  "branch": "main",
+  "created_utc": "2026-08-04T00:38:41+00:00",
+  "local_head_before": "c7b4eed3247382a29c9d794035ef60956c952bfc",
+  "new_simulations_authorized": false,
+  "origin": "git@github.com:afazeliUofT/Grand_Work.git",
+  "package_installation": "/home/afazeli2006/GRAND_Work/experiments/FIBER_GRAND_PHASE2E_REVIEW_ADJUDICATION_ITW_FINALIZATION_v1_0",
+  "package_zip": "/mnt/c/Users/alifa/Downloads/FIBER_GRAND_PHASE2E_REVIEW_ADJUDICATION_ITW_FINALIZATION_v1_0_2026-08-03.zip",
+  "package_zip_sha256": "67e9415d566493b45d92c4b02592a4f6f9959a914d9b02715b78d5af9d169691",
+  "repository_root": "/home/afazeli2006/GRAND_Work",
+  "venv_python": "/home/afazeli2006/.venvs/fiber_grand_phase2e_v1_0/bin/python",
+  "wrapper": "/home/afazeli2006/GRAND_Work/RUN_FIBER_GRAND_PHASE2E.py"
+}

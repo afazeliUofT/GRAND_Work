@@ -1,0 +1,12 @@
+{
+  "created_utc": "2026-08-04T00:38:42+00:00",
+  "execution_correctness_pass": true,
+  "label": "ITW_READY_AFTER_REVIEW_REPAIR",
+  "large_campaign_authorized": false,
+  "new_simulations_run": false,
+  "novelty_claims_narrowed": true,
+  "proof_repairs_applied": true,
+  "reason": "Four independent reviews were adjudicated; valid proof and novelty repairs were applied, invalid over-broad objections were rejected, and frozen Phase-2C evidence was preserved.",
+  "standalone_tex": true,
+  "submission_positioning": "ITW candidate; not positioned as ISIT-ready"
+}

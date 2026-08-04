@@ -1,0 +1,376 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{amsthm}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage{cite}
+\usepackage{url}
+\usepackage{balance}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\C}{\mathcal C}
+\newcommand{\one}{\mathbf 1}
+\newcommand{\ML}{\operatorname{ML}}
+\newcommand{\Vol}{\operatorname{Vol}}
+\newcommand{\wt}{\operatorname{wt}}
+\newcommand{\I}{\mathcal I}
+
+\title{FIBER-GRAND: Exact Shell Certification for Aggregate-ML Decoding\
+with One Deletion and Substitutions}
+\author{\IEEEauthorblockN{Ali Fazeli}
+\IEEEauthorblockA{Department of Electrical and Computer Engineering\\
+University of Toronto, Toronto, Canada}}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Exact likelihoods for insertion/deletion/substitution channels are obtained by summing over
+compatible synchronization paths, so the first codeword reached by a single likely history need
+not be maximum likelihood (ML). We isolate the finite-block model of exactly one uniformly located
+deletion followed by independent binary symmetric substitutions and an arbitrary binary code
+accessed through membership tests. We give an explicit two-codeword family in which the largest
+deletion-alignment component and the aggregate-ML codeword strictly reverse, with threshold
+$np_s>1+2p_s^2$. We then specialize inverse-noise search to aggregate candidate likelihoods. Its
+channel-specific ingredients are a closed-form upper bound on every word unseen after a completed
+substitution shell, an exact complete-tie stopping certificate, and a code-independent
+realization-dependent stopping bound. Standard Hamming-volume asymptotics then give the usual
+$h_2(p_s)$ high-probability query exponent as a corollary, not as a new entropy law. A random-code
+occupancy calculation predicts the observed number of completely scored codewords. Across 996 exact
+finite-length trials, all exact comparators agreed; at $n=32$ the median number of completely scored
+codewords was $1.5$--$13.5$. Operation counts and wall-clock time are reported separately, and no
+universal latency or code-specific optimality claim is made.
+\end{abstract}
+
+\section{Introduction}
+For variable-length channels, the likelihood of an output is obtained by marginalizing over
+compatible edit paths; this principle and efficient synchronization-channel likelihood computation
+are classical \cite{bahl1975decoding,davey2001reliable}. In the pure-deletion limit, ML decoding is
+governed by alignment or embedding multiplicity \cite{sabary2020error}. This differs from GRAND on
+an additive channel, where likelihood-ordered noise guessing makes the first codebook hit ML
+\cite{duffy2019grand}. Thus, GRAND's first-hit argument does not transfer unchanged when multiple
+synchronization histories coalesce into one candidate word.
+
+Related work includes ML formulations and certified optimization for binary codes with deletion
+synchronization errors \cite{yang2020decoding}, sequential synchronization decoding
+\cite{banerjee2022sequential}, and a shift-compensating minimum distance over one-deletion
+alignments that is linearly computable \cite{gershon2022genomic}. Most-probable-path versus
+most-probable-string distinctions and incumbent-versus-unfinished-mass bounds are also established
+in probabilistic automata \cite{higuera2013computing}. Generic threshold stopping is classical
+\cite{fagin2003optimal}; recent guessing-codeword work likewise proves ML under appropriate
+incumbent bounds \cite{wang2025guessing}. We therefore do not claim a new aggregate-likelihood
+principle, a new deletion distance, or a new generic stopping paradigm.
+
+The narrow contributions are as follows. First, we give a strict binary one-deletion-plus-BSC
+construction with an exact reversal threshold. Second, for this channel we derive a closed-form
+unseen-word bound and a complete-tie exact certificate for membership-based inverse search. Third,
+we prove a realization-dependent stopping theorem and finite-confidence work caps. The associated
+$h_2(p_s)$ exponent is explicitly presented as standard Hamming-volume asymptotics applied after
+that stopping result. Fourth, we provide exact finite-length evidence and a random-code occupancy
+benchmark that explains the observed scoring work. The model is fixed to one uniform deletion and
+hard BSC substitutions; multiple edits, soft information, code design, and hardware are outside
+scope.
+
+\section{Channel law and a strict alignment-component reversal}
+Let $X=(X_1,\ldots,X_n)\in\{0,1\}^n$. Independent substitutions with probability
+$0\le p_s<1/2$ act before exactly one uniformly located deletion. The observation
+$Y\in\{0,1\}^{m}$ has $m=n-1$. The nonempty code $\C\subseteq\{0,1\}^n$ has a uniform prior and is
+accessed through $\one\{x\in\C\}$. For candidate $x$ and observation $y$, define
+\begin{equation}
+ d_j(x,y)=\sum_{i<j}\one\{x_i\ne y_i\}+\sum_{i>j}\one\{x_i\ne y_{i-1}\}.
+ \label{eq:dj}
+\end{equation}
+Conditioning on the deletion coordinate gives the established aggregate form specialized to this
+channel,
+\begin{equation}
+ W(y\mid x)=\frac1n\sum_{j=1}^{n}p_s^{d_j(x,y)}(1-p_s)^{m-d_j(x,y)}. \label{eq:likelihood}
+\end{equation}
+All $d_j$ are obtained in $O(n)$ arithmetic operations from
+\begin{equation}
+ d_{j+1}=d_j-\one\{x_{j+1}\ne y_j\}+\one\{x_j\ne y_j\}. \label{eq:slide}
+\end{equation}
+The quantity below is the largest \emph{deletion-alignment component} after the unobserved
+substitution on the deleted coordinate is marginalized. A fully specified pre-deletion history
+adds the same maximizing factor $1-p_s$ to every candidate and does not change the ordering.
+
+\begin{theorem}[Strict component/aggregate-ML reversal]\label{thm:reversal}
+For $n\ge4$ and $0<p_s<1/2$, let
+\[
+ y=0^{n-3}10,\quad x_A=0^{n-3}101,\quad x_B=0^n,\quad \C=\{x_A,x_B\}.
+\]
+The largest deletion-alignment component strictly favors $x_A$, while aggregate ML favors $x_B$
+if and only if
+\begin{equation}
+ np_s>1+2p_s^2. \label{eq:condition}
+\end{equation}
+\end{theorem}
+\begin{proof}[Proof sketch]
+Deleting the final symbol of $x_A$ requires no survivor substitution, while every alignment of
+$x_B$ requires one. The mismatch multiplicities of $x_A$ at distances $0,1,2,3$ are
+$1,1,1,n-3$. Substitution in \eqref{eq:likelihood} gives
+\[
+ \frac{n\{W(y\mid x_B)-W(y\mid x_A)\}}{(1-p_s)^{n-4}}
+ =(1-2p_s)(np_s-1-2p_s^2),
+\]
+which proves the statement. Complete proofs are in the supplement.
+\end{proof}
+At the experimental point $p_s=0.05$, \eqref{eq:condition} holds exactly for integer $n\ge21$;
+therefore this family reverses at $n=24,32$ but not at $n=16$. The general path-versus-aggregate
+phenomenon is known; the claim here is only the explicit strict binary family and threshold.
+
+\section{Shell-certified exact aggregate search}
+For $z\in\{0,1\}^{m}$, let $\I(z)$ be its binary one-insertion sphere. Its classical cardinality is
+$n+1$ \cite{levenshtein1966binary}. Define
+\begin{equation}
+ h_y(x)=\min_j d_j(x,y). \label{eq:hy}
+\end{equation}
+Up to orientation, this is the known minimum one-deletion alignment distance used in
+\cite{gershon2022genomic}. The immediate inverse-enumeration property needed here is: if shell $s$
+enumerates every error pattern $e$ of weight $s$, forms $z=y\oplus e$, and generates $\I(z)$,
+then candidate $x$ first appears at shell $h_y(x)$.
+
+\begin{algorithm}[t]
+\caption{Shell-certified one-deletion FIBER-GRAND}\label{alg:fiber}
+\begin{algorithmic}[1]
+\State $\mathsf{seen}\gets\emptyset$; no incumbent
+\For{$s=0,1,\ldots,m$}
+  \ForAll{$e\in\{0,1\}^m$ with $\wt(e)=s$}
+    \State $z\gets y\oplus e$
+    \ForAll{$x\in\I(z)$ using the $n+1$ distinct generator}
+      \If{$x\notin\mathsf{seen}$}
+        \State insert $x$ into $\mathsf{seen}$ and query $x\in\C$
+        \If{$x\in\C$}
+          \State evaluate the complete score \eqref{eq:likelihood} using \eqref{eq:slide}
+          \State update the incumbent score and complete tie set
+        \EndIf
+      \EndIf
+    \EndFor
+  \EndFor
+  \If{an incumbent exists and $[s=m$ or incumbent $>U_s]$}
+    \State \Return the incumbent and complete ML tie set
+  \EndIf
+\EndFor
+\end{algorithmic}
+\end{algorithm}
+
+For $0<p_s<1/2$, after completing shell $s<m$, every unseen candidate has
+$d_j\ge s+1$ for all $j$. Hence its \emph{aggregate} likelihood obeys the code-independent bound
+\begin{equation}
+ W(y\mid x_{\rm unseen})\le U_s:=p_s^{s+1}(1-p_s)^{m-s-1}. \label{eq:unseen}
+\end{equation}
+The factor $1/n$ in \eqref{eq:likelihood} cancels the sum over $n$ alignments, so no extra factor
+$n$ appears in $U_s$.
+
+\begin{theorem}[Exact unseen-shell certificate]\label{thm:certificate}
+After shell $s<m$, every unseen word has likelihood at most $U_s$. If a completely scored incumbent
+has likelihood strictly greater than $U_s$, the incumbent set is the complete global ML tie set.
+Algorithm~\ref{alg:fiber} always terminates and returns exact aggregate ML.
+\end{theorem}
+\begin{proof}
+First appearance at $h_y(x)$ implies $d_j\ge s+1$ for every alignment of an unseen word. Since
+$p_s/(1-p_s)<1$, every term in \eqref{eq:likelihood} is at most $U_s$, and so is their average.
+Strict comparison excludes both a better unseen codeword and an unseen tie. At $s=m$, every binary
+length-$n$ word has been generated.
+\end{proof}
+Strictness is necessary for a complete tie set. For example, at $n=4$, $y=001$, $p_s=1/3$, and
+$\C=\{0010,0000\}$, the first word is seen at shell zero, the second is unseen, and both have
+likelihood $U_0=4/27$. A non-strict certificate would omit an ML tie. At $p_s=0$, shell zero
+contains every positive-likelihood word; at $p_s=1/2$, strict shell decay disappears and complete
+tie certification requires exhaustion.
+
+\section{Stopping, finite work, and the standard entropy corollary}
+Let $T$ be the realized number of substitutions among the $m$ surviving symbols, let
+$\rho=p_s/(1-p_s)$, and define
+\begin{equation}
+ L_n(p_s)=\min\{\ell\ge1:\rho^\ell<1/n\}
+ =\left\lfloor\log_{(1-p_s)/p_s}n\right\rfloor+1. \label{eq:Ln}
+\end{equation}
+
+\begin{theorem}[Realization-dependent stopping]\label{thm:stop}
+For $0<p_s<1/2$, Algorithm~\ref{alg:fiber} stops no later than
+\begin{equation}
+ S\le \min\{m,T+L_n(p_s)-1\}. \label{eq:stop}
+\end{equation}
+Consequently,
+\begin{equation}
+ Q_{\rm gen},Q_{\rm mem}\le(n+1)\Vol(m,S),\qquad Q_{\rm score}\le Q_{\rm mem}, \label{eq:work}
+\end{equation}
+where $\Vol(m,s)=\sum_{w=0}^{\min\{m,s\}}\binom mw$.
+\end{theorem}
+\begin{proof}[Proof sketch]
+The transmitted word is discovered by shell $T$ and contributes at least
+$n^{-1}p_s^T(1-p_s)^{m-T}$. Put $s_0=T+L_n-1$. If $s_0\ge m$, finite exhaustion gives
+$S\le m$. Otherwise $U_{s_0}$ is defined and its ratio to that component is
+$n\rho^{L_n}<1$, so the strict certificate fires by $s_0$. Counting $n+1$ distinct insertion
+outputs per error vector gives \eqref{eq:work}.
+\end{proof}
+If $\tau_\delta$ is the smallest binomial quantile satisfying
+$\Pr[T\le\tau_\delta]\ge1-\delta$, then with probability at least $1-\delta$,
+\begin{equation}
+ Q_{\rm mem}\le(n+1)\Vol\!\left(m,\min\{m,\tau_\delta+L_n-1\}\right). \label{eq:finitecap}
+\end{equation}
+\begin{table*}[t]
+\caption{Code-independent finite-confidence membership caps from \eqref{eq:finitecap} at $p_s=0.05$. These are conservative theorem bounds, not measured work.}
+\label{tab:caps}
+\centering\footnotesize
+\setlength{\tabcolsep}{10pt}\renewcommand{\arraystretch}{1.05}
+\begin{tabular}{@{}rrrrr@{}}
+\toprule
+$n$ & $\delta$ & $L_n$ & $\tau_\delta$ & $(n+1)\Vol(n-1,\tau_\delta+L_n-1)$\\
+\midrule
+16 & $10^{-2}$ & 1 & 3 & 9,792\\
+16 & $10^{-3}$ & 1 & 4 & 32,997\\
+24 & $10^{-2}$ & 2 & 4 & 1,113,800\\
+24 & $10^{-3}$ & 2 & 5 & 3,637,475\\
+32 & $10^{-2}$ & 2 & 5 & 31,107,417\\
+32 & $10^{-3}$ & 2 & 6 & 117,883,392\\
+\bottomrule
+\end{tabular}
+\end{table*}
+For fixed $p_s$ and any $c>0$, Hoeffding concentration and standard Hamming-ball asymptotics give,
+with probability at least $1-n^{-c}$,
+\begin{equation}
+ Q_{\rm mem},Q_{\rm score}\le2^{n(h_2(p_s)+o(1))}. \label{eq:exponent}
+\end{equation}
+This exponent mechanism is the classical BSC typical-volume/GRAND mechanism
+\cite{duffy2019grand}, transported to the exact synchronization decoder after Theorem~\ref{thm:stop};
+it is not claimed as a new entropy law. Formally, with
+$a_n=p_s+\sqrt{c\ln n/(2m)}+(L_n-1)/m$, the high-probability event has $S/m\le a_n$,
+$a_n=p_s+o(1)$, and for all sufficiently large $n$, $a_n<1/2$. Monotonicity and continuity give
+$\Vol(m,S)\le2^{m h_2(a_n)}=2^{n(h_2(p_s)+o(1))}$.
+
+\section{Random-code occupancy benchmark and exact evidence}
+The large reduction in complete scoring can be predicted without attributing it to code structure.
+\begin{proposition}[Uniform-code occupancy benchmark]\label{prop:occupancy}
+Fix a queried set $A\subseteq\{0,1\}^n$ of size $G$ containing the transmitted word $x_0$.
+Let $\C$ be a uniformly chosen $M$-word codebook conditioned on $x_0\in\C$. Then
+\begin{equation}
+ \mathbb E[|A\cap\C|\mid A,x_0]
+ =1+(G-1)\frac{M-1}{2^n-1}. \label{eq:occupancy}
+\end{equation}
+\end{proposition}
+\begin{proof}
+Each of the other $G-1$ queried words belongs to the remaining uniformly selected $M-1$ codewords
+with probability $(M-1)/(2^n-1)$; linearity of expectation proves the result.
+\end{proof}
+This is a benchmark for a fixed query set, not a theorem for structured codes or for data conditioned
+on a stopping event. At $n=32$ and shell one, the generation cap is
+$G_1=(n+1)\Vol(31,1)=1056$. Equation~\eqref{eq:occupancy} predicts mean complete-score counts
+$1.52$, $5.12$, and $17.48$ for $k=21,24,26$, respectively, close to the observed medians.
+
+\begin{table}[t]
+\caption{Frozen $n=32$, $p_s=0.05$ scoring evidence. Savings count avoided complete likelihood evaluations, not universal latency.}
+\label{tab:n32}
+\centering\scriptsize
+\setlength{\tabcolsep}{3.0pt}\renewcommand{\arraystretch}{1.04}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Cell & med. $Q_{\rm mem}$ & med. $Q_{\rm score}$ & med. savings\\
+\midrule
+CRC, $k=21$ & 970.5 & 3.0 & $6.99\times10^5$\\
+Random, $k=21$ & 972.0 & 1.5 & $1.57\times10^6$\\
+CRC, $k=24$ & 964.5 & 4.0 & $4.19\times10^6$\\
+Random, $k=24$ & 966.5 & 4.0 & $4.19\times10^6$\\
+Ext. Hamming, $k=26$ & 954.0 & 13.5 & $4.98\times10^6$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The frozen campaign comprised 996 exact trials: 896 natural and 100 forced-weight stress trials,
+with zero validation violation or censoring. Deduplicated shell search and the history-pair search
+returned identical ML scores and complete tie sets; 384 exhaustive and 432 completed generic
+branch-and-bound comparisons also agreed. At $n=32$, all five cells had median stop shell one.
+Only 16 exhaustive $n=32$ timing calibrations were run, all at $k=21$; their pooled median
+exhaustive/FIBER time ratio was 465.6. Branch-and-bound was faster in one of five $n=32$ cells and
+slower in four, so no universal exact-decoder speed claim follows.
+
+The classical $n+1$ generator reduced attempted insertions by about $1.94\times$ relative to $2n$
+history pairs, but failed its preregistered wall-clock gate. Selected first-shell representatives
+differed from selected aggregate-ML representatives in many trials, but the tie sets always
+overlapped; zero sampled case had disjoint tie sets. Theorem~\ref{thm:reversal}, not empirical
+prevalence, supplies the strict pathwise failure. High ML block-error rates in these high-rate cells
+are channel/code behavior, not decoder incorrectness, because all exact comparators agree.
+
+\section{Conclusion}
+The exact aggregate-likelihood principle, minimum deletion-alignment metric, membership-oracle
+interface, and generic incumbent stopping logic are prior art. The defensible one-deletion results
+are narrower: an explicit strict component/aggregate reversal, the closed-form unseen-shell bound
+$U_s$, complete-tie exact certification using that bound, and the realization-dependent stop
+$S\le T+L_n-1$. Standard entropy-volume arguments then yield the usual high-probability exponent.
+The occupancy benchmark quantitatively explains the finite scoring savings. Together these form a
+correct, auditable workshop-scale contribution for arbitrary membership-testable binary codes under
+the stated channel, without implying a new universal synchronization-decoding paradigm.
+
+\section*{Reproducibility statement}
+All numerical values are frozen from immutable commit
+\texttt{2f7736b70bf7f6f659a6707fad716407635a7deb}. The exact C++ source, trial-level outputs,
+theorem checks, and manifests are available in the public repository
+\url{https://github.com/afazeliUofT/Grand_Work}. Phase 2E performs no new simulation.
+
+\balance
+\begin{thebibliography}{12}
+\bibitem{bahl1975decoding}
+L.~R. Bahl and F.~Jelinek, ``Decoding for channels with insertions, deletions, and substitutions
+with applications to speech recognition,'' \emph{IEEE Trans. Inf. Theory}, vol.~21, no.~4,
+pp.~404--411, Jul.~1975, doi: 10.1109/TIT.1975.1055419.
+
+\bibitem{davey2001reliable}
+M.~C. Davey and D.~J.~C. MacKay, ``Reliable communication over channels with insertions,
+deletions, and substitutions,'' \emph{IEEE Trans. Inf. Theory}, vol.~47, no.~2, pp.~687--698,
+Feb.~2001, doi: 10.1109/18.910582.
+
+\bibitem{duffy2019grand}
+K.~R. Duffy, J.~Li, and M.~M\'edard, ``Capacity-achieving guessing random additive noise
+decoding,'' \emph{IEEE Trans. Inf. Theory}, vol.~65, no.~7, pp.~4023--4040, Jul.~2019,
+doi: 10.1109/TIT.2019.2896110.
+
+\bibitem{sabary2020error}
+O.~Sabary, E.~Yaakobi, and A.~Yucovich, ``The error probability of maximum-likelihood decoding
+over two deletion/insertion channels,'' in \emph{Proc. IEEE Int. Symp. Inf. Theory (ISIT)}, 2020,
+pp.~763--768, arXiv:2001.05582.
+
+\bibitem{yang2020decoding}
+K.~Yang, J.~Ren, C.~Tian, J.~Wang, and H.~V. Poor, ``Decoding binary linear codes over channels
+with synchronization errors,'' \emph{IEEE J. Sel. Areas Commun.}, vol.~38, no.~12,
+pp.~2853--2863, Dec.~2020, doi: 10.1109/JSAC.2020.3005491.
+
+\bibitem{gershon2022genomic}
+Y.~Gershon and Y.~Cassuto, ``Genomic compression with decoder alignment under single deletion and
+multiple substitutions,'' in \emph{Proc. IEEE Int. Symp. Inf. Theory (ISIT)}, 2022,
+pp.~998--1003, doi: 10.1109/ISIT50566.2022.9834472.
+
+\bibitem{banerjee2022sequential}
+A.~Banerjee, A.~Lenz, and A.~Wachter-Zeh, ``Sequential decoding of convolutional codes for
+synchronization errors,'' in \emph{Proc. IEEE Inf. Theory Workshop (ITW)}, 2022,
+pp.~630--635, doi: 10.1109/ITW54588.2022.9965844.
+
+\bibitem{higuera2013computing}
+C.~de~la~Higuera and J.~Oncina, ``Computing the most probable string with a probabilistic finite
+state machine,'' in \emph{Proc. 11th Int. Workshop Finite State Methods Natural Language
+Processing}, 2013, pp.~1--8.
+
+\bibitem{fagin2003optimal}
+R.~Fagin, A.~Lotem, and M.~Naor, ``Optimal aggregation algorithms for middleware,''
+\emph{J. Comput. Syst. Sci.}, vol.~66, no.~4, pp.~614--656, 2003,
+doi: 10.1016/S0022-0000(03)00026-6.
+
+\bibitem{wang2025guessing}
+Q.~Wang, J.~Liang, P.~Yuan, K.~R. Duffy, M.~M\'edard, and X.~Ma, ``Guessing decoding of short
+blocklength codes,'' arXiv:2511.12108, 2025.
+
+\bibitem{levenshtein1966binary}
+V.~I. Levenshtein, ``Binary codes capable of correcting deletions, insertions, and reversals,''
+\emph{Sov. Phys. Dokl.}, vol.~10, no.~8, pp.~707--710, 1966.
+
+\bibitem{hoeffding1963probability}
+W.~Hoeffding, ``Probability inequalities for sums of bounded random variables,''
+\emph{J. Amer. Statist. Assoc.}, vol.~58, no.~301, pp.~13--30, 1963.
+\end{thebibliography}
+\end{document}

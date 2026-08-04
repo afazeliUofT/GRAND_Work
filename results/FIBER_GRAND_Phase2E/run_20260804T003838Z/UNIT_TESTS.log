@@ -1,0 +1,10 @@
+test_claim_discipline (test_phase2e.Phase2ETests.test_claim_discipline) ... ok
+test_exact_review_repairs (test_phase2e.Phase2ETests.test_exact_review_repairs) ... ok
+test_four_source_reviews_present (test_phase2e.Phase2ETests.test_four_source_reviews_present) ... ok
+test_no_simulation_contract (test_phase2e.Phase2ETests.test_no_simulation_contract) ... ok
+test_precompiled_pdfs_exist (test_phase2e.Phase2ETests.test_precompiled_pdfs_exist) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.163s
+
+OK

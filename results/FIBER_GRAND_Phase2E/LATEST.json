@@ -1,0 +1,8 @@
+{
+  "created_utc": "2026-08-04T00:38:42+00:00",
+  "decision": "ITW_READY_AFTER_REVIEW_REPAIR",
+  "package_zip_sha256": "67e9415d566493b45d92c4b02592a4f6f9959a914d9b02715b78d5af9d169691",
+  "result_directory": "results/FIBER_GRAND_Phase2E/run_20260804T003838Z",
+  "standalone_bundle_sha256": "84bed3fdbc581deedf5bd79ba0869164963974cefcde81adec70b51ba218c91b",
+  "status": "PASS"
+}

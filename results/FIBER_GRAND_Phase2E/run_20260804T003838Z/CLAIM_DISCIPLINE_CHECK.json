@@ -1,0 +1,8 @@
+{
+  "created_utc": "2026-08-04T00:38:42+00:00",
+  "forbidden_claims_checked": 6,
+  "required_main_tokens": 10,
+  "required_supplement_tokens": 5,
+  "standalone_tex": true,
+  "status": "PASS"
+}

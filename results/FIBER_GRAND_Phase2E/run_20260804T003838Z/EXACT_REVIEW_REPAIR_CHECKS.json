@@ -1,0 +1,30 @@
+{
+  "checks": [
+    {
+      "name": "strict_complete_tie_witness",
+      "status": "PASS",
+      "value": "4/27"
+    },
+    {
+      "cases": 462,
+      "name": "strict_reversal_grid",
+      "status": "PASS"
+    },
+    {
+      "minimum_n": 21,
+      "name": "reversal_regime_p005",
+      "status": "PASS"
+    },
+    {
+      "name": "uniform_code_occupancy",
+      "predicted_q_score": {
+        "21": 1.5151364732336106,
+        "24": 5.121093505323188,
+        "26": 17.48437475820174
+      },
+      "status": "PASS"
+    }
+  ],
+  "created_utc": "2026-08-04T00:38:42+00:00",
+  "status": "PASS"
+}

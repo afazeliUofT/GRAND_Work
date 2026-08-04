@@ -1,0 +1,10 @@
+{
+  "commit": "2f7736b70bf7f6f659a6707fad716407635a7deb",
+  "created_utc": "2026-08-04T00:38:42+00:00",
+  "decision": "GO_PAPER_I_BASELINE_EXACT_DECODER",
+  "n32_cells_checked": 5,
+  "status": "PASS",
+  "theory_exact_cases": 335146,
+  "trial_count": 996,
+  "validation_violation_count": 0
+}

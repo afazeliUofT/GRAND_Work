@@ -1,0 +1,6 @@
+[phase2e] status=PASS
+[phase2e] decision=ITW_READY_AFTER_REVIEW_REPAIR
+[phase2e] output=/home/afazeli2006/GRAND_Work/results/FIBER_GRAND_Phase2E/run_20260804T003838Z
+[phase2e] return_zip=/home/afazeli2006/GRAND_Work/results/FIBER_GRAND_Phase2E/run_20260804T003838Z/FIBER_GRAND_PHASE2E_RETURN_run_20260804T003838Z.zip
+[phase2e] return_zip_sha256=3d2f63531669c54b9e3e656ce3656babbd348717f039a89a495549f31003d146
+[phase2e] new_simulations_run=false

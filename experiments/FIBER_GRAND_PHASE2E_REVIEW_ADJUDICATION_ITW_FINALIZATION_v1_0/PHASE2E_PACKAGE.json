@@ -1,0 +1,9 @@
+{
+  "name": "FIBER-GRAND Phase 2E review adjudication and ITW finalization",
+  "version": "1.0.0",
+  "date": "2026-08-03",
+  "scientific_scope": "Exactly one uniformly located deletion plus independent hard BSC substitutions; arbitrary nonempty binary membership-testable code.",
+  "decision_target": "ITW_READY_AFTER_REVIEW_REPAIR",
+  "new_simulations": false,
+  "required_base_commit": "c7b4eed3247382a29c9d794035ef60956c952bfc"
+}

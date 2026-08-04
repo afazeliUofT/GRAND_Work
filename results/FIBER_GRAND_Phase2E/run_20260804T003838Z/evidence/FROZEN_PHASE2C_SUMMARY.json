@@ -1,0 +1,107 @@
+{
+  "bestpath_claim_policy": {
+    "allowed_main_text": "The explicit theorem proves strict path/aggregate reversal; the finite campaign is not used as a prevalence estimate.",
+    "selected_representative_disagreements_observed": true,
+    "strict_disjoint_empirical_cases": 0
+  },
+  "n32_cells": [
+    {
+      "branch_ratio": 0.9906210471108277,
+      "cell_id": "n32_k21_crc_defined_linear_R2_3",
+      "exhaustive_speedup": 521.9971774545181,
+      "family": "CRC-defined",
+      "k": 21,
+      "membership_ratio": 2160.8990794908004,
+      "p10_score_savings": 190650.18181818182,
+      "p90_stop_shell": 2.0,
+      "qmem": 970.5,
+      "qscore": 3.0,
+      "score_savings": 699050.6666666666,
+      "short": "CRC, $k=21$",
+      "stop_shell": 1.0
+    },
+    {
+      "branch_ratio": 1.664642337493605,
+      "cell_id": "n32_k21_random_systematic_linear_R2_3",
+      "exhaustive_speedup": 465.5917882890163,
+      "family": "random systematic",
+      "k": 21,
+      "membership_ratio": 2157.572920679947,
+      "p10_score_savings": 262144.0,
+      "p90_stop_shell": 2.0,
+      "qmem": 972.0,
+      "qscore": 1.5,
+      "score_savings": 1572864.0,
+      "short": "Random, $k=21$",
+      "stop_shell": 1.0
+    },
+    {
+      "branch_ratio": 1.2035926710663654,
+      "cell_id": "n32_k24_crc_defined_linear_R3_4",
+      "exhaustive_speedup": null,
+      "family": "CRC-defined",
+      "k": 24,
+      "membership_ratio": 17394.733549760283,
+      "p10_score_savings": 2097152.0,
+      "p90_stop_shell": 1.0,
+      "qmem": 964.5,
+      "qscore": 4.0,
+      "score_savings": 4194304.0,
+      "short": "CRC, $k=24$",
+      "stop_shell": 1.0
+    },
+    {
+      "branch_ratio": 2.3938379894854847,
+      "cell_id": "n32_k24_random_systematic_linear_R3_4",
+      "exhaustive_speedup": null,
+      "family": "random systematic",
+      "k": 24,
+      "membership_ratio": 17358.738220489402,
+      "p10_score_savings": 1864135.111111111,
+      "p90_stop_shell": 1.0,
+      "qmem": 966.5,
+      "qscore": 4.0,
+      "score_savings": 4194304.0,
+      "short": "Random, $k=24$",
+      "stop_shell": 1.0
+    },
+    {
+      "branch_ratio": 2.1798737065569447,
+      "cell_id": "n32_k26_extended_hamming_HAMMING",
+      "exhaustive_speedup": null,
+      "family": "extended Hamming",
+      "k": 26,
+      "membership_ratio": 70344.79846612792,
+      "p10_score_savings": 3355443.2,
+      "p90_stop_shell": 1.0,
+      "qmem": 954.0,
+      "qscore": 13.5,
+      "score_savings": 4977855.296703297,
+      "short": "Ext. Hamming, $k=26$",
+      "stop_shell": 1.0
+    }
+  ],
+  "natural_trials": 896,
+  "phase2c_commit": "2f7736b70bf7f6f659a6707fad716407635a7deb",
+  "phase2c_run_relative": "results/FIBER_GRAND_Phase2C/run_20260803T125100Z",
+  "required_decision": "GO_PAPER_I_BASELINE_EXACT_DECODER",
+  "schema_version": 1,
+  "scope": {
+    "code_families": [
+      "random_systematic_linear",
+      "crc_defined_linear",
+      "extended_hamming"
+    ],
+    "deletion": "exactly one, uniformly located",
+    "n": [
+      16,
+      24,
+      32
+    ],
+    "p_s": 0.05
+  },
+  "stress_trials": 100,
+  "theory_exact_cases": 335146,
+  "trial_count": 996,
+  "validation_violation_count": 0
+}

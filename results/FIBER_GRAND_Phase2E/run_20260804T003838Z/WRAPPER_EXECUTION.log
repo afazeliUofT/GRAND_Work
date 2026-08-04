@@ -1,0 +1,45 @@
+FIBER-GRAND Paper I - Phase 2E review-adjudication/ITW-finalization wrapper
+WRAPPER_LOG=/tmp/FIBER_GRAND_PHASE2E_WRAPPER_20260804T003838Z_2527186.log
+$ git -C /home/afazeli2006/GRAND_Work fetch origin main
+From github.com:afazeliUofT/Grand_Work
+ * branch            main       -> FETCH_HEAD
+[command return code] 0
+[repo] origin/main=c7b4eed3247382a29c9d794035ef60956c952bfc; push is fast-forward safe
+[repo] root=/home/afazeli2006/GRAND_Work
+[repo] origin=git@github.com:afazeliUofT/Grand_Work.git
+[repo] branch=main
+[repo] local_head=c7b4eed3247382a29c9d794035ef60956c952bfc
+[repo] Phase 2D-R1 PASS commit verified: c7b4eed3247382a29c9d794035ef60956c952bfc
+[git] line-ending policy verified at /home/afazeli2006/GRAND_Work/.gitattributes
+[git] local excludes verified at /home/afazeli2006/GRAND_Work/.git/info/exclude
+[package] located=/mnt/c/Users/alifa/Downloads/FIBER_GRAND_PHASE2E_REVIEW_ADJUDICATION_ITW_FINALIZATION_v1_0_2026-08-03.zip
+[package] sha256=67e9415d566493b45d92c4b02592a4f6f9959a914d9b02715b78d5af9d169691 (verified)
+[package] installed=/home/afazeli2006/GRAND_Work/experiments/FIBER_GRAND_PHASE2E_REVIEW_ADJUDICATION_ITW_FINALIZATION_v1_0
+$ /usr/bin/python3 -m venv /home/afazeli2006/.venvs/fiber_grand_phase2e_v1_0
+[command return code] 0
+[venv] interpreter=/home/afazeli2006/.venvs/fiber_grand_phase2e_v1_0/bin/python
+[venv] version=(3, 12, 3); no third-party dependencies are required
+[venv] parent-shell activation is unnecessary
+[run] output=/home/afazeli2006/GRAND_Work/results/FIBER_GRAND_Phase2E/run_20260804T003838Z
+$ /home/afazeli2006/.venvs/fiber_grand_phase2e_v1_0/bin/python -m unittest discover -s tests -v
+test_claim_discipline (test_phase2e.Phase2ETests.test_claim_discipline) ... ok
+test_exact_review_repairs (test_phase2e.Phase2ETests.test_exact_review_repairs) ... ok
+test_four_source_reviews_present (test_phase2e.Phase2ETests.test_four_source_reviews_present) ... ok
+test_no_simulation_contract (test_phase2e.Phase2ETests.test_no_simulation_contract) ... ok
+test_precompiled_pdfs_exist (test_phase2e.Phase2ETests.test_precompiled_pdfs_exist) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.163s
+
+OK
+[command return code] 0
+$ /home/afazeli2006/.venvs/fiber_grand_phase2e_v1_0/bin/python /home/afazeli2006/GRAND_Work/experiments/FIBER_GRAND_PHASE2E_REVIEW_ADJUDICATION_ITW_FINALIZATION_v1_0/run_phase2e.py --repo-root /home/afazeli2006/GRAND_Work --config /home/afazeli2006/GRAND_Work/experiments/FIBER_GRAND_PHASE2E_REVIEW_ADJUDICATION_ITW_FINALIZATION_v1_0/config/phase2e_default.json --output /home/afazeli2006/GRAND_Work/results/FIBER_GRAND_Phase2E/run_20260804T003838Z
+[phase2e] status=PASS
+[phase2e] decision=ITW_READY_AFTER_REVIEW_REPAIR
+[phase2e] output=/home/afazeli2006/GRAND_Work/results/FIBER_GRAND_Phase2E/run_20260804T003838Z
+[phase2e] return_zip=/home/afazeli2006/GRAND_Work/results/FIBER_GRAND_Phase2E/run_20260804T003838Z/FIBER_GRAND_PHASE2E_RETURN_run_20260804T003838Z.zip
+[phase2e] return_zip_sha256=3d2f63531669c54b9e3e656ce3656babbd348717f039a89a495549f31003d146
+[phase2e] new_simulations_run=false
+[command return code] 0
+[standalone] copied=/mnt/c/Users/alifa/Downloads/FIBER_GRAND_Paper_I_Minimal_Standalone_Phase2E.zip
+[standalone] sha256=84bed3fdbc581deedf5bd79ba0869164963974cefcde81adec70b51ba218c91b

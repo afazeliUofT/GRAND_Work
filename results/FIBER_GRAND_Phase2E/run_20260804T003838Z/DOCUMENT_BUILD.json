@@ -1,0 +1,20 @@
+{
+  "created_utc": "2026-08-04T00:38:42+00:00",
+  "manuscript": {
+    "pages": 4,
+    "pdf": "FIBER_GRAND_Paper_I_ITW_Candidate_Phase2E.pdf",
+    "pdf_sha256": "b19b6dfc12bf6e418557b5bf429b71f7882a25ef2e9f5daaf9e035bc13f44e60",
+    "source": "FIBER_GRAND_Paper_I_ITW_Candidate_Phase2E.tex",
+    "status": "PASS",
+    "used_precompiled_fallback": true
+  },
+  "status": "PASS",
+  "supplement": {
+    "pages": 5,
+    "pdf": "FIBER_GRAND_Paper_I_Proof_Supplement_Phase2E.pdf",
+    "pdf_sha256": "14d7e9e64bb946866647a2f48a11fb005d9402a8611fcc56ffb7684bdd9131c5",
+    "source": "FIBER_GRAND_Paper_I_Proof_Supplement_Phase2E.tex",
+    "status": "PASS",
+    "used_precompiled_fallback": true
+  }
+}
